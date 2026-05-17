@@ -1,11 +1,14 @@
-extends Node2D
+extends Resource
 
-class_name employee
+class_name Employee
 
 @export var display_name : String;
-@export var display_hpBar: ProgressBar;
-@export var display_mpBar: ProgressBar;
-@export var display_spBar: ProgressBar;
+@export var display_char_head: Texture2D;
+@export var display_char_leftArm: Texture2D;
+@export var display_char_body: Texture2D;
+@export var display_char_rightArm: Texture2D;
+@export var display_char_leftLeg: Texture2D;
+@export var display_char_RightLeg: Texture2D;
 
 @export var stat_maxHP = 100;
 @export var stat_maxMP = 10;

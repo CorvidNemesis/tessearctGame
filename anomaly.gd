@@ -10,6 +10,8 @@ class_name tesseract
 @export var stat_agi = 10;
 @export var stat_mpRecoverRate = 0.10;
 
+@export var species = "none";
+
 # 0.0 - 2.0, 0 is the best 2 is the worst.
 
 # Adenine is HP
