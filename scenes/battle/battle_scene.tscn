@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://0vr2v1i1asqw"]
+
+[ext_resource type="PackedScene" uid="uid://cgronlllfpb6v" path="res://scenes/battle/battleGUI.tscn" id="1_pu738"]
+[ext_resource type="Script" uid="uid://bro1a6vimo4nu" path="res://scenes/battle/battle_code.gd" id="2_o3k7m"]
+[ext_resource type="Texture2D" uid="uid://dwojjv78uky2v" path="res://assets/battleBackgrounds/Background.png" id="2_ugm31"]
+[ext_resource type="Texture2D" uid="uid://cddphqbvgbdv0" path="res://assets/battleBackgrounds/Floor.png" id="3_o3k7m"]
+
+[node name="BattleScene" type="Node2D" unique_id=74146534]
+
+[node name="battleGUI" parent="." unique_id=1234651255 instance=ExtResource("1_pu738")]
+
+[node name="Node" type="Node" parent="." unique_id=269051460]
+script = ExtResource("2_o3k7m")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1314399490]
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("2_ugm31")
+expand_mode = 2
+
+[node name="Floor" type="TextureRect" parent="." unique_id=2028953374]
+offset_left = -1.0
+offset_top = 451.0
+offset_right = 1278.0
+offset_bottom = 720.0
+texture = ExtResource("3_o3k7m")
+expand_mode = 1
+
+[node name="EnemyGroup" type="VBoxContainer" parent="." unique_id=1688326055]
+offset_left = 1.0
+offset_top = 457.0
+offset_right = 570.0
+offset_bottom = 620.0
+alignment = 1
+
+[node name="PlayerGroup" type="VBoxContainer" parent="." unique_id=910622611]
+offset_left = 725.0
+offset_top = 454.0
+offset_right = 1277.0
+offset_bottom = 636.0
+alignment = 1

@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://didgg0rcr5q3v"]
+
+[ext_resource type="FontFile" uid="uid://blraut16i4716" path="res://assets/fonts/BebasKai.ttf" id="1_yrqkf"]
+[ext_resource type="Texture2D" uid="uid://cfk3wjk5gr1es" path="res://assets/uiElements/elementalIcons/newIcon2.png" id="2_47rhg"]
+
+[sub_resource type="Gradient" id="Gradient_a7vub"]
+colors = PackedColorArray(0, 0, 0, 1, 0.101960786, 0.101960786, 0.101960786, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_dp8ib"]
+gradient = SubResource("Gradient_a7vub")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mcbov"]
+texture = SubResource("GradientTexture1D_dp8ib")
+
+[node name="Actions" type="PanelContainer" unique_id=585359748]
+custom_minimum_size = Vector2(200, 0)
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="BattleCommands" type="VBoxContainer" parent="." unique_id=1673899786]
+layout_mode = 2
+
+[node name="buttonFight" type="Button" parent="BattleCommands" unique_id=1023172334]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_yrqkf")
+text = "Fight"
+alignment = 0
+
+[node name="buttonSkill" type="Button" parent="BattleCommands" unique_id=2095006306]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_yrqkf")
+text = "Technique
+"
+alignment = 0
+
+[node name="buttonUlt" type="Button" parent="BattleCommands" unique_id=1941038260]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_yrqkf")
+text = "Unviel Talent
+"
+alignment = 0
+
+[node name="buttonCharge" type="Button" parent="BattleCommands" unique_id=305393091]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_yrqkf")
+text = "Charge"
+alignment = 0
+
+[node name="buttonDefend" type="Button" parent="BattleCommands" unique_id=1019565923]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_yrqkf")
+text = "Defend"
+alignment = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=998310824]
+visible = false
+layout_mode = 2
+
+[node name="Skill" type="VBoxContainer" parent="ScrollContainer" unique_id=441899091]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/Skill" unique_id=1922954116]
+layout_mode = 2
+
+[node name="SkillButton" type="Button" parent="ScrollContainer/Skill/HBoxContainer" unique_id=357765413]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_yrqkf")
+theme_override_styles/normal = SubResource("StyleBoxTexture_mcbov")
+text = "Solemn Lament"
+icon = ExtResource("2_47rhg")

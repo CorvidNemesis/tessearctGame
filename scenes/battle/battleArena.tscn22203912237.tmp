@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://cgronlllfpb6v"]
+
+[ext_resource type="Script" uid="uid://4vmg2pwahjcj" path="res://scenes/battle/battle_arena.gd" id="1_75bcy"]
+[ext_resource type="PackedScene" uid="uid://cl84bqfi7cyv" path="res://scenes/battle/player.tscn" id="1_tyjau"]
+[ext_resource type="PackedScene" uid="uid://c40q5yfn32t4k" path="res://scenes/battle/enemy.tscn" id="2_77hwr"]
+
+[sub_resource type="Theme" id="Theme_au2tq"]
+MarginContainer/constants/margin_bottom = 12
+MarginContainer/constants/margin_left = 12
+MarginContainer/constants/margin_right = 12
+MarginContainer/constants/margin_top = 12
+
+[node name="battleArena" type="Control" unique_id=1301334440]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("1_75bcy")
+battleBox = ExtResource("1_tyjau")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1694856368]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_au2tq")
+
+[node name="Actions" type="PanelContainer" parent="MarginContainer" unique_id=1548566854]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Actions" unique_id=352186550]
+layout_mode = 2
+
+[node name="buttonFight" type="Button" parent="MarginContainer/Actions/VBoxContainer" unique_id=693919321]
+layout_mode = 2
+text = "Fight"
+
+[node name="buttonSkill" type="Button" parent="MarginContainer/Actions/VBoxContainer" unique_id=713568566]
+layout_mode = 2
+text = "Technique
+"
+
+[node name="buttonUlt" type="Button" parent="MarginContainer/Actions/VBoxContainer" unique_id=1314440259]
+layout_mode = 2
+text = "Unviel Talent
+"
+
+[node name="buttonCharge" type="Button" parent="MarginContainer/Actions/VBoxContainer" unique_id=1476610291]
+layout_mode = 2
+text = "Charge"
+
+[node name="buttonSkill2" type="Button" parent="MarginContainer/Actions/VBoxContainer" unique_id=1238865139]
+layout_mode = 2
+text = "Defend"
+
+[node name="Player Window" type="HBoxContainer" parent="MarginContainer" unique_id=456054800]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="player" parent="MarginContainer/Player Window" unique_id=1206141887 instance=ExtResource("1_tyjau")]
+layout_mode = 2
+
+[node name="Enemies" type="HBoxContainer" parent="MarginContainer" unique_id=266307179]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Enemy" parent="MarginContainer/Enemies" unique_id=2097557216 instance=ExtResource("2_77hwr")]
+layout_mode = 2

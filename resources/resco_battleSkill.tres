@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BattleSkill" format=3 uid="uid://dseaomvysdh3v"]
+
+[ext_resource type="Script" uid="uid://di06tuhcu0b1s" path="res://scripts/skillsResource.gd" id="1_6wv86"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6wv86"]
+load_path = "res://.godot/imported/newIcon2.png-c171d039ff63cd5d31063790d98e87cd.ctex"
+
+[resource]
+script = ExtResource("1_6wv86")
+ELEMENT = "Fire"
+PROPERTY = "Slash"
+canCrit = true
+amp = 1.0
+elmIcon = SubResource("CompressedTexture2D_6wv86")
+metadata/_custom_type_script = "uid://di06tuhcu0b1s"

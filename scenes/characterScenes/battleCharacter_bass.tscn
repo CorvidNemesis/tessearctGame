@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://collocs7cveyg"]
+
+[ext_resource type="Script" uid="uid://2b8p4teg3c4r" path="res://scripts/character/characterData/characterClass.gd" id="1_d7feo"]
+[ext_resource type="Resource" uid="uid://b2fvr20r1l7sa" path="res://resources/characterStats/PlaceHolder.tres" id="2_d7feo"]
+[ext_resource type="Texture2D" uid="uid://dhtqcwk0u7ckc" path="res://assets/battleSprites/playerSheets/sprite_sheet.png" id="3_d7feo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lmdql"]
+atlas = ExtResource("3_d7feo")
+region = Rect2(0, 437, 467, 437)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rar0l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lmdql")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="BassBrash" type="Node2D" unique_id=279236092 node_paths=PackedStringArray("spriteSheet", "animationEffects", "selectionButton")]
+script = ExtResource("1_d7feo")
+battleStats = ExtResource("2_d7feo")
+spriteSheet = NodePath("SpriteSheet")
+animationEffects = NodePath("AnimatedEffects")
+selectionButton = NodePath("SpriteSheet/Selection")
+metadata/_custom_type_script = "uid://2b8p4teg3c4r"
+
+[node name="SpriteSheet" type="AnimatedSprite2D" parent="." unique_id=2074526630]
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_rar0l")
+flip_h = true
+
+[node name="Selection" type="Button" parent="SpriteSheet" unique_id=207679172]
+offset_left = -192.0
+offset_top = -220.0
+offset_right = 212.0
+offset_bottom = 208.0
+flat = true
+
+[node name="AnimatedEffects" type="AnimationPlayer" parent="." unique_id=572175246]
+
+[connection signal="pressed" from="SpriteSheet/Selection" to="." method="_on_selection_pressed"]

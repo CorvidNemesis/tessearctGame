@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://c40q5yfn32t4k"]
+
+[ext_resource type="Texture2D" uid="uid://b4gsvlwvn02f3" path="res://icon.svg" id="1_oqxvf"]
+
+[node name="Enemy" type="TextureButton" unique_id=2097557216]
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("1_oqxvf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1827020689]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HP" type="ProgressBar" parent="VBoxContainer" unique_id=644561600]
+layout_mode = 2
+size_flags_vertical = 4
+show_percentage = false
+
+[node name="MP" type="ProgressBar" parent="VBoxContainer" unique_id=872451209]
+layout_mode = 2
+size_flags_vertical = 4
+show_percentage = false
+
+[node name="CF" type="ProgressBar" parent="VBoxContainer" unique_id=957269901]
+layout_mode = 2
+size_flags_vertical = 4
+show_percentage = false
