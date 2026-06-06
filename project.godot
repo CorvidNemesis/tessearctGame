@@ -18,17 +18,24 @@ config/icon="res://icon.svg"
 [autoload]
 
 globalVars="*uid://c55acyfd8mcnt"
-globalBattleInfo="*uid://d1ty4idewaf06"
+global_battle_information="*uid://d1ty4idewaf06"
+signal_manager="*uid://b5ecridul5nvb"
 
 [display]
 
-window/size/viewport_width=1280
-window/size/viewport_height=720
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=3
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [file_customization]
 
 folder_colors={
-"res://resources/": "teal"
+"res://assets/": "teal",
+"res://resources/": "pink",
+"res://scenes/": "yellow",
+"res://scripts/": "gray"
 }
 
 [physics]
@@ -37,5 +44,9 @@ folder_colors={
 
 [rendering]
 
-textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
+textures/size/mode=0
+
+[signal_bus]
+
+signals={}

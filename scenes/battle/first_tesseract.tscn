@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://dbqsqfo6tbxt"]
 
-[ext_resource type="Script" uid="uid://cs87dls076ev6" path="res://enemyClass.gd" id="1_1pyuk"]
+[ext_resource type="Script" uid="uid://cs87dls076ev6" path="res://scripts/character/enemyClass.gd" id="1_1pyuk"]
 [ext_resource type="Texture2D" uid="uid://7c01xitb7474" path="res://assets/battleSprites/enemySheets/ScorchedGirlSpriteSheet.png" id="2_3jkju"]
+[ext_resource type="Resource" uid="uid://bcxpbhov27yq7" path="res://resources/enemyStats/FirstTessStats.tres" id="2_f47tt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f47tt"]
 atlas = ExtResource("2_3jkju")
@@ -44,6 +45,7 @@ animations = [{
 
 [node name="FirstTesseract" type="Node2D" unique_id=1486386500]
 script = ExtResource("1_1pyuk")
+battle_data = ExtResource("2_f47tt")
 metadata/_custom_type_script = "uid://cs87dls076ev6"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=93581301]

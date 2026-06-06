@@ -1,71 +1,126 @@
 [gd_scene format=3 uid="uid://didgg0rcr5q3v"]
 
-[ext_resource type="FontFile" uid="uid://blraut16i4716" path="res://assets/fonts/BebasKai.ttf" id="1_yrqkf"]
-[ext_resource type="Texture2D" uid="uid://cfk3wjk5gr1es" path="res://assets/uiElements/elementalIcons/newIcon2.png" id="2_47rhg"]
-
-[sub_resource type="Gradient" id="Gradient_a7vub"]
-colors = PackedColorArray(0, 0, 0, 1, 0.101960786, 0.101960786, 0.101960786, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_dp8ib"]
-gradient = SubResource("Gradient_a7vub")
+[ext_resource type="FontFile" uid="uid://cbd3kwlu24ys2" path="res://assets/fonts/Anarcharsis Basic HF Regular.ttf" id="1_47rhg"]
+[ext_resource type="Script" uid="uid://jgfyxi7oeq85" path="res://scripts/battle/GUI/Command Window/CommandWindow.gd" id="1_a7vub"]
+[ext_resource type="Texture2D" uid="uid://k17k3kcic4di" path="res://assets/uiElements/nine_sec_battle_box.png" id="1_dp8ib"]
+[ext_resource type="PackedScene" uid="uid://cmye1wgo0qdkh" path="res://scenes/battle/skill_card.tscn" id="2_a7vub"]
+[ext_resource type="Script" uid="uid://b8emlwfjl5w0e" path="res://scripts/battle/GUI/Command Window/GUI_CW_layer_1.gd" id="4_mujvh"]
+[ext_resource type="PackedScene" uid="uid://cdy44spkjdo8r" path="res://scenes/battle/skill_button.tscn" id="5_mujvh"]
+[ext_resource type="Script" uid="uid://c1pmkre7efvyr" path="res://scripts/battle/GUI/Command Window/GUI_CW_layer_2.gd" id="6_lepur"]
+[ext_resource type="PackedScene" uid="uid://c473fid0giaek" path="res://scenes/battle/GUIScenes/enemy_choices.tscn" id="8_ylcgq"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mcbov"]
-texture = SubResource("GradientTexture1D_dp8ib")
+texture = ExtResource("1_dp8ib")
+texture_margin_left = 32.0
+texture_margin_top = 32.0
+texture_margin_right = 32.0
+texture_margin_bottom = 32.0
+
+[sub_resource type="Gradient" id="Gradient_lepur"]
+colors = PackedColorArray(0.08625873, 0.08625873, 0.08625873, 1, 0.1906329, 0.1906329, 0.1906329, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ylcgq"]
+gradient = SubResource("Gradient_lepur")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ra8rk"]
+texture = SubResource("GradientTexture2D_ylcgq")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lepur"]
+bg_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+
+[sub_resource type="Theme" id="Theme_lepur"]
+default_font = ExtResource("1_47rhg")
+Button/colors/font_disabled_color = Color(1, 0, 0, 0.5019608)
+Button/font_sizes/font_size = 32
+Button/fonts/font = ExtResource("1_47rhg")
+Button/styles/hover = SubResource("StyleBoxTexture_ra8rk")
+Button/styles/normal = SubResource("StyleBoxFlat_lepur")
 
 [node name="Actions" type="PanelContainer" unique_id=585359748]
-custom_minimum_size = Vector2(200, 0)
+offset_right = 563.0
+offset_bottom = 380.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_mcbov")
+script = ExtResource("1_a7vub")
 
-[node name="BattleCommands" type="VBoxContainer" parent="." unique_id=1673899786]
+[node name="BattleCommands" type="VBoxContainer" parent="." unique_id=1943074313]
 layout_mode = 2
 
-[node name="buttonFight" type="Button" parent="BattleCommands" unique_id=1023172334]
+[node name="Layer0" type="VBoxContainer" parent="BattleCommands" unique_id=669673460]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_yrqkf")
+
+[node name="buttonFight" type="Button" parent="BattleCommands/Layer0" unique_id=1023172334]
+layout_mode = 2
+theme = SubResource("Theme_lepur")
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+theme_override_colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_47rhg")
+theme_override_font_sizes/font_size = 32
 text = "Fight"
-alignment = 0
+autowrap_trim_flags = 0
+expand_icon = true
 
-[node name="buttonSkill" type="Button" parent="BattleCommands" unique_id=2095006306]
+[node name="buttonSkills" type="Button" parent="BattleCommands/Layer0" unique_id=1182503225]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_yrqkf")
-text = "Technique
-"
-alignment = 0
+theme_override_fonts/font = ExtResource("1_47rhg")
+theme_override_font_sizes/font_size = 32
+text = "Techniques"
 
-[node name="buttonUlt" type="Button" parent="BattleCommands" unique_id=1941038260]
+[node name="buttonUlt" type="Button" parent="BattleCommands/Layer0" unique_id=1941038260]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_yrqkf")
+theme_override_constants/h_separation = 20
+theme_override_constants/line_spacing = 4
+theme_override_fonts/font = ExtResource("1_47rhg")
+theme_override_font_sizes/font_size = 32
 text = "Unviel Talent
 "
-alignment = 0
 
-[node name="buttonCharge" type="Button" parent="BattleCommands" unique_id=305393091]
+[node name="buttonDefend" type="Button" parent="BattleCommands/Layer0" unique_id=1019565923]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_yrqkf")
-text = "Charge"
-alignment = 0
-
-[node name="buttonDefend" type="Button" parent="BattleCommands" unique_id=1019565923]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("1_yrqkf")
+theme_override_constants/h_separation = 20
+theme_override_constants/line_spacing = 4
+theme_override_fonts/font = ExtResource("1_47rhg")
+theme_override_font_sizes/font_size = 32
 text = "Defend"
-alignment = 0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=998310824]
+[node name="Layer1" type="VBoxContainer" parent="BattleCommands" unique_id=459258952]
 visible = false
-layout_mode = 2
-
-[node name="Skill" type="VBoxContainer" parent="ScrollContainer" unique_id=441899091]
+custom_minimum_size = Vector2(5.815, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+script = ExtResource("4_mujvh")
+skillButton = ExtResource("5_mujvh")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/Skill" unique_id=1922954116]
+[node name="skillButton" parent="BattleCommands/Layer1" unique_id=882735814 instance=ExtResource("5_mujvh")]
+layout_mode = 2
+text = "owo"
+
+[node name="Layer2" type="VBoxContainer" parent="BattleCommands" unique_id=78597703]
+visible = false
+layout_mode = 2
+script = ExtResource("6_lepur")
+
+[node name="SkillCard" parent="BattleCommands/Layer2" unique_id=1435099645 instance=ExtResource("2_a7vub")]
 layout_mode = 2
 
-[node name="SkillButton" type="Button" parent="ScrollContainer/Skill/HBoxContainer" unique_id=357765413]
+[node name="EnemyChoices" parent="BattleCommands/Layer2" unique_id=498861705 instance=ExtResource("8_ylcgq")]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_yrqkf")
-theme_override_styles/normal = SubResource("StyleBoxTexture_mcbov")
-text = "Solemn Lament"
-icon = ExtResource("2_47rhg")
+
+[node name="Buttonback" type="Button" parent="BattleCommands" unique_id=59692667]
+visible = false
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/line_spacing = 4
+theme_override_fonts/font = ExtResource("1_47rhg")
+theme_override_font_sizes/font_size = 32
+text = "Back
+"
+
+[connection signal="pressed" from="BattleCommands/Layer0/buttonFight" to="." method="_on_button_fight_pressed"]
+[connection signal="pressed" from="BattleCommands/Layer0/buttonSkills" to="." method="_on_button_skills_pressed"]
+[connection signal="pressed" from="BattleCommands/Layer1/skillButton" to="." method="_on_skill_button_pressed"]
+[connection signal="pressed" from="BattleCommands/Buttonback" to="." method="_on_buttonback_pressed"]

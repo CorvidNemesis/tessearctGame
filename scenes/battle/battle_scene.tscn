@@ -1,41 +1,40 @@
 [gd_scene format=3 uid="uid://0vr2v1i1asqw"]
 
+[ext_resource type="Script" uid="uid://ibugcttqn5he" path="res://scripts/battle/battle_manager.gd" id="1_o3k7m"]
 [ext_resource type="PackedScene" uid="uid://cgronlllfpb6v" path="res://scenes/battle/battleGUI.tscn" id="1_pu738"]
-[ext_resource type="Script" uid="uid://bro1a6vimo4nu" path="res://scenes/battle/battle_code.gd" id="2_o3k7m"]
-[ext_resource type="Texture2D" uid="uid://dwojjv78uky2v" path="res://assets/battleBackgrounds/Background.png" id="2_ugm31"]
-[ext_resource type="Texture2D" uid="uid://cddphqbvgbdv0" path="res://assets/battleBackgrounds/Floor.png" id="3_o3k7m"]
+[ext_resource type="Texture2D" uid="uid://dwojjv78uky2v" path="res://assets/battleBackgrounds/Background.png" id="4_o3k7m"]
+[ext_resource type="Texture2D" uid="uid://cddphqbvgbdv0" path="res://assets/battleBackgrounds/Floor.png" id="5_lbt8a"]
+[ext_resource type="Texture2D" uid="uid://7y58rsxvdsps" path="res://assets/battleSprites/playerSheets/placeHolderSetUP.png" id="7_2wmvw"]
+[ext_resource type="Script" uid="uid://cdre6daaslxjt" path="res://scripts/battle/battle_cam.gd" id="7_cywj5"]
 
 [node name="BattleScene" type="Node2D" unique_id=74146534]
+script = ExtResource("1_o3k7m")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=714113218]
+position = Vector2(-455, 0)
+scale = Vector2(1.4822917, 0.83703697)
+texture = ExtResource("4_o3k7m")
+centered = false
+
+[node name="Floor" type="Sprite2D" parent="." unique_id=1530853901]
+position = Vector2(-455, 548)
+scale = Vector2(1.4822916, 1.3440595)
+texture = ExtResource("5_lbt8a")
+centered = false
+
+[node name="PlaceHolderSetUp" type="Sprite2D" parent="." unique_id=1557439718]
+position = Vector2(1604, 679)
+texture = ExtResource("7_2wmvw")
 
 [node name="battleGUI" parent="." unique_id=1234651255 instance=ExtResource("1_pu738")]
 
-[node name="Node" type="Node" parent="." unique_id=269051460]
-script = ExtResource("2_o3k7m")
+[node name="Enemy" type="Node2D" parent="." unique_id=1621906946]
 
-[node name="Background" type="TextureRect" parent="." unique_id=1314399490]
-offset_right = 1280.0
-offset_bottom = 720.0
-texture = ExtResource("2_ugm31")
-expand_mode = 2
+[node name="Battlers" type="Node2D" parent="." unique_id=902843610]
+position = Vector2(960, 548)
 
-[node name="Floor" type="TextureRect" parent="." unique_id=2028953374]
-offset_left = -1.0
-offset_top = 451.0
-offset_right = 1278.0
-offset_bottom = 720.0
-texture = ExtResource("3_o3k7m")
-expand_mode = 1
-
-[node name="EnemyGroup" type="VBoxContainer" parent="." unique_id=1688326055]
-offset_left = 1.0
-offset_top = 457.0
-offset_right = 570.0
-offset_bottom = 620.0
-alignment = 1
-
-[node name="PlayerGroup" type="VBoxContainer" parent="." unique_id=910622611]
-offset_left = 725.0
-offset_top = 454.0
-offset_right = 1277.0
-offset_bottom = 636.0
-alignment = 1
+[node name="BattleCam" type="Camera2D" parent="." unique_id=77629093]
+position = Vector2(960, 548)
+limit_smoothed = true
+position_smoothing_enabled = true
+script = ExtResource("7_cywj5")

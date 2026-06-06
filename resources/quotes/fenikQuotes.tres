@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="quotesResource" format=3 uid="uid://c0yceavqhatph"]
+
+[ext_resource type="Script" uid="uid://d1v6bv2mafofn" path="res://scripts/resources/quotesResource.gd" id="1_q7l2p"]
+
+[resource]
+script = ExtResource("1_q7l2p")
+livingQuotes = Array[String](["When we win, we will celebrate greatly!", "Wha"])
+metadata/_custom_type_script = "uid://d1v6bv2mafofn"

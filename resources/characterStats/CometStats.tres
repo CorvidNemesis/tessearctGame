@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="statsResource" format=3 uid="uid://5oeg37u20au3"]
+
+[ext_resource type="Script" uid="uid://dsj6m8wmc0qun" path="res://scripts/resources/statResource.gd" id="1_07uvv"]
+[ext_resource type="Script" uid="uid://di06tuhcu0b1s" path="res://scripts/resources/skillsResource.gd" id="2_4srtv"]
+[ext_resource type="Resource" uid="uid://ddbmiqow4quj7" path="res://resources/Skills/skillAttack.tres" id="3_8eki2"]
+[ext_resource type="Resource" uid="uid://b1shd7xcb5tfe" path="res://resources/Skills/skillDoubleAttack.tres" id="4_8x36f"]
+
+[resource]
+script = ExtResource("1_07uvv")
+display_name = "Comet Cadet"
+stat_dict = {
+"agi": 10,
+"cmp": 10,
+"def": 10,
+"maxHP": 180,
+"maxMP": 20,
+"str": 10
+}
+skillSet = Array[ExtResource("2_4srtv")]([ExtResource("3_8eki2"), ExtResource("4_8x36f")])
+metadata/_custom_type_script = "uid://dsj6m8wmc0qun"

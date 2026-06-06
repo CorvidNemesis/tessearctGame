@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://siw8j3ckeqt8"]
+
+[ext_resource type="Script" uid="uid://2b8p4teg3c4r" path="res://scripts/character/characterData/characterClass.gd" id="1_thxpp"]
+[ext_resource type="Resource" uid="uid://dh6ln5847we0h" path="res://resources/characterStats/FloraStats.tres" id="2_thxpp"]
+[ext_resource type="Script" uid="uid://d1v6bv2mafofn" path="res://scripts/resources/quotesResource.gd" id="3_2fcfu"]
+[ext_resource type="Texture2D" uid="uid://cxh28s7chslcf" path="res://assets/battleSprites/playerSheets/asset_spriteSheet_hero_Flora.png" id="3_thxpp"]
+[ext_resource type="FontFile" uid="uid://blraut16i4716" path="res://assets/fonts/BebasKai.ttf" id="5_av4cn"]
+
+[sub_resource type="Resource" id="Resource_20wun"]
+script = ExtResource("3_2fcfu")
+metadata/_custom_type_script = "uid://d1v6bv2mafofn"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4achh"]
+atlas = ExtResource("3_thxpp")
+region = Rect2(0, 0, 250, 250)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rar0l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4achh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Flora" type="Node2D" unique_id=279236092 node_paths=PackedStringArray("spriteSheet", "animationEffects", "selectionButton", "dialouge")]
+script = ExtResource("1_thxpp")
+battleStats = ExtResource("2_thxpp")
+battleText = SubResource("Resource_20wun")
+spriteSheet = NodePath("SpriteSheet")
+animationEffects = NodePath("AnimatedEffects")
+selectionButton = NodePath("SpriteSheet/Selection")
+dialouge = NodePath("Label")
+metadata/_custom_type_script = "uid://2b8p4teg3c4r"
+
+[node name="SpriteSheet" type="AnimatedSprite2D" parent="." unique_id=2074526630]
+sprite_frames = SubResource("SpriteFrames_rar0l")
+
+[node name="Selection" type="Button" parent="SpriteSheet" unique_id=207679172]
+offset_left = -136.0
+offset_top = -166.0
+offset_right = 144.0
+offset_bottom = 163.31683
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimatedEffects" type="AnimationPlayer" parent="." unique_id=572175246]
+
+[node name="Label" type="Label" parent="." unique_id=29817890]
+offset_left = -124.0
+offset_top = -184.0
+offset_right = 126.0
+offset_bottom = -124.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_av4cn")
+theme_override_font_sizes/font_size = 24
+
+[connection signal="pressed" from="SpriteSheet/Selection" to="." method="_on_selection_pressed"]

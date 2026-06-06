@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="BattleSkill" format=3 uid="uid://ddbmiqow4quj7"]
+
+[ext_resource type="Texture2D" uid="uid://dvcfxe2fg7l5" path="res://assets/uiElements/elementalIcons/newIcon3.png" id="1_bmw6f"]
+[ext_resource type="Script" uid="uid://di06tuhcu0b1s" path="res://scripts/resources/skillsResource.gd" id="1_gsmpx"]
+
+[resource]
+script = ExtResource("1_gsmpx")
+name = "Attack"
+basePower = 10
+ELEMENT = "Adeneil"
+PROPERTY = "Slash"
+canCrit = true
+amp = 1.0
+description = "Basic Attack"
+elmIcon = ExtResource("1_bmw6f")
+metadata/_custom_type_script = "uid://di06tuhcu0b1s"

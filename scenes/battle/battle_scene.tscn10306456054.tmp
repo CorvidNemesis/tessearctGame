@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://0vr2v1i1asqw"]
+
+[ext_resource type="Script" uid="uid://ibugcttqn5he" path="res://scripts/battle/battle_manager.gd" id="1_o3k7m"]
+[ext_resource type="PackedScene" uid="uid://cgronlllfpb6v" path="res://scenes/battle/battleGUI.tscn" id="1_pu738"]
+[ext_resource type="Texture2D" uid="uid://dwojjv78uky2v" path="res://assets/battleBackgrounds/Background.png" id="4_o3k7m"]
+[ext_resource type="Texture2D" uid="uid://cddphqbvgbdv0" path="res://assets/battleBackgrounds/Floor.png" id="5_lbt8a"]
+[ext_resource type="Texture2D" uid="uid://7y58rsxvdsps" path="res://assets/battleSprites/playerSheets/placeHolderSetUP.png" id="7_2wmvw"]
+
+[node name="BattleScene" type="Node2D" unique_id=74146534]
+script = ExtResource("1_o3k7m")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=714113218]
+position = Vector2(-455, 0)
+scale = Vector2(1.4822917, 0.83703697)
+texture = ExtResource("4_o3k7m")
+centered = false
+
+[node name="Floor" type="Sprite2D" parent="." unique_id=1530853901]
+position = Vector2(-455, 548)
+scale = Vector2(1.4822916, 1.3440595)
+texture = ExtResource("5_lbt8a")
+centered = false
+
+[node name="PlaceHolderSetUp" type="Sprite2D" parent="." unique_id=1557439718]
+position = Vector2(1604, 679)
+texture = ExtResource("7_2wmvw")
+
+[node name="battleGUI" parent="." unique_id=1234651255 instance=ExtResource("1_pu738")]
+
+[node name="Battlers" type="Node2D" parent="." unique_id=902843610]
+position = Vector2(960, 548)
+
+[node name="BattleCam" type="Camera2D" parent="Battlers" unique_id=77629093]
+limit_smoothed = true
+position_smoothing_enabled = true

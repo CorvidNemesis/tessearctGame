@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://cl84bqfi7cyv"]
 
 [ext_resource type="FontFile" uid="uid://c5irk8g4xr6il" path="res://assets/fonts/Electrolize-Regular.ttf" id="1_2pell"]
-[ext_resource type="Script" uid="uid://hikuyy23fkwg" path="res://scenes/battle/battleBox.gd" id="1_oqqms"]
-[ext_resource type="Texture2D" uid="uid://b4gsvlwvn02f3" path="res://icon.svg" id="3_qt4sa"]
+[ext_resource type="Script" uid="uid://hikuyy23fkwg" path="res://scripts/battle/GUI/battleBox.gd" id="1_oqqms"]
+[ext_resource type="Texture2D" uid="uid://b4gsvlwvn02f3" path="res://icon.svg" id="3_icxwo"]
+[ext_resource type="FontFile" uid="uid://blraut16i4716" path="res://assets/fonts/BebasKai.ttf" id="3_qt4sa"]
 
 [sub_resource type="Theme" id="Theme_qt4sa"]
 default_font = ExtResource("1_2pell")
@@ -13,80 +14,100 @@ MarginContainer/constants/margin_top = 7
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_icxwo"]
 bg_color = Color(0.000113828006, 0.00011382805, 0.00011382793, 1)
-corner_detail = 1
-
-[sub_resource type="GDScript" id="GDScript_qt4sa"]
-script/source = "extends TextureButton
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-"
+skew = Vector2(0.5, 0)
+corner_detail = 5
+shadow_offset = Vector2(0.835, 0)
+anti_aliasing = false
 
 [sub_resource type="Theme" id="Theme_fdm5v"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fdm5v"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+skew = Vector2(0.5, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qt4sa"]
+bg_color = Color(0, 0.54901963, 0.34901962, 1)
+skew = Vector2(0.5, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_402bq"]
+bg_color = Color(2.0363125e-07, 0.34537932, 0.50328475, 1)
+skew = Vector2(0.5, 0)
+
 [node name="player" type="PanelContainer" unique_id=1206141887]
-offset_top = -1.0
-offset_right = 180.0
-offset_bottom = 89.0
+custom_minimum_size = Vector2(250, 70)
+offset_right = 250.0
+offset_bottom = 70.0
 theme = SubResource("Theme_qt4sa")
 theme_override_styles/panel = SubResource("StyleBoxFlat_icxwo")
 script = ExtResource("1_oqqms")
 
-[node name="PlayerFace" type="TextureButton" parent="." unique_id=920913833]
-layout_mode = 2
-script = SubResource("GDScript_qt4sa")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=903361036]
-position = Vector2(87, -56)
-scale = Vector2(0.45312503, 0.4531249)
-texture = ExtResource("3_qt4sa")
-centered = false
+[node name="Icon" type="Sprite2D" parent="." unique_id=1298502790]
+position = Vector2(288, 27.999992)
+scale = Vector2(0.6875, 0.6875)
+texture = ExtResource("3_icxwo")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1982153439]
-custom_minimum_size = Vector2(180, 60)
 layout_mode = 2
 localize_numeral_system = false
 theme = SubResource("Theme_fdm5v")
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=79433456]
 layout_mode = 2
 size_flags_vertical = 8
 
-[node name="CFBar" type="ProgressBar" parent="MarginContainer/VBoxContainer" unique_id=1972770862]
-layout_mode = 2
-size_flags_vertical = 1
-tooltip_text = "Sigma"
-value = 50.0
-show_percentage = false
-
-[node name="Name" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1087029094]
-layout_mode = 2
-text = "Name"
-
 [node name="HBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=751715847]
 layout_mode = 2
 size_flags_vertical = 8
 
-[node name="HPBox" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=307698241]
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1386212220]
+z_as_relative = false
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
-alignment = 1
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_qt4sa")
+theme_override_styles/background = SubResource("StyleBoxFlat_fdm5v")
+theme_override_styles/fill = SubResource("StyleBoxFlat_qt4sa")
+value = 50.0
+fill_mode = 1
+show_percentage = false
 
-[node name="HP" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/HPBox" unique_id=238449330]
-layout_mode = 2
+[node name="HP" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/ProgressBar" unique_id=238449330]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.97800004
+anchor_right = 0.97800004
+offset_left = -38.028015
+offset_right = -0.028015137
+offset_bottom = 20.0
 text = "000"
 
-[node name="MPBox" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1503799390]
+[node name="ProgressBar2" type="ProgressBar" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1061385808]
+z_as_relative = false
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_qt4sa")
+theme_override_styles/background = SubResource("StyleBoxFlat_fdm5v")
+theme_override_styles/fill = SubResource("StyleBoxFlat_402bq")
+value = 50.0
+fill_mode = 1
+show_percentage = false
 
-[node name="MP" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/MPBox" unique_id=1094650708]
+[node name="MP" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/ProgressBar2" unique_id=401833711]
+layout_mode = 0
+offset_left = 180.0
+offset_right = 218.0
+offset_bottom = 20.0
+text = "000"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=404335343]
 layout_mode = 2
-text = "00"
-
-[connection signal="pressed" from="PlayerFace" to="." method="_on_player_face_pressed"]

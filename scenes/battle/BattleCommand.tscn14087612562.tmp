@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://didgg0rcr5q3v"]
+
+[ext_resource type="FontFile" uid="uid://cbd3kwlu24ys2" path="res://assets/fonts/Anarcharsis Basic HF Regular.ttf" id="1_47rhg"]
+[ext_resource type="Script" uid="uid://jgfyxi7oeq85" path="res://scripts/battle/battle_command.gd" id="1_a7vub"]
+
+[node name="Actions" type="PanelContainer" unique_id=585359748]
+offset_right = 540.0
+offset_bottom = 300.0
+script = ExtResource("1_a7vub")
+
+[node name="BattleCommands" type="VBoxContainer" parent="." unique_id=1943074313]
+layout_mode = 2
+
+[node name="buttonFight" type="Button" parent="BattleCommands" unique_id=1023172334]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_47rhg")
+theme_override_font_sizes/font_size = 32
+text = "Fight"
+
+[node name="SkillHolder" type="ScrollContainer" parent="BattleCommands" unique_id=365126840]
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+draw_focus_border = true
+
+[node name="SkillArea" type="VBoxContainer" parent="BattleCommands/SkillHolder" unique_id=459258952]
+custom_minimum_size = Vector2(5.815, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="buttonFight" type="Button" parent="BattleCommands/SkillHolder/SkillArea" unique_id=1859966355]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/line_spacing = 4
+theme_override_fonts/font = ExtResource("1_47rhg")
+theme_override_font_sizes/font_size = 32
+text = "Solemn Lament 20SP"
+
+[node name="buttonFight2" type="Button" parent="BattleCommands/SkillHolder/SkillArea" unique_id=1201375713]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/line_spacing = 4
+theme_override_fonts/font = ExtResource("1_47rhg")
+theme_override_font_sizes/font_size = 32
+text = "Solemn Lament 20SP"
+
+[node name="buttonFight3" type="Button" parent="BattleCommands/SkillHolder/SkillArea" unique_id=75948558]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/line_spacing = 4
+theme_override_fonts/font = ExtResource("1_47rhg")
+theme_override_font_sizes/font_size = 32
+text = "Solemn Lament 20SP"
+
+[node name="buttonUlt" type="Button" parent="BattleCommands" unique_id=1941038260]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/line_spacing = 4
+theme_override_fonts/font = ExtResource("1_47rhg")
+theme_override_font_sizes/font_size = 32
+text = "Unviel Talent
+"
+
+[node name="buttonCharge" type="Button" parent="BattleCommands" unique_id=305393091]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/line_spacing = 4
+theme_override_fonts/font = ExtResource("1_47rhg")
+theme_override_font_sizes/font_size = 32
+text = "Charge"
+
+[node name="buttonDefend" type="Button" parent="BattleCommands" unique_id=1019565923]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/line_spacing = 4
+theme_override_fonts/font = ExtResource("1_47rhg")
+theme_override_font_sizes/font_size = 32
+text = "Defend"
+
+[connection signal="pressed" from="BattleCommands/buttonFight" to="." method="_on_button_fight_pressed"]

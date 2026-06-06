@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cdy44spkjdo8r"]
+
+[ext_resource type="FontFile" uid="uid://cbd3kwlu24ys2" path="res://assets/fonts/Anarcharsis Basic HF Regular.ttf" id="1_txvch"]
+[ext_resource type="Script" uid="uid://d3efacdg4qoid" path="res://scripts/battle/GUI/Command Window/layer_1_skillButton.gd" id="2_fy8yg"]
+
+[node name="skillButton" type="Button" unique_id=882735814]
+theme_override_constants/h_separation = 20
+theme_override_constants/line_spacing = 4
+theme_override_fonts/font = ExtResource("1_txvch")
+theme_override_font_sizes/font_size = 32
+text = "Solemn Lament 20SP"
+script = ExtResource("2_fy8yg")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

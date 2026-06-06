@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BattleSkill" format=3 uid="uid://b1shd7xcb5tfe"]
+
+[ext_resource type="Texture2D" uid="uid://blk6363bfftv7" path="res://assets/uiElements/elementalIcons/newIcon5.png" id="1_cgyas"]
+[ext_resource type="Script" uid="uid://di06tuhcu0b1s" path="res://scripts/resources/skillsResource.gd" id="1_s5tf4"]
+
+[resource]
+script = ExtResource("1_s5tf4")
+name = "Double Attack"
+basePower = 20
+cost = 10
+ELEMENT = "Guan"
+PROPERTY = "Bludgeon"
+canCrit = true
+amp = 2.0
+description = "Strikes an enemy x3"
+hitCount = 3
+elmIcon = ExtResource("1_cgyas")
+metadata/_custom_type_script = "uid://di06tuhcu0b1s"
