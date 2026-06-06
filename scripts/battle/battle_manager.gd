@@ -30,7 +30,7 @@ func _ready() -> void:
 	for enemy in global_battle_information.partaking_enemies:
 		enemy._enemy_choose_skill_simple()
 
-func _cleanUpbattlerZoneNode()->void:
+func _clean_up_hero_zone()->void:
 	for character in battlerZoneNode.get_children():
 		if (character is BattlePlayer):
 			character.queue_free();

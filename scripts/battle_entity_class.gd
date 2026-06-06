@@ -37,5 +37,8 @@ func _execute_skill()->void:
 func _change_hp(amount:int)->void: 
 	battle_data.stat_current_HP -= amount;
 
+func _get_speed()->int:
+	return battle_data._get_speed();
+
 func _helper_clear_skill()->void:
 	self.skill_chosen = null;

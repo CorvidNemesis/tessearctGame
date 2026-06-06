@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dxv6no84gppfp"]
 
-[ext_resource type="Script" uid="uid://2b8p4teg3c4r" path="res://scripts/character/characterData/characterClass.gd" id="1_meyuy"]
+[ext_resource type="Script" uid="uid://2b8p4teg3c4r" path="res://scripts/character/characterData/battle_hero_class.gd" id="1_meyuy"]
 [ext_resource type="Resource" uid="uid://g85ajs5o3h24" path="res://resources/characterStats/VirusStats.tres" id="2_v0xgw"]
 [ext_resource type="Texture2D" uid="uid://citx3jag78t2j" path="res://assets/battleSprites/playerSheets/asset_spriteSheet_hero_Virus.png" id="3_o1v06"]
 [ext_resource type="Script" uid="uid://d1v6bv2mafofn" path="res://scripts/resources/quotesResource.gd" id="3_uvc5x"]

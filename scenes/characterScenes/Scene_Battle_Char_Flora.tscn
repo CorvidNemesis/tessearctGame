@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://siw8j3ckeqt8"]
 
-[ext_resource type="Script" uid="uid://2b8p4teg3c4r" path="res://scripts/character/characterData/characterClass.gd" id="1_thxpp"]
-[ext_resource type="Resource" uid="uid://dh6ln5847we0h" path="res://resources/characterStats/FloraStats.tres" id="2_thxpp"]
+[ext_resource type="Script" uid="uid://2b8p4teg3c4r" path="res://scripts/character/characterData/battle_hero_class.gd" id="1_thxpp"]
 [ext_resource type="Script" uid="uid://d1v6bv2mafofn" path="res://scripts/resources/quotesResource.gd" id="3_2fcfu"]
 [ext_resource type="Texture2D" uid="uid://cxh28s7chslcf" path="res://assets/battleSprites/playerSheets/asset_spriteSheet_hero_Flora.png" id="3_thxpp"]
 [ext_resource type="FontFile" uid="uid://blraut16i4716" path="res://assets/fonts/BebasKai.ttf" id="5_av4cn"]
@@ -25,11 +24,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Flora" type="Node2D" unique_id=279236092 node_paths=PackedStringArray("spriteSheet", "animationEffects", "selectionButton", "dialouge")]
+[node name="Flora" type="Node2D" unique_id=279236092 node_paths=PackedStringArray("animationEffects", "selectionButton", "dialouge")]
 script = ExtResource("1_thxpp")
-battleStats = ExtResource("2_thxpp")
 battleText = SubResource("Resource_20wun")
-spriteSheet = NodePath("SpriteSheet")
 animationEffects = NodePath("AnimatedEffects")
 selectionButton = NodePath("SpriteSheet/Selection")
 dialouge = NodePath("Label")

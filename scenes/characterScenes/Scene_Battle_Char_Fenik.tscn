@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://collocs7cveyg"]
 
-[ext_resource type="Script" uid="uid://2b8p4teg3c4r" path="res://scripts/character/characterData/characterClass.gd" id="1_3b32d"]
+[ext_resource type="Script" uid="uid://2b8p4teg3c4r" path="res://scripts/character/characterData/battle_hero_class.gd" id="1_3b32d"]
 [ext_resource type="Resource" uid="uid://b2fvr20r1l7sa" path="res://resources/characterStats/FenikStats.tres" id="2_smv6d"]
 [ext_resource type="Resource" uid="uid://c0yceavqhatph" path="res://resources/quotes/fenikQuotes.tres" id="3_7di1i"]
 [ext_resource type="Texture2D" uid="uid://csrhmt4v83p20" path="res://assets/battleSprites/playerSheets/asset_spriteSheet_hero_Fenik.png" id="3_smv6d"]
@@ -21,13 +21,12 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Fenik" type="Node2D" unique_id=279236092 node_paths=PackedStringArray("spriteSheet", "animationEffects", "selectionButton", "dialouge")]
+[node name="Fenik" type="Node2D" unique_id=279236092 node_paths=PackedStringArray("animationEffects", "selectionButton", "dialouge")]
 script = ExtResource("1_3b32d")
-battle_data = ExtResource("2_smv6d")
 battleText = ExtResource("3_7di1i")
-spriteSheet = NodePath("SpriteSheet")
 animationEffects = NodePath("AnimatedEffects")
 selectionButton = NodePath("SpriteSheet/Selection")
+battle_data = ExtResource("2_smv6d")
 dialouge = NodePath("Label")
 metadata/_custom_type_script = "uid://2b8p4teg3c4r"
 
