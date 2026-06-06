@@ -13,18 +13,27 @@ extends Node2D
 var skill_chosen:BattleSkill;
 var targets = [];
 var is_defending: bool = false;
+var living_status = true;
+var mobility_status = true;
 
 func _get_battle_data():
 	return battle_data
 
 func _battle_phase_setup()->void:
+	
 	targets = [];
 	is_defending = false;
 
-func _is_battle_ready()-> bool:
-	if (((self.skill_chosen != null) and !self.targets.is_empty()) or is_defending):
-		return true
-	return false
+func _isAlive()->bool:
+	if (battle_data._current_hp <= 0):
+		living_status = false;
+	return living_status;
+
+func _is_capable_to_fight()->bool:
+	return true
+
+func _is_capable_to_target()->bool:
+	return true
 
 func _execute_skill()->void:
 	for hit in range(skill_chosen.hit_count):
@@ -32,13 +41,21 @@ func _execute_skill()->void:
 		var damage = skill_chosen._getDamageAmount(stat_choice);
 		for targeting in targets:
 			targets._change_hp(damage)
-			print(targets.stat_current_hp)
+			print(targets._current_hp)
 
 func _change_hp(amount:int)->void: 
-	battle_data.stat_current_HP -= amount;
+	battle_data._current_hp -= amount;
 
 func _get_speed()->int:
 	return battle_data._get_speed();
+
+func helper_battle_getBasePower()->int:
+	return skill_chosen.clashBasePower;
+
+func _clash_marble_roll(statKey:String)->int:
+	var finalValue = helper_battle_getBasePower() + battle_data._get_stat_value(statKey);
+	return randi_range(helper_battle_getBasePower(),finalValue);
+	# TODO: Remmeber counter and defense dice! Make em unique
 
 func _helper_clear_skill()->void:
 	self.skill_chosen = null;

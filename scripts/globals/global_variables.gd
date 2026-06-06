@@ -8,10 +8,10 @@ var scene_Fenik: PackedScene = preload("res://scenes/characterScenes/Scene_Battl
 var scene_Tess: PackedScene = preload("res://scenes/battle/first_tesseract.tscn")
 
 var battler_compendium = {
-	"Fenik":[scene_Fenik,0],
-	#"Virus":[scene_Virus,0],
-	#"Comet":[scene_Comet,0],
-	#"Flora":[scene_Flora,0]
+	"Fenik":scene_Fenik,
+	#"Virus":scene_Virus,
+	#"Comet":scene_Comet,
+	#"Flora":scene_Flora
 }
 
 var boss_compendium = {
@@ -22,7 +22,7 @@ func _ready() -> void:
 	print("Step 1: Load Battles")
 	boss_compendium["FirstTesseract"] = scene_Tess.instantiate();
 	for key in battler_compendium:
-		battler_compendium[key][0] = battler_compendium[key][0].instantiate();	
-	global_battle_information._queueParticipants("Fenik",battler_compendium["Fenik"][0]);
-	#global_battle_information._queueParticipants("Comet",battler_compendium["Comet"][0]);
-	global_battle_information._queueEnemies(boss_compendium["FirstTesseract"]);
+		battler_compendium[key]= battler_compendium[key].instantiate();	
+	global_battle_information._queueParticipants("Fenik",battler_compendium["Fenik"]);
+	#global_battle_information._queueParticipants("Comet",battler_compendium["Comet"]);
+	global_battle_information._queueEnemies("FirstTesseract",boss_compendium["FirstTesseract"]);

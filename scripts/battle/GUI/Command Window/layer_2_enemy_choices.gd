@@ -16,4 +16,4 @@ func _setup_enemies()->void:
 	for enemy in global_battle_information.partaking_enemies:
 		var enemyButtonInstance = enemyButton.instantiate();
 		self.add_child(enemyButtonInstance);
-		enemyButtonInstance._setup(enemy)
+		enemyButtonInstance._setup(enemy[1])

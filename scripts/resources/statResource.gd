@@ -61,16 +61,9 @@ var buff_dict = {
 
 # @export var skillSet = Array[BattleSkill]
 
-var stat_current_HP: int = stat_dict["maxHP"];
+var _current_hp: int = stat_dict["maxHP"];
 var stat_current_MP: int = stat_dict["maxMP"];
 var stat_current_CF: int = 50;
 
-var living_status = true;
-
-func _isAlive()->bool:
-	if (stat_current_HP <= 0):
-		living_status = !living_status;
-	return living_status;
-		
 func _get_speed()->int:
 	return roundi(stat_dict["agi"] * buff_dict["agi"])

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ibugcttqn5he" path="res://scripts/battle/battle_manager.gd" id="1_o3k7m"]
 [ext_resource type="PackedScene" uid="uid://cgronlllfpb6v" path="res://scenes/battle/battleGUI.tscn" id="1_pu738"]
+[ext_resource type="Script" uid="uid://c6e4xulme4tvc" path="res://scenes/battle/clash_manager.gd" id="2_cywj5"]
 [ext_resource type="Texture2D" uid="uid://dwojjv78uky2v" path="res://assets/battleBackgrounds/Background.png" id="4_o3k7m"]
 [ext_resource type="Texture2D" uid="uid://cddphqbvgbdv0" path="res://assets/battleBackgrounds/Floor.png" id="5_lbt8a"]
 [ext_resource type="Texture2D" uid="uid://7y58rsxvdsps" path="res://assets/battleSprites/playerSheets/placeHolderSetUP.png" id="7_2wmvw"]
@@ -9,6 +10,9 @@
 
 [node name="BattleScene" type="Node2D" unique_id=74146534]
 script = ExtResource("1_o3k7m")
+
+[node name="ClashManager" type="Node" parent="." unique_id=1581500902]
+script = ExtResource("2_cywj5")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=714113218]
 position = Vector2(-455, 0)
@@ -29,6 +33,68 @@ texture = ExtResource("7_2wmvw")
 [node name="battleGUI" parent="." unique_id=1234651255 instance=ExtResource("1_pu738")]
 
 [node name="Enemy" type="Node2D" parent="." unique_id=1621906946]
+
+[node name="Singular" type="Node2D" parent="Enemy" unique_id=1756880630]
+
+[node name="BattlePosition" type="Polygon2D" parent="Enemy/Singular" unique_id=448804301]
+visible = false
+position = Vector2(627, 805)
+polygon = PackedVector2Array(-250, -250.00003, 0, -250.00003, 0, 0, -250, 0)
+uv = PackedVector2Array(-250, -250.00003, 0, -250.00003, 0, 0, -250, 0)
+
+[node name="Triad" type="Node2D" parent="Enemy" unique_id=1319741049]
+
+[node name="BattlePosition" type="Polygon2D" parent="Enemy/Triad" unique_id=551048516]
+visible = false
+position = Vector2(515, 661)
+scale = Vector2(1, 0.2)
+polygon = PackedVector2Array(-250, -250.00003, 0, -250.00003, 0, 0, -250, 0)
+
+[node name="BattlePosition2" type="Polygon2D" parent="Enemy/Triad" unique_id=921699515]
+visible = false
+position = Vector2(823, 831)
+scale = Vector2(1, 0.2)
+polygon = PackedVector2Array(-250, -250.00003, -122.06372, -250.00024, 0, -250.00003, 0, 0, -250, 0)
+uv = PackedVector2Array(-250, -250.00003, 0, -250.00003, 0, 0, -250, 0)
+
+[node name="BattlePosition3" type="Polygon2D" parent="Enemy/Triad" unique_id=1788289981]
+visible = false
+position = Vector2(461, 1000)
+scale = Vector2(1, 0.2)
+polygon = PackedVector2Array(-250, -250.00003, -73.80286, -250, 0, -250.00003, 0, 0, -250, 0)
+
+[node name="Quintet" type="Node2D" parent="Enemy" unique_id=1417378516]
+
+[node name="BattlePosition" type="Polygon2D" parent="Enemy/Quintet" unique_id=766015087]
+visible = false
+position = Vector2(659, 666)
+scale = Vector2(1, 0.2)
+polygon = PackedVector2Array(-250, -250.00003, 0, -250.00003, 0, 0, -173.52765, 0, -250, 0)
+
+[node name="BattlePosition2" type="Polygon2D" parent="Enemy/Quintet" unique_id=2041730765]
+visible = false
+position = Vector2(948, 796)
+scale = Vector2(1, 0.2)
+polygon = PackedVector2Array(-250, -250.00003, -122.06372, -250.00024, 0, -250.00003, 0, 0, -250, 0)
+uv = PackedVector2Array(-250, -250.00003, 0, -250.00003, 0, 0, -250, 0)
+
+[node name="BattlePosition3" type="Polygon2D" parent="Enemy/Quintet" unique_id=2088829501]
+visible = false
+position = Vector2(650, 1045)
+scale = Vector2(1, 0.2)
+polygon = PackedVector2Array(-250, -250.00003, -73.80286, -250, 0, -250.00003, 0, 0, -250, 0)
+
+[node name="BattlePosition4" type="Polygon2D" parent="Enemy/Quintet" unique_id=1147479039]
+visible = false
+position = Vector2(280, 1044)
+scale = Vector2(1, 0.2)
+polygon = PackedVector2Array(-250, -250.00003, -73.80286, -250, 0, -250.00003, 0, 0, -250, 0)
+
+[node name="BattlePosition5" type="Polygon2D" parent="Enemy/Quintet" unique_id=2138457085]
+visible = false
+position = Vector2(298, 669)
+scale = Vector2(1, 0.2)
+polygon = PackedVector2Array(-250, -250.00003, -73.80286, -250, 0, -250.00003, 0, 0, -250, 0)
 
 [node name="Battlers" type="Node2D" parent="." unique_id=902843610]
 position = Vector2(960, 548)

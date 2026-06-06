@@ -9,7 +9,7 @@ func _ready() -> void:
 	origin = actionBox.global_position
 	global_battle_information.battle_signal_openActions.connect(_showMenu)
 	cleanUp_ui();
-	setup_battlers(global_battle_information.partaking_char);
+	setup_battlers(global_battle_information.partaking_heroes);
 
 # TODO set filepath to a variable
 
@@ -17,11 +17,12 @@ func cleanUp_ui()-> void:
 	for box in $"MarginContainer/BoxZone/Player Window".get_children():
 		box.queue_free();
 
-func setup_battlers(partaking: Dictionary)->void:
+func setup_battlers(partaking: Array)->void:
 	var count = 1;
 	for battler in partaking:
 		var box_instance = battleBox.instantiate();
-		var stats = partaking[battler]._getStats();
+		# TODO: REPLACE 1 WITH GLOBAL VARIABLE
+		var stats = battler[1]._getStats();
 		$"MarginContainer/BoxZone/Player Window".add_child(box_instance);
 		box_instance._setup_displayables(stats.display_name + str(count),stats.stat_dict["maxHP"],stats.stat_dict["maxMP"])
 		count +=1;

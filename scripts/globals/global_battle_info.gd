@@ -1,7 +1,12 @@
 extends Node2D
 
-var partaking_char = {};
+const aqKey = 0;
+const aqScene = 1;
+const ACTION_QUEUE_SPEED = 2;
+
+var partaking_heroes = [];
 var partaking_enemies = [];
+
 
 
 signal battle_signal_openActions();
@@ -11,13 +16,15 @@ signal battle_signal_readyCheck();
 
 signal battle_signal_phase_start_turn();
 
+func package(key:String,value:BattleEntity)->Array:
+	return [key,value,0]
+
 func _queueParticipants(key,value)-> void:
-	print("Step 2.1: Queue player characters into scene")
-	partaking_char[key] = value
+	partaking_heroes.append(package(key,value))
 		
-func _queueEnemies(enemy:battleEnemy)-> void:
+func _queueEnemies(key,value)-> void:
 	print("Step 2.2: Queue enemies into scene")
-	partaking_enemies.append(enemy);	
+	partaking_enemies.append(package(key,value))
 
 var currently_selected_hero: BattlePlayer;
 

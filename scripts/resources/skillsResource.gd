@@ -42,6 +42,9 @@ var safteyRemaining:int;
 func _ready():
 	_reset_skill();
 
+func _get_stat()->int:
+	return stat_power;
+
 func _reset_skill():
 	safteyRemaining = hit_count;
 	clashBasePower = base_power;
