@@ -77,7 +77,7 @@ func clash(attacker,defender):
 		else:
 			attacker.skill_chosen._clashLost()
 			print(str(defender) + " ranks up!")
-	# var winner: 
+	var winner 
 	# if attacker wins 
 		#  winner = attacker
 	# else:
