@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cs87dls076ev6" path="res://scripts/character/battle_enemy_class.gd" id="1_1pyuk"]
 [ext_resource type="Texture2D" uid="uid://7c01xitb7474" path="res://assets/battleSprites/enemySheets/ScorchedGirlSpriteSheet.png" id="2_3jkju"]
 [ext_resource type="Resource" uid="uid://bcxpbhov27yq7" path="res://resources/enemyStats/FirstTessStats.tres" id="2_f47tt"]
+[ext_resource type="PackedScene" uid="uid://dqdhuln8v4k38" path="res://scenes/battle/GUIScenes/clash_spinner.tscn" id="4_783cm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f47tt"]
 atlas = ExtResource("2_3jkju")
@@ -43,9 +44,13 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="FirstTesseract" type="Node2D" unique_id=1486386500]
+[node name="FirstTesseract" type="Node2D" unique_id=1486386500 node_paths=PackedStringArray("entity_sprite_sheet", "animation_effects", "roll_zone")]
 script = ExtResource("1_1pyuk")
 battle_data = ExtResource("2_f47tt")
+entity_sprite_sheet = NodePath("AnimatedSprite2D")
+animation_effects = NodePath("AnimationPlayer")
+roll_zone = NodePath("Control")
+rolling_visual = ExtResource("4_783cm")
 metadata/_custom_type_script = "uid://cs87dls076ev6"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=93581301]
@@ -54,3 +59,11 @@ sprite_frames = SubResource("SpriteFrames_g5j8q")
 animation = &"hit"
 centered = false
 flip_h = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1665777931]
+
+[node name="Control" type="Control" parent="." unique_id=428470315]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

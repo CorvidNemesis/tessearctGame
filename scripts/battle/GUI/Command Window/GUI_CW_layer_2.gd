@@ -4,7 +4,7 @@ extends VBoxContainer
 @onready var enemyChoices = $EnemyChoices
 
 func _ready() -> void:
-	global_battle_information.battle_signal_makeSkillCard.connect(setUp)
+	gl_battle.battle_signal_makeSkillCard.connect(setUp)
 
 # Hands skillcard the manual for its setup
 func setUp(skill:BattleSkill)->void:

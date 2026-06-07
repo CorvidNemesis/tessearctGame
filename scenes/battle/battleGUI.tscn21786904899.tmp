@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://4vmg2pwahjcj" path="res://scripts/battle/GUI/battleGUI.gd" id="1_k8c73"]
 [ext_resource type="PackedScene" uid="uid://cl84bqfi7cyv" path="res://scenes/battle/player.tscn" id="2_o000n"]
-[ext_resource type="FontFile" uid="uid://ds0qndwlw1ubs" path="res://assets/fonts/EideticModern Regular.otf" id="3_kwl7u"]
 [ext_resource type="Script" uid="uid://bibwnfff72ixe" path="res://scenes/battle/enemy_hp.gd" id="3_or4fu"]
 [ext_resource type="PackedScene" uid="uid://didgg0rcr5q3v" path="res://scenes/battle/BattleCommand.tscn" id="3_s7rdw"]
 [ext_resource type="Texture2D" uid="uid://db3scmq48mlc2" path="res://assets/uiElements/elementalIcons/newIcon1.png" id="4_k8c73"]
@@ -46,13 +45,10 @@ layout_mode = 2
 size_flags_horizontal = 0
 
 [node name="EnemyHP" type="ProgressBar" parent="MarginContainer/EnemyHPBar" unique_id=1756508826]
-modulate = Color(0.101960786, 0.05490196, 0.21960784, 1)
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 size_flags_vertical = 3
-value = 100.0
-rounded = true
-fill_mode = 3
+fill_mode = 2
 show_percentage = false
 script = ExtResource("3_or4fu")
 
@@ -60,10 +56,10 @@ script = ExtResource("3_or4fu")
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -728.0
-offset_top = -217.0
-offset_right = -2.0
-offset_bottom = -5.0
+offset_left = -537.0
+offset_top = -265.0
+offset_right = 0.0
+offset_bottom = -1.0
 grow_horizontal = 0
 
 [node name="BeginButton" type="Button" parent="." unique_id=1394965297]
@@ -74,21 +70,5 @@ offset_bottom = 36.0
 text = "GO!!!"
 icon = ExtResource("4_k8c73")
 script = ExtResource("5_o000n")
-
-[node name="PanelContainer" type="PanelContainer" parent="." unique_id=2111666975]
-visible = false
-offset_left = 12.0
-offset_top = 12.0
-offset_right = 1908.0
-offset_bottom = 54.0
-
-[node name="Label" type="Label" parent="PanelContainer" unique_id=640177628]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_kwl7u")
-theme_override_font_sizes/font_size = 39
-text = "SKILL A VS SKILL B"
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
 
 [connection signal="pressed" from="BeginButton" to="." method="_on_begin_button_pressed"]

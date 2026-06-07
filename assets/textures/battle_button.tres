@@ -1,0 +1,25 @@
+[gd_resource type="Theme" format=3 uid="uid://w8hlv3jki0y"]
+
+[ext_resource type="FontFile" uid="uid://ds0qndwlw1ubs" path="res://assets/fonts/EideticModern Regular.otf" id="1_xqeth"]
+
+[sub_resource type="Gradient" id="Gradient_lepur"]
+colors = PackedColorArray(0.08625873, 0.08625873, 0.08625873, 1, 0.1906329, 0.1906329, 0.1906329, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ylcgq"]
+gradient = SubResource("Gradient_lepur")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ra8rk"]
+texture = SubResource("GradientTexture2D_ylcgq")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lepur"]
+bg_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+
+[resource]
+default_font = ExtResource("1_xqeth")
+Button/colors/font_disabled_color = Color(0.1882353, 0.1882353, 0.1882353, 0.5019608)
+Button/font_sizes/font_size = 32
+Button/fonts/font = ExtResource("1_xqeth")
+Button/styles/hover = SubResource("StyleBoxTexture_ra8rk")
+Button/styles/normal = SubResource("StyleBoxFlat_lepur")

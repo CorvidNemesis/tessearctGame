@@ -2,12 +2,14 @@
 
 [ext_resource type="Script" uid="uid://djl1oecjhcfto" path="res://scripts/battle/GUI/Command Window/layer_2_skillCard.gd" id="1_6r2r8"]
 [ext_resource type="FontFile" uid="uid://cbd3kwlu24ys2" path="res://assets/fonts/Anarcharsis Basic HF Regular.ttf" id="2_el4eg"]
+[ext_resource type="FontFile" uid="uid://ds0qndwlw1ubs" path="res://assets/fonts/EideticModern Regular.otf" id="2_sv3tw"]
 [ext_resource type="FontFile" uid="uid://blraut16i4716" path="res://assets/fonts/BebasKai.ttf" id="3_el4eg"]
 
+[sub_resource type="Theme" id="Theme_4appu"]
+
 [node name="SkillCard" type="MarginContainer" unique_id=1435099645]
-offset_right = 499.0
-offset_bottom = 295.0
-size_flags_vertical = 3
+offset_right = 486.0
+offset_bottom = 305.0
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
@@ -19,8 +21,9 @@ layout_mode = 2
 
 [node name="skillName" type="Label" parent="VBoxContainer" unique_id=534216148]
 layout_mode = 2
+theme = SubResource("Theme_4appu")
 theme_override_constants/outline_size = 0
-theme_override_fonts/font = ExtResource("2_el4eg")
+theme_override_fonts/font = ExtResource("2_sv3tw")
 theme_override_font_sizes/font_size = 32
 text = "Swords of the Fijord"
 horizontal_alignment = 1
@@ -56,7 +59,7 @@ custom_minimum_size = Vector2(470, 130)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 6
-theme_override_fonts/font = ExtResource("2_el4eg")
+theme_override_fonts/font = ExtResource("2_sv3tw")
 theme_override_font_sizes/font_size = 24
 text = "Deals medium guan damage to a single foe.
 - [Clash Fail] Inflict 1 Poison Turn and 2 Poison Count

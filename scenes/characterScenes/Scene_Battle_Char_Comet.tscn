@@ -1,13 +1,11 @@
 [gd_scene format=3 uid="uid://iesc88o6cy5h"]
 
 [ext_resource type="Script" uid="uid://2b8p4teg3c4r" path="res://scripts/character/characterData/battle_hero_class.gd" id="1_6hvml"]
+[ext_resource type="Resource" uid="uid://5oeg37u20au3" path="res://resources/characterStats/CometStats.tres" id="2_fx4vt"]
 [ext_resource type="Texture2D" uid="uid://cooccwouwpll6" path="res://assets/battleSprites/playerSheets/asset_spriteSheet_hero_Comet.png" id="3_6d2uo"]
-[ext_resource type="Script" uid="uid://d1v6bv2mafofn" path="res://scripts/resources/quotesResource.gd" id="3_7n5t1"]
+[ext_resource type="PackedScene" uid="uid://dqdhuln8v4k38" path="res://scenes/battle/GUIScenes/clash_spinner.tscn" id="3_7n5t1"]
 [ext_resource type="FontFile" uid="uid://blraut16i4716" path="res://assets/fonts/BebasKai.ttf" id="5_repii"]
-
-[sub_resource type="Resource" id="Resource_aivv2"]
-script = ExtResource("3_7n5t1")
-metadata/_custom_type_script = "uid://d1v6bv2mafofn"
+[ext_resource type="Texture2D" uid="uid://b4gsvlwvn02f3" path="res://icon.svg" id="6_7n5t1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_smv6d"]
 atlas = ExtResource("3_6d2uo")
@@ -24,12 +22,15 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Comet" type="Node2D" unique_id=279236092 node_paths=PackedStringArray("animationEffects", "selectionButton", "dialouge")]
+[node name="Comet" type="Node2D" unique_id=279236092 node_paths=PackedStringArray("selectionButton", "entity_sprite_sheet", "animation_effects", "dialouge", "roll_zone")]
 script = ExtResource("1_6hvml")
-battleText = SubResource("Resource_aivv2")
-animationEffects = NodePath("AnimatedEffects")
 selectionButton = NodePath("SpriteSheet/Selection")
+battle_data = ExtResource("2_fx4vt")
+entity_sprite_sheet = NodePath("SpriteSheet")
+animation_effects = NodePath("AnimatedEffects")
 dialouge = NodePath("Label")
+roll_zone = NodePath("Control")
+rolling_visual = ExtResource("3_7n5t1")
 metadata/_custom_type_script = "uid://2b8p4teg3c4r"
 
 [node name="SpriteSheet" type="AnimatedSprite2D" parent="." unique_id=2074526630]
@@ -54,5 +55,16 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_repii")
 theme_override_font_sizes/font_size = 24
+
+[node name="Control" type="Control" parent="." unique_id=576183817]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=716878219]
+position = Vector2(288, 27.999992)
+scale = Vector2(0.6875, 0.6875)
+texture = ExtResource("6_7n5t1")
 
 [connection signal="pressed" from="SpriteSheet/Selection" to="." method="_on_selection_pressed"]

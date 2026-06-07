@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://hikuyy23fkwg" path="res://scripts/battle/GUI/battleBox.gd" id="1_oqqms"]
 [ext_resource type="Texture2D" uid="uid://b4gsvlwvn02f3" path="res://icon.svg" id="3_icxwo"]
 [ext_resource type="FontFile" uid="uid://blraut16i4716" path="res://assets/fonts/BebasKai.ttf" id="3_qt4sa"]
+[ext_resource type="FontFile" uid="uid://ds0qndwlw1ubs" path="res://assets/fonts/EideticModern Regular.otf" id="4_fdm5v"]
 
 [sub_resource type="Theme" id="Theme_qt4sa"]
 default_font = ExtResource("1_2pell")
@@ -44,11 +45,6 @@ theme = SubResource("Theme_qt4sa")
 theme_override_styles/panel = SubResource("StyleBoxFlat_icxwo")
 script = ExtResource("1_oqqms")
 
-[node name="Icon" type="Sprite2D" parent="." unique_id=1298502790]
-position = Vector2(288, 27.999992)
-scale = Vector2(0.6875, 0.6875)
-texture = ExtResource("3_icxwo")
-
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1982153439]
 layout_mode = 2
 localize_numeral_system = false
@@ -84,10 +80,12 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.97800004
 anchor_right = 0.97800004
-offset_left = -38.028015
+offset_left = -214.02802
 offset_right = -0.028015137
 offset_bottom = 20.0
+theme_override_fonts/font = ExtResource("4_fdm5v")
 text = "000"
+horizontal_alignment = 2
 
 [node name="ProgressBar2" type="ProgressBar" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1061385808]
 z_as_relative = false
@@ -104,10 +102,18 @@ show_percentage = false
 
 [node name="MP" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/ProgressBar2" unique_id=401833711]
 layout_mode = 0
-offset_left = 180.0
+offset_left = 6.0
 offset_right = 218.0
 offset_bottom = 20.0
+theme_override_fonts/font = ExtResource("4_fdm5v")
 text = "000"
+horizontal_alignment = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=404335343]
 layout_mode = 2
+alignment = 2
+
+[node name="Icon" type="Sprite2D" parent="MarginContainer" unique_id=1298502790]
+position = Vector2(222, -44.999992)
+scale = Vector2(0.6875, 0.6875)
+texture = ExtResource("3_icxwo")

@@ -12,6 +12,6 @@ func _ready() -> void:
 func _assign_battler(creature: BattlePlayer)->void:
 	asc_battler = creature;
 
-func _setup_displayables(name:String,hp:int,mp:int) -> void:
+func _setup_displayables(hero_name:String,hp:int,mp:int) -> void:
 	display_HP.text = "LS:" + str(hp) + "/" + str(hp);
 	display_MP.text = "MP:" + str(mp) + "/" + str(mp);

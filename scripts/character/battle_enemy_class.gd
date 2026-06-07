@@ -6,9 +6,6 @@ extends BattleEntity
 func _enemy_choose_skill_simple()->void:
 	skill_chosen = _get_battle_data().skillSet[0]
 	print(skill_chosen)
-	var targetList = global_battle_information.partaking_heroes;
+	var targetList = gl_battle.partaking_heroes;
 	var randomNumber = randi_range(0,targetList.size()-1)
-	targets.append([targetList[randomNumber]])
-	print('Sussy Baka!')
-	print(skill_chosen)
-	print(targets)
+	targets.append(targetList[randomNumber])

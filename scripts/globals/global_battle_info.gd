@@ -1,18 +1,18 @@
 extends Node2D
 
-const aqKey = 0;
-const aqScene = 1;
-const ACTION_QUEUE_SPEED = 2;
+const AQ_NAME_KEY_INDEX = 0;
+const AQ_SCENE_INDEX = 1;
+const AQ_SPEED_INDEX = 2;
 
 var partaking_heroes = [];
 var partaking_enemies = [];
 
-
-
-signal battle_signal_openActions();
+signal battle_signal_open_actions();
 signal battle_signal_prepareSkillset();
 signal battle_signal_makeSkillCard();
 signal battle_signal_readyCheck();
+signal battle_signal_ui_troop_hp();
+signal battle_signal_ui_hero_hp(hero:BattlePlayer);
 
 signal battle_signal_phase_start_turn();
 

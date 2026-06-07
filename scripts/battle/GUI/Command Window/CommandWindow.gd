@@ -13,7 +13,7 @@ func _ready() -> void:
 	pass
 
 func _on_button_fight_pressed() -> void:
-	global_battle_information.currently_selected_hero.skill_chosen = global_battle_information.currently_selected_hero.battle_data.skillSet[0] # Replace with function body.
+	gl_battle.currently_selected_hero.skill_chosen = gl_battle.currently_selected_hero.battle_data.skillSet[0] # Replace with function body.
 	nav_layer(2);
 	layer_check();
 
@@ -47,5 +47,5 @@ func _on_buttonback_pressed() -> void:
 	layer_check();
 
 func cancel_out():
-	global_battle_information.currently_selected_hero.skill_chosen = null;
+	gl_battle.currently_selected_hero.skill_chosen = null;
  

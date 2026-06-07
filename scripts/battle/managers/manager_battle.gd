@@ -7,7 +7,8 @@ const playerPositionsY = [700,534,825,700]
 @onready var triple = $Enemy/Triad;
 @onready var quintet = $Enemy/Quintet;
 @onready var camera = $BattleCam
-@onready var clash_manager = $ClashManager
+@onready var magpie_manager = $ClashManager
+@onready var damage_manager = $"DamageManager";
 
 enum ENEMYPOSITIONS {
 	SINGLETON,
@@ -26,15 +27,16 @@ var action_queue = [];
 
 ### PRE-PHASE FUNCTIONS
 func _ready() -> void:
-	heroes = global_battle_information.partaking_heroes;
-	enemies = global_battle_information.partaking_enemies
+	heroes = gl_battle.partaking_heroes;
+	enemies = gl_battle.partaking_enemies
 	print("Step 3.1: Put player characters in player box")
-	global_battle_information.battle_signal_readyCheck.connect(is_everyone_ready);
-	global_battle_information.battle_signal_phase_start_turn.connect(battle_phase_one_turn_start)
+	gl_battle.battle_signal_readyCheck.connect(is_everyone_ready);
+	gl_battle.battle_signal_phase_start_turn.connect(battle_phase_one_turn_start)
 	var index = 0;
 	for hero in heroes:
 		#TODO: REPLACE WITH GOLBAL CONSTANT
 		var current_hero = hero[1]
+		current_hero._battle_phase_setup();
 		battlerZoneNode.add_child(current_hero)
 		current_hero.global_position = Vector2(playerPositionsX[index],playerPositionsY[index]);
 		index+=1;
@@ -62,6 +64,7 @@ func place_enemies()->void:
 	var index = 0;
 	for enemy in enemies:
 		var current_enemy = enemy[1];
+		current_enemy._battle_phase_setup();
 		print(targetArea)
 		targetArea.add_child(current_enemy)
 		current_enemy.global_position = arange[index];
@@ -88,8 +91,8 @@ func get_positions(zone:Node2D):
 			
 			
 		#enemy._enemy_choose_skill_simple()
-	#all_participants.append_array(global_battle_information.partaking_heroes)
-	#all_participants.append_array(global_battle_information.partaking_enemies)
+	#all_participants.append_array(gl_battle.partaking_heroes)
+	#all_participants.append_array(gl_battle.partaking_enemies)
 
 func _clean_up_hero_zone()->void:
 	for character in battlerZoneNode.get_children():
@@ -100,16 +103,15 @@ func _clean_up_hero_zone()->void:
 func _assign_speed()->void:
 	action_queue.clear();
 	for entity in all_participants:
-		if (entity[1]._isAlive() and entity[1]._is_capable_to_fight()):
-			entity[global_battle_information.ACTION_QUEUE_SPEED] = entity[1]._get_speed();
+		if (entity[gl_battle.AQ_SCENE_INDEX]._isAlive() and entity[gl_battle.AQ_SCENE_INDEX]._is_capable_to_fight()):
+			entity[gl_battle.AQ_SPEED_INDEX] = entity[gl_battle.AQ_SCENE_INDEX]._get_speed();
 			action_queue.append(entity);
-		elif (!entity._isAlive()):
+		elif (!entity[gl_battle.AQ_SCENE_INDEX]._isAlive()):
 			incapacitated.append(entity)
 	action_queue.sort_custom(sort_ascending)
-	print(action_queue)
 
 func sort_ascending(a, b):
-	if a[global_battle_information.ACTION_QUEUE_SPEED] < b[global_battle_information.ACTION_QUEUE_SPEED]:
+	if a[gl_battle.AQ_SPEED_INDEX] > b[gl_battle.AQ_SPEED_INDEX]:
 		return true
 	return false
 
@@ -121,9 +123,8 @@ func is_everyone_ready()->bool:
 		print("_is_everyone_ready" + "Hero:" + str(hero) + " is alive: " + str(alive) + " is acting " + str(selectedSomething))
 		if !(alive and selectedSomething):
 			return false
-		global_battle_information.battles_can_begin = true;
+		gl_battle.battles_can_begin = true;
 	return true
-
 
 func battle_phase_zero()->void:
 	print("///////////////////////////// PHASE ZERO ///////////////////////////// ")
@@ -135,6 +136,25 @@ func battle_phase_one_turn_start()->void:
 	print("///////////////////////////// PHASE ONE ///////////////////////////////")
 	print(action_queue)
 	for entity in action_queue:
-		print(entity[1]._get_battle_data().display_name + " is acting now.")
-		clash_manager.clash(entity[1],entity[1].targets[0])
-		
+		var entity_scene = entity[gl_battle.AQ_SCENE_INDEX]
+		var entity_home = entity_scene.global_position;
+		var target_home = entity_scene.targets[0][gl_battle.AQ_SCENE_INDEX].global_position;
+		if !(entity_scene.is_clashing):
+			print("Unable to attack!")
+			pass
+		else:
+			if !(entity_scene.targets[0][gl_battle.AQ_SCENE_INDEX].is_clashing):
+				damage_manager._execute_damage_skill(
+					entity_scene,entity_scene.skill_chosen)
+			# calculate_places(entity[gl_battle.AQ_SCENE_INDEX],entity[gl_battle.AQ_SCENE_INDEX].targets[0][1]);
+			var magpie = await magpie_manager.magpie(entity[gl_battle.AQ_SCENE_INDEX],entity[gl_battle.AQ_SCENE_INDEX].targets[0][1])
+			magpie[0].is_clashing = false;
+			damage_manager._execute_damage_skill(magpie[0],magpie[0].skill_chosen);
+
+func calculate_places(entity,target)->void:
+	var middle_x = (entity.global_position.x + target.global_position.x)/2
+	var middle_y = (entity.global_position.y + target.global_position.y)/2
+	var middleZone = Vector2(middle_x,middle_y)
+	var movement = create_tween().set_parallel(true);
+	movement.tween_property(entity,"global_position",middleZone,0.5).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
+	movement.tween_property(target,"global_position",middleZone,0.5).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)

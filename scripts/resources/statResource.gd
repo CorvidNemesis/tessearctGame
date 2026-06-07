@@ -44,6 +44,20 @@ var buff_dict = {
 
 @export var skillSet: Array[BattleSkill] = []
 
+var property_array = [
+	"Slash",
+	"Bludgeon",
+	"Pierce"
+]
+
+var element_array = [
+	"Adeneil",
+	"Cytoz",
+	"Guan",
+	"Thyminos",
+	"Tesseract"
+]
+
 @export var stat_rate_dict = {
 	"AttackProperties": {
 		"Slash": 1.0,
@@ -61,9 +75,20 @@ var buff_dict = {
 
 # @export var skillSet = Array[BattleSkill]
 
-var _current_hp: int = stat_dict["maxHP"];
-var stat_current_MP: int = stat_dict["maxMP"];
-var stat_current_CF: int = 50;
+var _current_hp: int;
+var _current_mp: int;
+var stat_current_CF;
 
+func _get_stat_value(statKey:String)->int:
+	return roundi(stat_dict[statKey] * buff_dict[statKey])
+	
+func _get_property_rate(property_index:int)->float:
+	var key = property_array[property_index];
+	return stat_rate_dict["Property"][key]
+
+func _get_element_rate(property_index:int)->float:
+	var key = property_array[property_index];
+	return stat_rate_dict["Element"][key]
+	
 func _get_speed()->int:
-	return roundi(stat_dict["agi"] * buff_dict["agi"])
+	return randi_range(0,roundi(stat_dict["agi"] * buff_dict["agi"]));

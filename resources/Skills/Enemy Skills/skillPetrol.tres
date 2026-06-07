@@ -1,18 +1,12 @@
 [gd_resource type="Resource" script_class="BattleSkill" format=3 uid="uid://bhjixd3wgpl3r"]
 
 [ext_resource type="Script" uid="uid://di06tuhcu0b1s" path="res://scripts/resources/skillsResource.gd" id="1_knfbe"]
-[ext_resource type="Texture2D" uid="uid://cvoaobr7j00o6" path="res://assets/uiElements/elementalIcons/newIcon6.png" id="1_kx6au"]
 
 [resource]
 script = ExtResource("1_knfbe")
 name = "Petrol"
-ELEMENT = 4
-PROPERTY = 1
-MPCost = 12
-basePower = 20
+base_power = 10
 description = "..."
-clashSaftey = 10
-clashVictory = 5
-canCrit = true
-elmIcon = ExtResource("1_kx6au")
+hit_count = 4
+clash_saftey_amount = 4
 metadata/_custom_type_script = "uid://di06tuhcu0b1s"

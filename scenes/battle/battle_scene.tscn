@@ -1,18 +1,25 @@
 [gd_scene format=3 uid="uid://0vr2v1i1asqw"]
 
-[ext_resource type="Script" uid="uid://ibugcttqn5he" path="res://scripts/battle/battle_manager.gd" id="1_o3k7m"]
+[ext_resource type="Script" uid="uid://ibugcttqn5he" path="res://scripts/battle/managers/manager_battle.gd" id="1_o3k7m"]
 [ext_resource type="PackedScene" uid="uid://cgronlllfpb6v" path="res://scenes/battle/battleGUI.tscn" id="1_pu738"]
-[ext_resource type="Script" uid="uid://c6e4xulme4tvc" path="res://scenes/battle/clash_manager.gd" id="2_cywj5"]
+[ext_resource type="Script" uid="uid://c6e4xulme4tvc" path="res://scripts/battle/managers/manager_magpie.gd" id="2_cywj5"]
+[ext_resource type="Script" uid="uid://elm554rr7s1d" path="res://scripts/battle/managers/manager_damage.gd" id="3_2wmvw"]
 [ext_resource type="Texture2D" uid="uid://dwojjv78uky2v" path="res://assets/battleBackgrounds/Background.png" id="4_o3k7m"]
 [ext_resource type="Texture2D" uid="uid://cddphqbvgbdv0" path="res://assets/battleBackgrounds/Floor.png" id="5_lbt8a"]
-[ext_resource type="Texture2D" uid="uid://7y58rsxvdsps" path="res://assets/battleSprites/playerSheets/placeHolderSetUP.png" id="7_2wmvw"]
-[ext_resource type="Script" uid="uid://cdre6daaslxjt" path="res://scripts/battle/battle_cam.gd" id="7_cywj5"]
+[ext_resource type="Texture2D" uid="uid://7y58rsxvdsps" path="res://assets/placeHolders/placeHolderSetUP.png" id="7_2wmvw"]
+[ext_resource type="Script" uid="uid://cdre6daaslxjt" path="res://scripts/globals/global_battle_camera.gd" id="7_cywj5"]
 
 [node name="BattleScene" type="Node2D" unique_id=74146534]
 script = ExtResource("1_o3k7m")
 
+[node name="ActionCoolOff" type="Timer" parent="." unique_id=702996391]
+one_shot = true
+
 [node name="ClashManager" type="Node" parent="." unique_id=1581500902]
 script = ExtResource("2_cywj5")
+
+[node name="DamageManager" type="Node" parent="." unique_id=553766873]
+script = ExtResource("3_2wmvw")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=714113218]
 position = Vector2(-455, 0)
@@ -27,6 +34,7 @@ texture = ExtResource("5_lbt8a")
 centered = false
 
 [node name="PlaceHolderSetUp" type="Sprite2D" parent="." unique_id=1557439718]
+visible = false
 position = Vector2(1604, 679)
 texture = ExtResource("7_2wmvw")
 
@@ -101,6 +109,9 @@ position = Vector2(960, 548)
 
 [node name="BattleCam" type="Camera2D" parent="." unique_id=77629093]
 position = Vector2(960, 548)
-limit_smoothed = true
+limit_left = -454
+limit_top = 0
+limit_right = 2381
+limit_bottom = 1080
 position_smoothing_enabled = true
 script = ExtResource("7_cywj5")
