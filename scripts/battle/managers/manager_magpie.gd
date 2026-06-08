@@ -11,12 +11,15 @@ func magpie (origin_entity:BattleEntity,target_entity:BattleEntity):
 	var target_skill = target_entity.skill_chosen;
 	origin_skill._reset_skill()
 	target_skill._reset_skill()
-	return await coinflip(origin_skill,target_skill);
+	var results = await coinflip(origin_skill,target_skill);
+	origin_skill._reset_skill()
+	target_skill._reset_skill()
+	return results;
 		
 func roll(skill:BattleSkill,actor:BattleEntity):
 	var stat_index = skill._get_stat();
 	var stat_key = actor.battle_data.source_stat_array[stat_index]
-	return actor._clash_marble_roll(stat_key)
+	return actor._magpie_roll(stat_key)
 
 func coinflip(origin_skill:BattleSkill,target_skill:BattleSkill)->Array:
 	var result = []

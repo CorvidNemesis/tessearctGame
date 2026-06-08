@@ -11,5 +11,5 @@ stat_power = 1
 base_power = 12
 description = "Strikes an enemy x3"
 hit_count = 2
-clash_saftey_amount = 10
+clash_saftey_amount = 99
 metadata/_custom_type_script = "uid://di06tuhcu0b1s"

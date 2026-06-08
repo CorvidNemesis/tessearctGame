@@ -2,7 +2,6 @@
 
 [ext_resource type="FontFile" uid="uid://cbd3kwlu24ys2" path="res://assets/fonts/Anarcharsis Basic HF Regular.ttf" id="1_47rhg"]
 [ext_resource type="Script" uid="uid://jgfyxi7oeq85" path="res://scripts/battle/GUI/Command Window/CommandWindow.gd" id="1_a7vub"]
-[ext_resource type="StyleBox" uid="uid://vetaw0xiiqf8" path="res://assets/textures/rect.tres" id="1_ylcgq"]
 [ext_resource type="PackedScene" uid="uid://cmye1wgo0qdkh" path="res://scenes/battle/skill_card.tscn" id="2_a7vub"]
 [ext_resource type="Theme" uid="uid://w8hlv3jki0y" path="res://assets/textures/battle_button.tres" id="3_ra8rk"]
 [ext_resource type="Script" uid="uid://b8emlwfjl5w0e" path="res://scripts/battle/GUI/Command Window/GUI_CW_layer_1.gd" id="4_mujvh"]
@@ -11,11 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://c473fid0giaek" path="res://scenes/battle/GUIScenes/enemy_choices.tscn" id="8_ylcgq"]
 
 [node name="Actions" type="PanelContainer" unique_id=585359748]
-offset_right = 563.0
-offset_bottom = 212.0
+offset_right = 754.0
+offset_bottom = 148.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-theme_override_styles/panel = ExtResource("1_ylcgq")
 script = ExtResource("1_a7vub")
 
 [node name="BattleCommands" type="VBoxContainer" parent="." unique_id=1943074313]
@@ -85,5 +83,4 @@ text = "Back
 
 [connection signal="pressed" from="BattleCommands/Layer0/buttonFight" to="." method="_on_button_fight_pressed"]
 [connection signal="pressed" from="BattleCommands/Layer0/buttonSkills" to="." method="_on_button_skills_pressed"]
-[connection signal="pressed" from="BattleCommands/Layer1/skillButton" to="." method="_on_skill_button_pressed"]
 [connection signal="pressed" from="BattleCommands/Buttonback" to="." method="_on_buttonback_pressed"]

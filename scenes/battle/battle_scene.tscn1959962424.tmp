@@ -12,8 +12,6 @@
 [node name="BattleScene" type="Node2D" unique_id=74146534]
 script = ExtResource("1_o3k7m")
 
-[node name="State Machine" type="Node" parent="." unique_id=600589738]
-
 [node name="ActionCoolOff" type="Timer" parent="." unique_id=702996391]
 one_shot = true
 

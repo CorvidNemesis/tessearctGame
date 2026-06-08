@@ -19,4 +19,4 @@ func _setup()->void:
 func _change(user:BattleEntity,damage)->void:
 	if user is BattlePlayer:
 		var tween = create_tween();
-		tween.tween_property(self,"value",value-damage,0.4).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+		tween.tween_property(self,"value",value-damage,2).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)

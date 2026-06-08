@@ -2,8 +2,9 @@ extends Control
 
 @onready var timer = $BeforeHit;
 @onready var cooldown = $AfterHit;
-@onready var result_label = $numberRoll;
+@onready var result_label = $Sprite2D/numberRoll;
 @onready var animation = $Sprite2D/AnimationPlayer;
+@onready var bar = $ProgressBar
 
 var display:int;
 
@@ -29,6 +30,10 @@ func _win(value:int)->void:
 
 func _tie(value:int)->void:
 	animation.play("Tie");
+
+func _remaining(skill:BattleSkill)->void:
+	bar.value = skill.safteyRemaining;
+	bar.max_value = skill.hit_count;
 
 func _on_timer_timeout() -> void:
 	_update(display)

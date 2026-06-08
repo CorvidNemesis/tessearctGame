@@ -16,4 +16,18 @@ stat_dict = {
 "str": 10
 }
 skillSet = Array[ExtResource("2_iighr")]([ExtResource("3_iighr")])
+stat_rate_dict = {
+"AttackProperties": {
+"Bludgeon": 2.0,
+"Pierce": 1.0,
+"Slash": 0.5
+},
+"Elements": {
+"Adeneil": 0.5,
+"Cytoz": 1.5,
+"Guan": 2.0,
+"Tesseract": 1.0,
+"Thyminos": 1.0
+}
+}
 metadata/_custom_type_script = "uid://dsj6m8wmc0qun"

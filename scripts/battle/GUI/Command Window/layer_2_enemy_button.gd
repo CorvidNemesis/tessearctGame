@@ -10,4 +10,5 @@ func _setup(enemy:Array)->void:
 func _on_pressed() -> void:
 	print("_on_pressed Button Pressed!")
 	gl_battle.currently_selected_hero.targets.append(connected_enemy);
+	gl_battle.emit_signal("battle_signal_open_actions")
 	gl_battle.emit_signal("battle_signal_readyCheck") # Replace with function body.

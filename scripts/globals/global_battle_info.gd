@@ -8,6 +8,7 @@ var partaking_heroes = [];
 var partaking_enemies = [];
 
 signal battle_signal_open_actions();
+signal battle_signal_close_actions();
 signal battle_signal_prepareSkillset();
 signal battle_signal_makeSkillCard();
 signal battle_signal_readyCheck();

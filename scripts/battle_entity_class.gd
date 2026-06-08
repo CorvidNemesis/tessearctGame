@@ -18,20 +18,56 @@ var is_clashing: bool = true;
 var living_status = true;
 var mobility_status = true;
 var roll_visual_instance;
-	
+
+var home_position;
+
+#region Helper Functions
 func _get_battle_data():
 	return battle_data
+#endregion
 
-func _battle_phase_setup()->void:
-	battle_data._current_hp = battle_data.stat_dict["maxHP"]
-	battle_data._current_mp = battle_data.stat_dict["maxMP"]
+#region Battle Begin
+func _reset_entity()->void:
+	battle_data._current_hp = battle_data.stat_dict["maxHP"];
+	battle_data._current_mp = battle_data.stat_dict["maxMP"];
 	targets = [];
 	is_defending = false;
 	is_clashing = true;
+#endregion
 
-func _isAlive()->bool:
-	print("Checking Health")
-	print(self.battle_data._current_hp)
+#region Magpie Functions
+func _magpie_skill_base()->int:
+	return skill_chosen.clashBasePower;
+	
+func _magpie_roll(statKey:String)->int:
+	var finalValue = _magpie_skill_base() + battle_data._get_stat_value(statKey);
+	var result = randi_range(_magpie_skill_base(),finalValue);
+	for roller in roll_zone.get_children():
+		roller.queue_free()
+	roll_visual_instance = rolling_visual.instantiate();
+	roll_zone.add_child(roll_visual_instance);
+	roll_visual_instance._store(result);
+	roll_visual_instance.timer_trigger();
+	roll_visual_instance._remaining(skill_chosen);
+	return result;
+
+func _magpie_lose()->void:
+	pass
+
+func _magpie_tie()->void:
+	pass
+
+func _magpie_win()->void:
+	pass
+
+
+#endregion
+
+func _assign_home(home:Vector2)->void:
+	home_position=home;
+
+
+func _is_alive()->bool:
 	if (self.battle_data._current_hp <= 0):
 		living_status = false;
 	else:
@@ -50,20 +86,3 @@ func _change_hp(amount:int)->void:
 
 func _get_speed()->int:
 	return battle_data._get_speed();
-
-func helper_battle_getBasePower()->int:
-	return skill_chosen.clashBasePower;
-
-func _clash_marble_roll(statKey:String)->int:
-	var finalValue = helper_battle_getBasePower() + battle_data._get_stat_value(statKey);
-	var result = randi_range(helper_battle_getBasePower(),finalValue);
-	for roller in roll_zone.get_children():
-		roller.queue_free()
-	roll_visual_instance = rolling_visual.instantiate();
-	roll_zone.add_child(roll_visual_instance);
-	roll_visual_instance._store(result);
-	roll_visual_instance.timer_trigger();
-	return result;
-
-func _helper_clear_skill()->void:
-	self.skill_chosen = null;

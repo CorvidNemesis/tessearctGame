@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://4vmg2pwahjcj" path="res://scripts/battle/GUI/battleGUI.gd" id="1_k8c73"]
 [ext_resource type="PackedScene" uid="uid://cl84bqfi7cyv" path="res://scenes/battle/player.tscn" id="2_o000n"]
-[ext_resource type="FontFile" uid="uid://ds0qndwlw1ubs" path="res://assets/fonts/EideticModern Regular.otf" id="3_kwl7u"]
 [ext_resource type="Script" uid="uid://bibwnfff72ixe" path="res://scenes/battle/enemy_hp.gd" id="3_or4fu"]
 [ext_resource type="PackedScene" uid="uid://didgg0rcr5q3v" path="res://scenes/battle/BattleCommand.tscn" id="3_s7rdw"]
 [ext_resource type="Texture2D" uid="uid://db3scmq48mlc2" path="res://assets/uiElements/elementalIcons/newIcon1.png" id="4_k8c73"]
+[ext_resource type="StyleBox" uid="uid://vetaw0xiiqf8" path="res://assets/textures/rect.tres" id="4_kwl7u"]
 [ext_resource type="Script" uid="uid://digmhgl2gtsh5" path="res://scripts/battle/GUI/begin_button.gd" id="5_o000n"]
 
 [sub_resource type="Theme" id="Theme_au2tq"]
@@ -13,6 +13,8 @@ MarginContainer/constants/margin_bottom = 12
 MarginContainer/constants/margin_left = 12
 MarginContainer/constants/margin_right = 12
 MarginContainer/constants/margin_top = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kwl7u"]
 
 [node name="battleGUI" type="CanvasLayer" unique_id=1234651255]
 script = ExtResource("1_k8c73")
@@ -41,54 +43,49 @@ size_flags_vertical = 8
 [node name="player" parent="MarginContainer/BoxZone/Player Window" unique_id=1206141887 instance=ExtResource("2_o000n")]
 layout_mode = 2
 
-[node name="EnemyHPBar" type="VBoxContainer" parent="MarginContainer" unique_id=1381552621]
+[node name="HBoxContainer" type="CenterContainer" parent="MarginContainer" unique_id=1781995599]
 layout_mode = 2
 size_flags_horizontal = 0
+mouse_filter = 2
+
+[node name="Actions" parent="MarginContainer/HBoxContainer" unique_id=585359748 instance=ExtResource("3_s7rdw")]
+custom_minimum_size = Vector2(200, 0)
+layout_direction = 1
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 2
+theme_override_styles/panel = ExtResource("4_kwl7u")
+
+[node name="EnemyHPBar" type="VBoxContainer" parent="MarginContainer" unique_id=1381552621]
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+alignment = 1
 
 [node name="EnemyHP" type="ProgressBar" parent="MarginContainer/EnemyHPBar" unique_id=1756508826]
-modulate = Color(0.101960786, 0.05490196, 0.21960784, 1)
-custom_minimum_size = Vector2(20, 0)
+modulate = Color(1, 0, 0, 1)
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_kwl7u")
 value = 100.0
-rounded = true
-fill_mode = 3
 show_percentage = false
 script = ExtResource("3_or4fu")
 
-[node name="Actions" parent="." unique_id=585359748 instance=ExtResource("3_s7rdw")]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -728.0
-offset_top = -217.0
-offset_right = -2.0
-offset_bottom = -5.0
-grow_horizontal = 0
-
 [node name="BeginButton" type="Button" parent="." unique_id=1394965297]
-offset_left = 1186.0
-offset_top = -1.0
-offset_right = 1387.0
-offset_bottom = 36.0
+offset_left = 1721.0
+offset_top = 860.0
+offset_right = 1922.0
+offset_bottom = 900.0
 text = "GO!!!"
 icon = ExtResource("4_k8c73")
 script = ExtResource("5_o000n")
 
-[node name="PanelContainer" type="PanelContainer" parent="." unique_id=2111666975]
-visible = false
-offset_left = 12.0
-offset_top = 12.0
-offset_right = 1908.0
-offset_bottom = 54.0
-
-[node name="Label" type="Label" parent="PanelContainer" unique_id=640177628]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_kwl7u")
-theme_override_font_sizes/font_size = 39
+[node name="Label" type="Label" parent="." unique_id=317200034]
+offset_top = 68.0
+offset_right = 1920.0
+offset_bottom = 91.0
 text = "SKILL A VS SKILL B"
 horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
 
 [connection signal="pressed" from="BeginButton" to="." method="_on_begin_button_pressed"]

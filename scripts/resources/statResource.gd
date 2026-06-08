@@ -26,6 +26,11 @@ var source_stat_array = [
 	"agi"
 ]
 
+@export var associations_dict = {
+	"Firebrand Lineage" : false,
+	"Timerender Foundation" : false,
+}
+
 @export var stat_dict = {
 	"maxHP" : 100,
 	"maxMP" : 10,
@@ -33,6 +38,7 @@ var source_stat_array = [
 	"cmp": 10,
 	"def": 10,
 	"agi": 10,
+	"brawl":0
 }
 
 var buff_dict = {
@@ -73,11 +79,11 @@ var element_array = [
 	}
 }
 
-# @export var skillSet = Array[BattleSkill]
-
 var _current_hp: int;
 var _current_mp: int;
-var stat_current_CF;
+var _battle_mhp: int;
+var _battle_mmp: int;
+var _current_brawl;
 
 func _get_stat_value(statKey:String)->int:
 	return roundi(stat_dict[statKey] * buff_dict[statKey])

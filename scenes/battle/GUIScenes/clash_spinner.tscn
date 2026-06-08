@@ -97,7 +97,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../numberRoll:scale")
+tracks/4/path = NodePath("numberRoll:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -109,7 +109,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../numberRoll:position")
+tracks/5/path = NodePath("numberRoll:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -258,7 +258,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../numberRoll:scale")
+tracks/0/path = NodePath("numberRoll:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -270,7 +270,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../numberRoll:position")
+tracks/1/path = NodePath("numberRoll:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -339,12 +339,26 @@ texture = ExtResource("1_nygp6")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" unique_id=726392782]
 libraries/ = SubResource("AnimationLibrary_gpehm")
 
+[node name="numberRoll" type="RichTextLabel" parent="Sprite2D" unique_id=229782496]
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 135.2069
+offset_bottom = 136.50818
+theme = SubResource("Theme_1n0q7")
+theme_override_constants/outline_size = 8
+theme_override_fonts/normal_font = ExtResource("2_hbb87")
+theme_override_font_sizes/normal_font_size = 39
+bbcode_enabled = true
+text = "[tornado radius=20.0 freq=7.0 connected=1]0[/tornado]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=1077677036]
 layout_mode = 0
-offset_left = 1.0
-offset_top = 76.0
-offset_right = 306.0
-offset_bottom = 91.0
+offset_left = -152.0
+offset_top = 40.0
+offset_right = 153.0
+offset_bottom = 55.0
 show_percentage = false
 
 [node name="BeforeHit" type="Timer" parent="." unique_id=2054073453]
@@ -354,21 +368,6 @@ one_shot = true
 [node name="AfterHit" type="Timer" parent="." unique_id=1217379823]
 wait_time = 0.5
 one_shot = true
-
-[node name="numberRoll" type="RichTextLabel" parent="." unique_id=229782496]
-layout_mode = 0
-offset_left = 1.0
-offset_top = -1.0
-offset_right = 75.23921
-offset_bottom = 73.23921
-theme = SubResource("Theme_1n0q7")
-theme_override_constants/outline_size = 8
-theme_override_fonts/normal_font = ExtResource("2_hbb87")
-theme_override_font_sizes/normal_font_size = 39
-bbcode_enabled = true
-text = "[tornado radius=20.0 freq=7.0 connected=1]0[/tornado]"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [connection signal="timeout" from="BeforeHit" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="AfterHit" to="." method="_on_after_hit_timeout"]

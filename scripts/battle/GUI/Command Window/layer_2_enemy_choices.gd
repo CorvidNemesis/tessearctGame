@@ -17,3 +17,7 @@ func _setup_enemies()->void:
 		var enemyButtonInstance = enemyButton.instantiate();
 		self.add_child(enemyButtonInstance);
 		enemyButtonInstance._setup(enemy)
+
+func _on_enemy_button_pressed() -> void:
+	gl_battle.emit_signal("battle_signal_open_actions")
+	print("RAHHHHH") # Replace with function body.

@@ -12,5 +12,3 @@ enemyButton = ExtResource("2_j4t03")
 
 [node name="enemyButton" parent="." unique_id=363105066 instance=ExtResource("2_j4t03")]
 layout_mode = 2
-
-[connection signal="pressed" from="enemyButton" to="." method="_on_enemy_button_pressed"]

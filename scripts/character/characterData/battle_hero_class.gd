@@ -11,7 +11,7 @@ const PLACEMENT_EFFECTS = [1.5,1.0,0.5]
 @export var selectionButton: Button;
 
 func _ready() -> void:
-	#signal_manager.hide_me.connect(_hide_self)
+	signal_manager.hide_me.connect(_hide_self)
 	pass
 
 ### SETUP PHASE
@@ -24,7 +24,7 @@ func _is_battle_ready()-> bool:
 func _on_selection_pressed() -> void:
 	gl_battle.currently_selected_hero = self;
 	gl_battle.emit_signal("battle_signal_open_actions")
-	gl_camera.emit_signal("focus_on_me",self,self.global_position.x,self.global_position.y,150)
+	signal_manager.emit_signal("focus_on_me",self,self.global_position.x,self.global_position.y,150)
 	signal_manager.emit_signal("hide_me")
 	
 func _hide_self()->void:
