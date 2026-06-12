@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="AAA"
+config/name="ProjectOCDunegon"
 run/main_scene="uid://0vr2v1i1asqw"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
