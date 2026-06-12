@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://2b8p4teg3c4r" path="res://scripts/character/characterData/battle_hero_class.gd" id="1_3b32d"]
 [ext_resource type="Resource" uid="uid://b2fvr20r1l7sa" path="res://resources/characterStats/FenikStats.tres" id="2_smv6d"]
 [ext_resource type="PackedScene" uid="uid://dxbuwl0rygjjf" path="res://scenes/battle/GUIScenes/damage_container.tscn" id="3_5wkd8"]
-[ext_resource type="PackedScene" uid="uid://dqdhuln8v4k38" path="res://scenes/battle/GUIScenes/clash_spinner.tscn" id="3_7di1i"]
 [ext_resource type="Texture2D" uid="uid://csrhmt4v83p20" path="res://assets/battleSprites/playerSheets/asset_spriteSheet_hero_Fenik.png" id="3_smv6d"]
 [ext_resource type="FontFile" uid="uid://blraut16i4716" path="res://assets/fonts/BebasKai.ttf" id="4_smv6d"]
 [ext_resource type="AnimationLibrary" uid="uid://dm0lteluynqdo" path="res://animations/battle_animations.res" id="6_xhnv5"]
@@ -23,14 +22,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Fenik" type="Node2D" unique_id=279236092 node_paths=PackedStringArray("entity_sprite_sheet", "animation_effects", "dialouge", "roll_zone")]
+[node name="Fenik" type="Node2D" unique_id=279236092 node_paths=PackedStringArray("entity_sprite_sheet", "animation_effects")]
 script = ExtResource("1_3b32d")
 battle_data = ExtResource("2_smv6d")
 entity_sprite_sheet = NodePath("SpriteSheet")
 animation_effects = NodePath("AnimatedEffects")
-dialouge = NodePath("Label")
-roll_zone = NodePath("rollZone")
-rolling_visual = ExtResource("3_7di1i")
 metadata/_custom_type_script = "uid://2b8p4teg3c4r"
 
 [node name="Label" type="Label" parent="." unique_id=108111142]

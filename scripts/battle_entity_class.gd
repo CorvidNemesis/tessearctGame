@@ -2,15 +2,10 @@ class_name BattleEntity
 extends Node2D
 
 @export var battle_data: statsResource;
-@export var battle_text: quotesResource;
 @export var defensive_skill: BattleSkill;
-
 @export var entity_sprite_sheet: AnimatedSprite2D;
 @export var animation_effects: AnimationPlayer;
 @onready var damage_number = $DamageContainer;
-@export var dialouge: Label;
-@export var roll_zone: Control;
-@export var rolling_visual: PackedScene;
 
 var skill_chosen:BattleSkill;
 var targets = [];
@@ -18,7 +13,6 @@ var is_defending: bool = false;
 var is_clashing: bool = true;
 var living_status = true;
 var mobility_status = true;
-var roll_visual_instance;
 
 var home_position;
 
@@ -41,34 +35,32 @@ func _reset_entity()->void:
 	is_clashing = true;
 #endregion
 
-#region Magpie Functions
-func _magpie_skill_base()->int:
-	return skill_chosen.clashBasePower;
-	
-func _magpie_roll(statKey:String)->int:
-	var finalValue = _magpie_skill_base() + battle_data._get_stat_value(statKey);
-	var result = randi_range(_magpie_skill_base(),finalValue);
-	for roller in roll_zone.get_children():
-		roller.queue_free()
-	roll_visual_instance = rolling_visual.instantiate();
-	roll_zone.add_child(roll_visual_instance);
-	roll_visual_instance._store(result);
-	roll_visual_instance.timer_trigger();
-	roll_visual_instance._remaining(skill_chosen);
-	return result;
-
-func _magpie_lose()->void:
-	pass
-
-func _magpie_tie()->void:
-	pass
-
-func _magpie_win()->void:
-	pass
+#func _magpie_skill_base()->int:
+	#return skill_chosen.clashBasePower;
+	#
+#func _magpie_roll(statKey:String)->int:
+	#var finalValue = _magpie_skill_base() + battle_data._get_stat_value(statKey);
+	#var result = randi_range(_magpie_skill_base(),finalValue);
+	#for roller in roll_zone.get_children():
+		#roller.queue_free()
+	#roll_visual_instance = rolling_visual.instantiate();
+	#roll_zone.add_child(roll_visual_instance);
+	#roll_visual_instance._store(result);
+	#roll_visual_instance.timer_trigger();
+	#roll_visual_instance._remaining(skill_chosen);
+	#return result;
+#
+#func _magpie_lose()->void:
+	#pass
+#
+#func _magpie_tie()->void:
+	#pass
+#
+#func _magpie_win()->void:
+	#pass
 
 
 #endregion
-
 #region Battle Phases
 func _turn_start():
 	pass

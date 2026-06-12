@@ -1,12 +1,5 @@
 extends Node2D
-const playerPositionsX = [1263,1525,1525,1790]
-const playerPositionsY = [700,534,825,700]
 
-@onready var battlerZoneNode = $Battlers;
-@onready var singleton = $Enemy/Singular;
-@onready var triple = $Enemy/Triad;
-@onready var quintet = $Enemy/Quintet;
-@onready var camera = $BattleCam
 @onready var magpie_manager = $ClashManager
 @onready var damage_manager = $"DamageManager";
 @onready var battle_camera = $BattleCam;
@@ -41,10 +34,6 @@ func _ready() -> void:
 	for hero in heroes:
 		var current_hero:BattlePlayer = hero[gl_battle.AQ_SCENE_INDEX]
 		current_hero._ready_for_battle();
-		current_hero._ready_for_battle();
-		battlerZoneNode.add_child(current_hero)
-		current_hero.global_position = Vector2(playerPositionsX[index],playerPositionsY[index]);
-		current_hero._assign_home(Vector2(playerPositionsX[index],playerPositionsY[index]));
 		index+=1;
 	if (enemies.size() == 1):
 		enemy_formation = ENEMYPOSITIONS.SINGLETON;
@@ -54,29 +43,8 @@ func _ready() -> void:
 		enemy_formation = ENEMYPOSITIONS.QUINTET
 	all_participants.append_array(heroes)
 	all_participants.append_array(enemies)
-	place_enemies()
 	action_phase()
 
-func place_enemies()->void:
-	var targetArea;
-	if (enemy_formation == ENEMYPOSITIONS.SINGLETON):
-		targetArea = singleton;
-	elif (enemy_formation == ENEMYPOSITIONS.TRIPLE):
-		targetArea = triple;
-	else:
-		targetArea = quintet;
-	var arange = get_positions(targetArea);
-	var index = 0;
-	for enemy in enemies:
-		var current_enemy:battleEnemy = enemy[1];
-		current_enemy._ready_for_battle();
-		current_enemy._reset_entity();
-		print(targetArea)
-		targetArea.add_child(current_enemy)
-		current_enemy.global_position = arange[index];
-		current_enemy._assign_home(current_enemy.global_position)
-		index+=1;
-	
 func _clean_enemy_zone(zone:Node2D)->void:
 	for enemy in zone.get_children():
 		if enemy is BattleEntity:
@@ -90,11 +58,6 @@ func get_positions(zone:Node2D):
 	for placementBox in zone.get_children():
 		positions.append(placementBox.global_position)
 	return positions
-
-func _clean_up_hero_zone()->void:
-	for character in battlerZoneNode.get_children():
-		if (character is BattlePlayer):
-			character.queue_free();
 
 func _assign_speed()->void:
 	action_queue.clear();
