@@ -23,7 +23,6 @@ func roll(skill:BattleSkill,actor:BattleEntity):
 
 func coinflip(origin_skill:BattleSkill,target_skill:BattleSkill)->Array:
 	var result = []
-	var round =0;
 	while (origin_skill.safteyRemaining > 0 and target_skill.safteyRemaining > 0):
 		cooldown_timer.start();
 		var origin_skill_roll = roll(origin_skill,origin);
@@ -45,7 +44,6 @@ func coinflip(origin_skill:BattleSkill,target_skill:BattleSkill)->Array:
 			origin_skill._clashLost()
 			targeted.roll_visual_instance.animation.play("Victory")
 			result = [targeted,origin]
-		round+=1;
 		cooldown_timer.start();
 		await cooldown_timer.timeout;
 	return result;

@@ -24,6 +24,7 @@ func setup_battlers(partaking: Array)->void:
 		# TODO: REPLACE 1 WITH GLOBAL VARIABLE
 		var stats = battler[gl_battle.AQ_SCENE_INDEX]._get_battle_data();
 		$"MarginContainer/BoxZone/Player Window".add_child(box_instance);
+		box_instance.asc_battler = battler[gl_battle.AQ_SCENE_INDEX];
 		box_instance._setup_displayables(stats.display_name + str(count),stats.stat_dict["maxHP"],stats.stat_dict["maxMP"])
 		count +=1;
 

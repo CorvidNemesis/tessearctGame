@@ -13,7 +13,7 @@ signal battle_signal_prepareSkillset();
 signal battle_signal_makeSkillCard();
 signal battle_signal_readyCheck();
 signal battle_signal_ui_troop_hp();
-signal battle_signal_ui_hero_hp(hero:BattlePlayer);
+signal battle_signal_ui_hero_hp();
 
 signal battle_signal_phase_start_turn();
 

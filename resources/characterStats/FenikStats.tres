@@ -8,5 +8,30 @@
 [resource]
 script = ExtResource("1_0o08r")
 display_name = "Fenik"
+stat_dict = {
+"agi": 21,
+"battle_MHP": 100,
+"battle_MMP": 10,
+"brawl": 0,
+"cmp": 10,
+"def": 10,
+"maxHP": 250,
+"maxMP": 20,
+"str": 24
+}
 skillSet = Array[ExtResource("2_43odm")]([ExtResource("3_8ukfa"), ExtResource("4_metnf")])
+stat_rate_dict = {
+"AttackProperties": {
+"Bludgeon": 2.0,
+"Pierce": 0.0,
+"Slash": 0.5
+},
+"Elements": {
+"Adeneil": 0.2,
+"Cytoz": 1.0,
+"Guan": 1.5,
+"Tesseract": 0.8,
+"Thyminos": 2.0
+}
+}
 metadata/_custom_type_script = "uid://dsj6m8wmc0qun"

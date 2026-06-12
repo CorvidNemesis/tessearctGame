@@ -25,7 +25,6 @@ func nav_layer(incr:int)->void:
 	layer += incr;
 
 func layer_check()->void:
-	print(layer)
 	if (layer == 0):
 		layerZero.show()
 		layerOne.hide()

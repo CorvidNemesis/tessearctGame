@@ -4,7 +4,6 @@ func _make_the_card(skill:BattleSkill)->void:
 	# TODO: TIDY THIS!!!!!
 	$VBoxContainer/skillName.text = skill.name;
 	$VBoxContainer/Description.text = skill.description;
-	print($VBoxContainer/Description.text)
 	
 	$VBoxContainer/CurMPtoCostLabel.text = str(user._get_battle_data()._current_mp) + " / " + (str(skill.mp_cost))
 	$VBoxContainer/CurMPtoCost.value = (skill.mp_cost)

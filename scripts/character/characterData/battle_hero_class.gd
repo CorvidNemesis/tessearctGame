@@ -8,7 +8,6 @@ enum Placement {
 }
 
 const PLACEMENT_EFFECTS = [1.5,1.0,0.5]
-@export var selectionButton: Button;
 
 func _ready() -> void:
 	signal_manager.hide_me.connect(_hide_self)
@@ -19,12 +18,11 @@ func _is_battle_ready()-> bool:
 	if (((self.skill_chosen != null) and !self.targets.is_empty()) or is_defending):
 		return true
 	return false
-### BATTLE PHASE
 
 func _on_selection_pressed() -> void:
 	gl_battle.currently_selected_hero = self;
 	gl_battle.emit_signal("battle_signal_open_actions")
-	signal_manager.emit_signal("focus_on_me",self,self.global_position.x,self.global_position.y,150)
+	signal_manager.emit_signal("focus_on_me",self.global_position.x,self.global_position.y,150)
 	signal_manager.emit_signal("hide_me")
 	
 func _hide_self()->void:

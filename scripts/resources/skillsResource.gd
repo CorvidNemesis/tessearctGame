@@ -23,7 +23,6 @@ enum SourceStat {
 	AGILITY = 3
 	}
 
-
 @export var name: String;
 @export var element: ElementType;
 @export var property: PropertyType;

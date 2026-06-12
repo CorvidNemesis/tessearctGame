@@ -9,11 +9,14 @@ script = ExtResource("1_wer50")
 display_name = "The First Tesseract"
 stat_dict = {
 "agi": 10,
+"battle_MHP": 100,
+"battle_MMP": 10,
+"brawl": 0,
 "cmp": 10,
 "def": 10,
-"maxHP": 1000,
+"maxHP": 10000,
 "maxMP": 250,
-"str": 10
+"str": 11
 }
 skillSet = Array[ExtResource("2_iighr")]([ExtResource("3_iighr")])
 stat_rate_dict = {

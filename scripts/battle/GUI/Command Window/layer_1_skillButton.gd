@@ -6,7 +6,6 @@ var skill: BattleSkill
 func _skillMaker(index:int)->void:
 	skill = gl_battle.currently_selected_hero._get_battle_data().skillSet[index];
 	self.text = skill.name;
-	print(self.text)
 
 func _on_pressed() -> void:
 	gl_battle.currently_selected_hero.skill_chosen = skill;

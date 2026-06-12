@@ -11,8 +11,6 @@ func _setup()->void:
 		var selected = enemy[gl_battle.AQ_SCENE_INDEX];
 		max += selected.battle_data.stat_dict["maxHP"];
 		curr += selected.battle_data._current_hp;
-	print(max)
-	print("Troop Current" + str(curr))
 	self.max_value = max;
 	self.value = curr;
 

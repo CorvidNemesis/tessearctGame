@@ -34,6 +34,8 @@ var source_stat_array = [
 @export var stat_dict = {
 	"maxHP" : 100,
 	"maxMP" : 10,
+	"battle_MHP" : 100,
+	"battle_MMP" : 10,
 	"str" : 10,
 	"cmp": 10,
 	"def": 10,
@@ -81,9 +83,9 @@ var element_array = [
 
 var _current_hp: int;
 var _current_mp: int;
-var _battle_mhp: int;
-var _battle_mmp: int;
 var _current_brawl;
+
+
 
 func _get_stat_value(statKey:String)->int:
 	return roundi(stat_dict[statKey] * buff_dict[statKey])

@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://7c01xitb7474" path="res://assets/battleSprites/enemySheets/ScorchedGirlSpriteSheet.png" id="2_3jkju"]
 [ext_resource type="Resource" uid="uid://bcxpbhov27yq7" path="res://resources/enemyStats/FirstTessStats.tres" id="2_f47tt"]
 [ext_resource type="PackedScene" uid="uid://dqdhuln8v4k38" path="res://scenes/battle/GUIScenes/clash_spinner.tscn" id="4_783cm"]
+[ext_resource type="AnimationLibrary" uid="uid://dm0lteluynqdo" path="res://animations/battle_animations.res" id="5_gkhox"]
+[ext_resource type="PackedScene" uid="uid://dxbuwl0rygjjf" path="res://scenes/battle/GUIScenes/damage_container.tscn" id="6_g5j8q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f47tt"]
 atlas = ExtResource("2_3jkju")
@@ -57,10 +59,10 @@ metadata/_custom_type_script = "uid://cs87dls076ev6"
 scale = Vector2(0.26652893, 0.26652893)
 sprite_frames = SubResource("SpriteFrames_g5j8q")
 animation = &"hit"
-centered = false
 flip_h = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1665777931]
+libraries/battle_animations = ExtResource("5_gkhox")
 
 [node name="rollZone" type="Control" parent="." unique_id=1326172220]
 layout_mode = 3
@@ -68,3 +70,6 @@ anchors_preset = 0
 offset_left = -256.0
 offset_top = -1.0
 offset_bottom = 108.0
+
+[node name="DamageContainer" parent="." unique_id=1039421674 instance=ExtResource("6_g5j8q")]
+position = Vector2(65, -22)

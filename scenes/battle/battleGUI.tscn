@@ -15,6 +15,8 @@ MarginContainer/constants/margin_right = 12
 MarginContainer/constants/margin_top = 12
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kwl7u"]
+bg_color = Color(0, 0, 0, 1)
+skew = Vector2(0.17, 0)
 
 [node name="battleGUI" type="CanvasLayer" unique_id=1234651255]
 script = ExtResource("1_k8c73")

@@ -7,6 +7,6 @@ script = ExtResource("1_knfbe")
 name = "Petrol"
 base_power = 10
 description = "..."
-hit_count = 4
+hit_count = 2
 clash_saftey_amount = 4
 metadata/_custom_type_script = "uid://di06tuhcu0b1s"

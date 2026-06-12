@@ -5,10 +5,8 @@ var connected_enemy
 func _setup(enemy:Array)->void:
 	self.text = enemy[1].name;
 	connected_enemy = enemy;
-	print("_setup " + str(connected_enemy))
 
 func _on_pressed() -> void:
-	print("_on_pressed Button Pressed!")
 	gl_battle.currently_selected_hero.targets.append(connected_enemy);
 	gl_battle.emit_signal("battle_signal_open_actions")
 	gl_battle.emit_signal("battle_signal_readyCheck") # Replace with function body.

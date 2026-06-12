@@ -8,13 +8,5 @@
 [resource]
 script = ExtResource("1_07uvv")
 display_name = "Comet Cadet"
-stat_dict = {
-"agi": 10,
-"cmp": 10,
-"def": 10,
-"maxHP": 180,
-"maxMP": 20,
-"str": 99
-}
 skillSet = Array[ExtResource("2_4srtv")]([ExtResource("3_8eki2"), ExtResource("4_8x36f")])
 metadata/_custom_type_script = "uid://dsj6m8wmc0qun"
