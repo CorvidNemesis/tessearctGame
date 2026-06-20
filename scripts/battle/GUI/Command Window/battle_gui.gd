@@ -21,10 +21,10 @@ func setup_battlers()->void:
 	for battler in gl_battle.partaking_heroes:
 		var box_instance = hud.instantiate();
 		hud_holder.add_child(box_instance)
-		box_instance.held_ace = battler[gl_battle.AQ_SCENE_INDEX];
+		box_instance.held_ace = battler;
 		box_instance._update_ui();
 
-func _personalize_ui(hero:BattleAce)->void:
+func _personalize_ui(hero:BattleHero)->void:
 	battle_commands._setup_ui(hero)
 
 func _display_skill(text:String)->void:

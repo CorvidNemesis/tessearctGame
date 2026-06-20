@@ -5,6 +5,8 @@ extends Node2D
 @export var face: AnimatedSprite2D;
 @export var animation_effects: AnimationPlayer;
 
+
+
 var key_name:String;
 
 var skill_chosen:BattleSkill;

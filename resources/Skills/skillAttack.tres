@@ -1,10 +1,13 @@
-[gd_resource type="Resource" script_class="BattleSkill" format=3 uid="uid://ddbmiqow4quj7"]
+[gd_resource type="Resource" script_class="OffensiveSkill" format=3 uid="uid://ddbmiqow4quj7"]
 
-[ext_resource type="Script" uid="uid://di06tuhcu0b1s" path="res://scripts/resources/skill_general.gd" id="1_wij6v"]
+[ext_resource type="Script" uid="uid://ctg7tbfx62b7s" path="res://scripts/resources/skill_offense.gd" id="1_wij6v"]
 
 [resource]
 script = ExtResource("1_wij6v")
+stat_power = "Strength"
+element = "Adeneil"
+property = "Pierce"
+can_deal_critical = true
 name = "Attack"
-stat_power = "str"
 description = "Basic Attack"
 metadata/_custom_type_script = "uid://di06tuhcu0b1s"

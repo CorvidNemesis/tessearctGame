@@ -15,11 +15,10 @@ func enter_state()->void:
 		
 func brawling()->void:
 	for entity in battle_manager.all_participants:
-		var acting:BattleEntity = entity[gl_battle.AQ_SCENE_INDEX];
-		if acting is BattleAce:
-			var targetting = calculate_targets(acting.skill_chosen);
-			var source_stat = acting.battle_data.stat_dict[acting.skill_chosen._skill_stat_key()][1];
-			calculate_damage(acting.skill_chosen,source_stat,targetting);	
+		if entity is BattleHero:
+			var targetting = calculate_targets(entity.skill_chosen);
+			var source_stat = entity.battle_data.stat_dict[entity.skill_chosen._skill_stat_key()];
+			calculate_damage(entity.skill_chosen,source_stat,targetting);	
 			print()
 
 func calculate_targets(skill:BattleSkill)->Array:
@@ -30,11 +29,11 @@ func calculate_targets(skill:BattleSkill)->Array:
 	var targetting_index = skill.main_target;
 	var start = targetting_index;
 	var neighbors = []
-	full_blast.append(gl_battle.partaking_enemies[start][gl_battle.AQ_SCENE_INDEX])
+	full_blast.append(gl_battle.partaking_enemies[start])
 	print(skill.target)
 	if skill.target != 0 or skill.target != 4:
 		while start >= 0:
-			neighbors.append(gl_battle.partaking_enemies[start][gl_battle.AQ_SCENE_INDEX])
+			neighbors.append(gl_battle.partaking_enemies[start])
 			start -=1;
 		halfed.append(neighbors[1])
 		if neighbors.size() >2 :
@@ -42,7 +41,7 @@ func calculate_targets(skill:BattleSkill)->Array:
 		neighbors.clear()
 		start = targetting_index
 		while start < gl_battle.partaking_enemies.size():
-			neighbors.append(gl_battle.partaking_enemies[start][gl_battle.AQ_SCENE_INDEX])
+			neighbors.append(gl_battle.partaking_enemies[start])
 			start +=1;
 		halfed.append(neighbors[1])
 		if neighbors.size() >2 :

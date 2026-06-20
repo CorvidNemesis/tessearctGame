@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://iesc88o6cy5h"]
 
-[ext_resource type="Script" uid="uid://2b8p4teg3c4r" path="res://scripts/character/class_ace.gd" id="1_6hvml"]
+[ext_resource type="Script" uid="uid://2b8p4teg3c4r" path="res://scripts/character/class_hero.gd" id="1_6hvml"]
 [ext_resource type="Resource" uid="uid://5oeg37u20au3" path="res://resources/characterStats/CometStats.tres" id="2_fx4vt"]
 [ext_resource type="Texture2D" uid="uid://dla3hfeygcy38" path="res://assets/battleSprites/playerSheets/placeHolder.png" id="3_6d2uo"]
 [ext_resource type="AnimationLibrary" uid="uid://dm0lteluynqdo" path="res://animations/battle_animations.res" id="5_7n5t1"]

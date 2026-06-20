@@ -4,7 +4,7 @@ var battle_manager:Node2D;
 @export var loop_state: State
 @export var move_state: State
 
-var active_hero: BattleAce;
+var active_hero: BattleHero;
 var ready_to_fight = false;
 var current_index = -1;
 
@@ -15,8 +15,7 @@ func enter_state()->void:
 
 func every_one_ready()->bool:
 	for hero in gl_battle.partaking_heroes:
-		var scene:BattleAce = hero[gl_battle.AQ_SCENE_INDEX]
-		if scene.selected_skill == false:
+		if hero.selected_skill == false:
 			ready_to_fight = false;
 			return false
 	ready_to_fight = true;

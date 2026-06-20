@@ -5,20 +5,18 @@ extends Node2D
 
 var combat_level = 0;
 var combat_gauge_value = 0;
-var focused_hero: BattleAce;
+var focused_hero: BattleHero;
 var focused_skill: BattleSkill;
 
 var heroes: Array = [];
 var current_enemies: Array = [];
 var all_participants: Array = [];
 var action_queue: Array = [];
-
-
 var heroes_alive = true;
 
 func _ready() -> void:
 	heroes = gl_battle.partaking_heroes;
-	current_enemies = gl_battle.partaking_enemies.pop_front();
+	current_enemies = gl_battle.partaking_enemies;
 	all_participants.append_array(heroes)
 	all_participants.append_array(current_enemies)
 	gl_battle.assign_skill.connect(_set_active_skill)
@@ -28,10 +26,10 @@ func _ready() -> void:
 func _assign_speed()->void:
 	action_queue.clear();
 	for entity in all_participants:
-		if (entity[gl_battle.AQ_SCENE_INDEX]._is_alive() and entity[gl_battle.AQ_SCENE_INDEX]._is_capable_to_fight()):
-			entity[gl_battle.AQ_SPEED_INDEX] = entity[gl_battle.AQ_SCENE_INDEX]._get_speed();
+		if (entity._is_alive() and entity._is_capable_to_fight()):
+			entity[gl_battle.AQ_SPEED_INDEX] = entity._get_speed();
 			action_queue.append(entity);
-		elif (!entity[gl_battle.AQ_SCENE_INDEX]._is_alive()):
+		elif (!entity._is_alive()):
 			pass
 	action_queue.sort_custom(sort_ascending)
 
@@ -40,7 +38,7 @@ func sort_ascending(a, b):
 		return true
 	return false
 
-func _set_active_hero(hero:BattleAce)->void:
+func _set_active_hero(hero:BattleHero)->void:
 	focused_hero = hero;
 
 func _set_active_skill(skill:BattleSkill)->void:
@@ -60,8 +58,8 @@ func _return_enemies()->Array:
 func _return_combat_gauge_value()->int:
 	return combat_gauge_value;
 
-func _return_hero(index:int)->BattleAce:
-	return heroes[index][1]
+func _return_hero(index:int)->BattleHero:
+	return heroes[index]
 
-func _return_active_hero()->BattleAce:
+func _return_active_hero()->BattleHero:
 	return focused_hero;

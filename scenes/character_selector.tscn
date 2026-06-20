@@ -108,3 +108,5 @@ size_flags_vertical = 3
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[connection signal="pressed" from="VBoxContainer/Character Number/MarginContainer/Button" to="." method="_on_button_pressed"]

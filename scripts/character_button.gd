@@ -1,6 +1,6 @@
 extends TextureButton
 
-var held_battler:BattleAce;
+var held_battler:BattleHero;
 @onready var info_button:Button = $HBoxContainer/Info
 
 signal transfer_moveset()

@@ -42,8 +42,7 @@ func _prepare_all_heroes()->void:
 
 func _prepare_all_enemies()->void:
 	for key in boss_compendium:
-		if !boss_compendium[key] == null:
-			boss_compendium[key]= boss_compendium[key].instantiate();
+		boss_compendium[key]= boss_compendium[key].instantiate();
 
 func _prepare_hero_buttons()->void:
 	for button in character_button_holder.get_children():
@@ -80,3 +79,10 @@ func dungeon_permission()->void:
 		character_check.disabled = false;
 	else:
 		character_check.disabled = true;
+
+func _on_button_pressed() -> void:
+	for character_button in characters_for_battle.get_children():
+		gl_battle.partaking_heroes.append(character_button.held_battler)
+	for key in boss_compendium:
+		gl_battle.partaking_enemies.append(boss_compendium[key])
+	global_functions.go_to_scene("res://scenes/battle/battle_scene.tscn") # Replace with function body.

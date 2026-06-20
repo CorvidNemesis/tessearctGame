@@ -18,7 +18,7 @@ func _ready() -> void:
 	gl_battle.assign_skill.connect(setup_enemies)
 	gl_battle.targeting.connect(move_back)
 
-func _setup_ui(hero:BattleAce)->void:
+func _setup_ui(hero:BattleHero)->void:
 	_create_skills(hero._get_battle_data().skillSet)
 	description.hide()
 	self.show()
@@ -83,11 +83,10 @@ func setup_enemies(skill_used:BattleSkill)->void:
 	clean_enemy_holder()
 	var index =0;
 	for enemy in gl_battle.partaking_enemies:
-		var selected_enemy = enemy[gl_battle.AQ_SCENE_INDEX]
-		if selected_enemy._is_alive():
+		if enemy._is_alive():
 			var enemy_instance = enemy_button.instantiate()
 			enemy_holder.add_child(enemy_instance);
-			enemy_instance._create_enemy(selected_enemy,index);
+			enemy_instance._create_enemy(enemy,index);
 			index+=1;
 	description.hide();
 	skill_holder.hide();

@@ -5,12 +5,12 @@ extends PanelContainer
 @export var health_bar:TextureProgressBar;
 @export var magnet_bar:TextureProgressBar;
 
-var held_ace: BattleAce;
+var held_ace: BattleHero;
 
 func _ready() -> void:
 	pass
 
-func _assign_battler(creature: BattleAce)->void:
+func _assign_battler(creature: BattleHero)->void:
 	held_ace = creature;
 
 func _update_ui():
