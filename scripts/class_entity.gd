@@ -5,9 +5,11 @@ extends Node2D
 @export var face: AnimatedSprite2D;
 @export var animation_effects: AnimationPlayer;
 
+signal hp_update
 
 
 var key_name:String;
+var id_number:int;
 
 var skill_chosen:BattleSkill;
 var targets = [];
@@ -16,11 +18,17 @@ var living_status = true;
 var mobility_status = true;
 var selected_skill = false;
 
-func _ready_for_battle():
-	_reset_entity()
+#region Battle Data
 
 func _get_battle_data():
 	return battle_data
+	
+func _get_stat_value(key:String):
+	return battle_data.stat_dict[key][1];	
+#endregion
+
+func _ready_for_battle():
+	_reset_entity()
 
 func _reset_entity()->void:
 	targets = [];
@@ -35,8 +43,8 @@ func _is_alive()->bool:
 	return living_status;
 
 func _change_hp(amount:int)->void:
-	var _damage = amount - self.battle_data._skill_stat_key_value("Defense")
-	self.battle_data.current_hp -= _damage;
+	self.battle_data.current_hp -= amount;
+	emit_signal("hp_update")
 
 func _get_speed()->int:
 	return battle_data._get_speed();
