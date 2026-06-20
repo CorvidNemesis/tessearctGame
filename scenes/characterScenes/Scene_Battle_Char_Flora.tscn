@@ -1,13 +1,9 @@
 [gd_scene format=3 uid="uid://siw8j3ckeqt8"]
 
-[ext_resource type="Script" uid="uid://2b8p4teg3c4r" path="res://scripts/character/characterData/battle_hero_class.gd" id="1_thxpp"]
-[ext_resource type="Script" uid="uid://d1v6bv2mafofn" path="res://scripts/resources/quotesResource.gd" id="3_2fcfu"]
-[ext_resource type="Texture2D" uid="uid://cxh28s7chslcf" path="res://assets/battleSprites/playerSheets/asset_spriteSheet_hero_Flora.png" id="3_thxpp"]
+[ext_resource type="Script" uid="uid://2b8p4teg3c4r" path="res://scripts/character/class_ace.gd" id="1_thxpp"]
+[ext_resource type="Resource" uid="uid://dh6ln5847we0h" path="res://resources/characterStats/FloraStats.tres" id="2_4achh"]
+[ext_resource type="Texture2D" uid="uid://dla3hfeygcy38" path="res://assets/battleSprites/playerSheets/placeHolder.png" id="3_thxpp"]
 [ext_resource type="FontFile" uid="uid://blraut16i4716" path="res://assets/fonts/BebasKai.ttf" id="5_av4cn"]
-
-[sub_resource type="Resource" id="Resource_20wun"]
-script = ExtResource("3_2fcfu")
-metadata/_custom_type_script = "uid://d1v6bv2mafofn"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4achh"]
 atlas = ExtResource("3_thxpp")
@@ -24,12 +20,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Flora" type="Node2D" unique_id=279236092 node_paths=PackedStringArray("animationEffects", "selectionButton", "dialouge")]
+[node name="Flora" type="Node2D" unique_id=562713558 node_paths=PackedStringArray("face", "animation_effects")]
 script = ExtResource("1_thxpp")
-battleText = SubResource("Resource_20wun")
-animationEffects = NodePath("AnimatedEffects")
-selectionButton = NodePath("SpriteSheet/Selection")
-dialouge = NodePath("Label")
+battle_data = ExtResource("2_4achh")
+face = NodePath("SpriteSheet")
+animation_effects = NodePath("AnimatedEffects")
 metadata/_custom_type_script = "uid://2b8p4teg3c4r"
 
 [node name="SpriteSheet" type="AnimatedSprite2D" parent="." unique_id=2074526630]

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="statsResource" format=3 uid="uid://3g0um20rjkgo"]
+
+[ext_resource type="Script" uid="uid://dsj6m8wmc0qun" path="res://scripts/resources/statResource.gd" id="1_58ofl"]
+[ext_resource type="Script" uid="uid://di06tuhcu0b1s" path="res://scripts/resources/skill_general.gd" id="2_58ofl"]
+
+[resource]
+script = ExtResource("1_58ofl")
+display_name = "Second Tesseract"
+metadata/_custom_type_script = "uid://dsj6m8wmc0qun"

@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bkexf68c6ma1b"]
+
+[ext_resource type="Texture2D" uid="uid://dla3hfeygcy38" path="res://assets/battleSprites/playerSheets/placeHolder.png" id="1_i6hx2"]
+[ext_resource type="Script" uid="uid://55ch100kxtg3" path="res://scripts/character_button.gd" id="2_8f1qj"]
+
+[node name="CharacterButton" type="TextureButton" unique_id=1124251137]
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("1_i6hx2")
+stretch_mode = 0
+script = ExtResource("2_8f1qj")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1891825972]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Info" type="Button" parent="HBoxContainer" unique_id=886954372]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Info"
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="pressed" from="HBoxContainer/Info" to="." method="_on_info_pressed"]

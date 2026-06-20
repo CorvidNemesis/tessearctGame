@@ -1,48 +1,36 @@
 [gd_scene format=3 uid="uid://dxv6no84gppfp"]
 
-[ext_resource type="Script" uid="uid://2b8p4teg3c4r" path="res://scripts/character/characterData/battle_hero_class.gd" id="1_meyuy"]
+[ext_resource type="Script" uid="uid://2b8p4teg3c4r" path="res://scripts/character/class_ace.gd" id="1_meyuy"]
 [ext_resource type="Resource" uid="uid://g85ajs5o3h24" path="res://resources/characterStats/VirusStats.tres" id="2_v0xgw"]
-[ext_resource type="Texture2D" uid="uid://citx3jag78t2j" path="res://assets/battleSprites/playerSheets/asset_spriteSheet_hero_Virus.png" id="3_o1v06"]
-[ext_resource type="Script" uid="uid://d1v6bv2mafofn" path="res://scripts/resources/quotesResource.gd" id="3_uvc5x"]
+[ext_resource type="Texture2D" uid="uid://dla3hfeygcy38" path="res://assets/battleSprites/playerSheets/placeHolder.png" id="3_v0xgw"]
 [ext_resource type="FontFile" uid="uid://blraut16i4716" path="res://assets/fonts/BebasKai.ttf" id="4_v0xgw"]
 
-[sub_resource type="Resource" id="Resource_7cqep"]
-script = ExtResource("3_uvc5x")
-metadata/_custom_type_script = "uid://d1v6bv2mafofn"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uvc5x"]
-atlas = ExtResource("3_o1v06")
-region = Rect2(0, 0, 250, 250)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_7cqep"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_o1v06"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_uvc5x")
+"texture": ExtResource("3_v0xgw")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[node name="Virus" type="Node2D" unique_id=1966463349 node_paths=PackedStringArray("spriteSheet", "animationEffects", "selectionButton", "dialouge")]
+[node name="Virus" type="Node2D" unique_id=1966463349 node_paths=PackedStringArray("face", "animation_effects")]
 script = ExtResource("1_meyuy")
-battleStats = ExtResource("2_v0xgw")
-battleText = SubResource("Resource_7cqep")
-spriteSheet = NodePath("SpriteSheet")
-animationEffects = NodePath("AnimatedEffects")
-selectionButton = NodePath("SpriteSheet/Selection")
-dialouge = NodePath("Label")
+battle_data = ExtResource("2_v0xgw")
+face = NodePath("SpriteSheet")
+animation_effects = NodePath("AnimatedEffects")
 metadata/_custom_type_script = "uid://2b8p4teg3c4r"
 
 [node name="SpriteSheet" type="AnimatedSprite2D" parent="." unique_id=1885692129]
-sprite_frames = SubResource("SpriteFrames_7cqep")
+sprite_frames = SubResource("SpriteFrames_o1v06")
 
 [node name="Selection" type="Button" parent="SpriteSheet" unique_id=821114332]
 anchors_preset = -1
-anchor_left = -0.096
-anchor_top = -0.24800001
-anchor_right = 1.0
+anchor_left = 0.087804876
+anchor_top = 0.07804878
+anchor_right = 1.0536585
 anchor_bottom = 1.069
 offset_left = -120.0
 offset_top = -117.0

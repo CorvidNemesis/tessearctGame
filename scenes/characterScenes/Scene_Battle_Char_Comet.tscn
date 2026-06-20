@@ -1,12 +1,10 @@
 [gd_scene format=3 uid="uid://iesc88o6cy5h"]
 
-[ext_resource type="Script" uid="uid://2b8p4teg3c4r" path="res://scripts/character/characterData/battle_hero_class.gd" id="1_6hvml"]
+[ext_resource type="Script" uid="uid://2b8p4teg3c4r" path="res://scripts/character/class_ace.gd" id="1_6hvml"]
 [ext_resource type="Resource" uid="uid://5oeg37u20au3" path="res://resources/characterStats/CometStats.tres" id="2_fx4vt"]
-[ext_resource type="Texture2D" uid="uid://cooccwouwpll6" path="res://assets/battleSprites/playerSheets/asset_spriteSheet_hero_Comet.png" id="3_6d2uo"]
-[ext_resource type="PackedScene" uid="uid://dqdhuln8v4k38" path="res://scenes/battle/GUIScenes/clash_spinner.tscn" id="3_7n5t1"]
+[ext_resource type="Texture2D" uid="uid://dla3hfeygcy38" path="res://assets/battleSprites/playerSheets/placeHolder.png" id="3_6d2uo"]
 [ext_resource type="AnimationLibrary" uid="uid://dm0lteluynqdo" path="res://animations/battle_animations.res" id="5_7n5t1"]
 [ext_resource type="FontFile" uid="uid://blraut16i4716" path="res://assets/fonts/BebasKai.ttf" id="5_repii"]
-[ext_resource type="PackedScene" uid="uid://dxbuwl0rygjjf" path="res://scenes/battle/GUIScenes/damage_container.tscn" id="7_repii"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_smv6d"]
 atlas = ExtResource("3_6d2uo")
@@ -23,14 +21,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Comet" type="Node2D" unique_id=279236092 node_paths=PackedStringArray("entity_sprite_sheet", "animation_effects", "dialouge", "roll_zone")]
+[node name="Comet" type="Node2D" unique_id=279236092 node_paths=PackedStringArray("face", "animation_effects")]
 script = ExtResource("1_6hvml")
 battle_data = ExtResource("2_fx4vt")
-entity_sprite_sheet = NodePath("SpriteSheet")
+face = NodePath("SpriteSheet")
 animation_effects = NodePath("AnimatedEffects")
-dialouge = NodePath("Label")
-roll_zone = NodePath("rollZone")
-rolling_visual = ExtResource("3_7n5t1")
 metadata/_custom_type_script = "uid://2b8p4teg3c4r"
 
 [node name="SpriteSheet" type="AnimatedSprite2D" parent="." unique_id=2074526630]
@@ -56,16 +51,5 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_repii")
 theme_override_font_sizes/font_size = 24
-
-[node name="rollZone" type="Control" parent="." unique_id=484509574]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -130.0
-offset_top = -234.0
-offset_right = 126.0
-offset_bottom = -125.0
-
-[node name="DamageContainer" parent="." unique_id=1039421674 instance=ExtResource("7_repii")]
-position = Vector2(-262, -35)
 
 [connection signal="pressed" from="SpriteSheet/Selection" to="." method="_on_selection_pressed"]

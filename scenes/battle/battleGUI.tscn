@@ -1,26 +1,14 @@
 [gd_scene format=3 uid="uid://cgronlllfpb6v"]
 
-[ext_resource type="Script" uid="uid://4vmg2pwahjcj" path="res://scripts/battle/GUI/battleGUI.gd" id="1_k8c73"]
-[ext_resource type="PackedScene" uid="uid://cl84bqfi7cyv" path="res://scenes/battle/player.tscn" id="2_o000n"]
-[ext_resource type="Script" uid="uid://bibwnfff72ixe" path="res://scenes/battle/enemy_hp.gd" id="3_or4fu"]
-[ext_resource type="PackedScene" uid="uid://didgg0rcr5q3v" path="res://scenes/battle/BattleCommand.tscn" id="3_s7rdw"]
-[ext_resource type="Texture2D" uid="uid://db3scmq48mlc2" path="res://assets/uiElements/elementalIcons/newIcon1.png" id="4_k8c73"]
-[ext_resource type="StyleBox" uid="uid://vetaw0xiiqf8" path="res://assets/textures/rect.tres" id="4_kwl7u"]
-[ext_resource type="Script" uid="uid://digmhgl2gtsh5" path="res://scripts/battle/GUI/begin_button.gd" id="5_o000n"]
-
-[sub_resource type="Theme" id="Theme_au2tq"]
-MarginContainer/constants/margin_bottom = 12
-MarginContainer/constants/margin_left = 12
-MarginContainer/constants/margin_right = 12
-MarginContainer/constants/margin_top = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kwl7u"]
-bg_color = Color(0, 0, 0, 1)
-skew = Vector2(0.17, 0)
+[ext_resource type="Script" uid="uid://4vmg2pwahjcj" path="res://scripts/battle/GUI/Command Window/battle_gui.gd" id="1_k8c73"]
+[ext_resource type="PackedScene" uid="uid://cl84bqfi7cyv" path="res://scenes/battle/battle_hud.tscn" id="2_o000n"]
+[ext_resource type="Script" uid="uid://boyd3d6bn2fcu" path="res://scripts/battle/GUI/Command Window/actions_and_label.gd" id="3_s7rdw"]
+[ext_resource type="PackedScene" uid="uid://mwmboxh1fjfl" path="res://scenes/battle/skill_button.tscn" id="4_k8c73"]
+[ext_resource type="PackedScene" uid="uid://lgwdtoeiifx4" path="res://scenes/battle/enemy_button.tscn" id="5_o000n"]
 
 [node name="battleGUI" type="CanvasLayer" unique_id=1234651255]
 script = ExtResource("1_k8c73")
-battleBox = ExtResource("2_o000n")
+hud = ExtResource("2_o000n")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1694856368]
 anchors_preset = 15
@@ -30,64 +18,103 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 mouse_force_pass_scroll_events = false
-theme = SubResource("Theme_au2tq")
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
 
-[node name="BoxZone" type="HBoxContainer" parent="MarginContainer" unique_id=1372022306]
+[node name="HudArea" type="VBoxContainer" parent="MarginContainer" unique_id=328231703]
 layout_mode = 2
-size_flags_horizontal = 8
 size_flags_vertical = 8
 
-[node name="Player Window" type="HBoxContainer" parent="MarginContainer/BoxZone" unique_id=456054800]
+[node name="HudContainer" type="HBoxContainer" parent="MarginContainer/HudArea" unique_id=456054800]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 8
+size_flags_vertical = 4
+theme_override_constants/separation = 0
 
-[node name="player" parent="MarginContainer/BoxZone/Player Window" unique_id=1206141887 instance=ExtResource("2_o000n")]
+[node name="player" parent="MarginContainer/HudArea/HudContainer" unique_id=1206141887 instance=ExtResource("2_o000n")]
 layout_mode = 2
 
-[node name="HBoxContainer" type="CenterContainer" parent="MarginContainer" unique_id=1781995599]
+[node name="PartyGuage" type="ProgressBar" parent="MarginContainer/HudArea" unique_id=1796856371]
 layout_mode = 2
-size_flags_horizontal = 0
-mouse_filter = 2
 
-[node name="Actions" parent="MarginContainer/HBoxContainer" unique_id=585359748 instance=ExtResource("3_s7rdw")]
-custom_minimum_size = Vector2(200, 0)
-layout_direction = 1
+[node name="ActionsAndLabel" type="MarginContainer" parent="." unique_id=557992258]
+offset_left = -650.0
+offset_bottom = 171.0
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 7
+script = ExtResource("3_s7rdw")
+enemy_button = ExtResource("5_o000n")
+skill_button = ExtResource("4_k8c73")
+
+[node name="ButtonsAndFunction" type="HBoxContainer" parent="ActionsAndLabel" unique_id=1859008199]
 layout_mode = 2
-size_flags_horizontal = 2
-size_flags_vertical = 2
-theme_override_styles/panel = ExtResource("4_kwl7u")
 
-[node name="EnemyHPBar" type="VBoxContainer" parent="MarginContainer" unique_id=1381552621]
+[node name="Back" type="Button" parent="ActionsAndLabel/ButtonsAndFunction" unique_id=74507081]
+visible = false
 layout_mode = 2
-size_flags_vertical = 0
-mouse_filter = 2
-alignment = 1
+text = "Back"
 
-[node name="EnemyHP" type="ProgressBar" parent="MarginContainer/EnemyHPBar" unique_id=1756508826]
-modulate = Color(1, 0, 0, 1)
-custom_minimum_size = Vector2(0, 20)
+[node name="Button Holder" type="VBoxContainer" parent="ActionsAndLabel/ButtonsAndFunction" unique_id=771112113]
 layout_mode = 2
-size_flags_vertical = 1
-theme_override_styles/background = SubResource("StyleBoxFlat_kwl7u")
-value = 100.0
-show_percentage = false
-script = ExtResource("3_or4fu")
+size_flags_horizontal = 3
+size_flags_vertical = 4
 
-[node name="BeginButton" type="Button" parent="." unique_id=1394965297]
-offset_left = 1721.0
-offset_top = 860.0
-offset_right = 1922.0
-offset_bottom = 900.0
-text = "GO!!!"
-icon = ExtResource("4_k8c73")
-script = ExtResource("5_o000n")
+[node name="Technique" type="Button" parent="ActionsAndLabel/ButtonsAndFunction/Button Holder" unique_id=1070409639]
+layout_mode = 2
+text = "Technique"
 
-[node name="Label" type="Label" parent="." unique_id=317200034]
-offset_top = 68.0
-offset_right = 1920.0
-offset_bottom = 91.0
-text = "SKILL A VS SKILL B"
-horizontal_alignment = 1
+[node name="Item" type="Button" parent="ActionsAndLabel/ButtonsAndFunction/Button Holder" unique_id=356042127]
+layout_mode = 2
+text = "Item"
 
-[connection signal="pressed" from="BeginButton" to="." method="_on_begin_button_pressed"]
+[node name="Ultimate" type="Button" parent="ActionsAndLabel/ButtonsAndFunction/Button Holder" unique_id=198591056]
+layout_mode = 2
+text = "Unveil Talent
+"
+
+[node name="Defend" type="Button" parent="ActionsAndLabel/ButtonsAndFunction/Button Holder" unique_id=1709321217]
+layout_mode = 2
+text = "Defend
+"
+
+[node name="Skill Holder" type="VBoxContainer" parent="ActionsAndLabel/ButtonsAndFunction" unique_id=1930277117]
+visible = false
+layout_mode = 2
+
+[node name="SkillButton" parent="ActionsAndLabel/ButtonsAndFunction/Skill Holder" unique_id=1199371449 instance=ExtResource("4_k8c73")]
+layout_mode = 2
+script = null
+
+[node name="SkillDesciption" type="RichTextLabel" parent="ActionsAndLabel/ButtonsAndFunction" unique_id=103310929]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "[color=#d53c6a] Adeniel[/color] [color=#5cbc85]Guan[/color] [color=#fcf660]Cytoz[/color] [color=#fafbf6]Thymines[/color] [color=#45444f]Tesseract[/color]
+Cost: 8 SP
+\"We all cheer for Wellcheers!
+Deals heavy[color=#d53c6a] Adeniel [/color]damage onto a group of foes. "
+
+[node name="Enemy Holder" type="VBoxContainer" parent="ActionsAndLabel/ButtonsAndFunction" unique_id=1662218574]
+layout_mode = 2
+
+[node name="EnemyButton" parent="ActionsAndLabel/ButtonsAndFunction/Enemy Holder" unique_id=1289337998 instance=ExtResource("5_o000n")]
+layout_mode = 2
+
+[node name="All" type="Button" parent="ActionsAndLabel/ButtonsAndFunction/Enemy Holder" unique_id=460668796]
+visible = false
+layout_mode = 2
+text = "Mass Summation"
+
+[node name="Skill Label" type="Label" parent="." unique_id=1705073038]
+offset_left = 1922.0
+offset_top = 1.0
+offset_right = 3844.0
+offset_bottom = 24.0
+text = "AMONG US TATER TOTS"
+
+[connection signal="pressed" from="ActionsAndLabel/ButtonsAndFunction/Back" to="ActionsAndLabel" method="_on_back_pressed"]
+[connection signal="pressed" from="ActionsAndLabel/ButtonsAndFunction/Button Holder/Technique" to="ActionsAndLabel" method="_on_technique_pressed"]

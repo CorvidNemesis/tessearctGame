@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://cl84bqfi7cyv"]
+
+[ext_resource type="Script" uid="uid://hikuyy23fkwg" path="res://scripts/battle/GUI/gui_battle_hud.gd" id="1_oqqms"]
+[ext_resource type="Texture2D" uid="uid://c8jirbl4wd7lp" path="res://assets/uiElements/BattleBox/box_shading.png" id="1_yuwif"]
+[ext_resource type="Texture2D" uid="uid://b4gsvlwvn02f3" path="res://icon.svg" id="3_icxwo"]
+[ext_resource type="Theme" uid="uid://dtvkoxfrn8m5p" path="res://assets/textures/bar.tres" id="3_jirk7"]
+[ext_resource type="Texture2D" uid="uid://8b4qa0ydow5i" path="res://assets/uiElements/BattleBox/box_rim.png" id="3_lahtt"]
+[ext_resource type="Texture2D" uid="uid://dn5dqsm02abrs" path="res://assets/uiElements/empty_bar.png" id="3_xkq6q"]
+[ext_resource type="FontFile" uid="uid://ds0qndwlw1ubs" path="res://assets/fonts/EideticModern Regular.otf" id="4_fdm5v"]
+[ext_resource type="Texture2D" uid="uid://tmxs11ddmhhw" path="res://assets/uiElements/hp_bar.png" id="4_jirk7"]
+[ext_resource type="Texture2D" uid="uid://d0lxl6jckjamm" path="res://assets/uiElements/BattleBox/box_status.png" id="8_q2bah"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i0sr3"]
+texture = ExtResource("1_yuwif")
+
+[node name="BattleHud" type="PanelContainer" unique_id=188094959 node_paths=PackedStringArray("health_text", "magnet_text", "health_bar", "magnet_bar")]
+texture_filter = 3
+offset_right = 381.0
+offset_bottom = 66.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_i0sr3")
+script = ExtResource("1_oqqms")
+health_text = NodePath("MarginContainer/VBoxContainer/BarsAndNumbers/HP/Label")
+magnet_text = NodePath("MarginContainer/VBoxContainer/BarsAndNumbers/MP/Label")
+health_bar = NodePath("MarginContainer/VBoxContainer/BarsAndNumbers/HP/Bar")
+magnet_bar = NodePath("MarginContainer/VBoxContainer/BarsAndNumbers/MP/Bar")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=431481143]
+layout_mode = 2
+texture = ExtResource("3_lahtt")
+patch_margin_top = 7
+patch_margin_bottom = 7
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1982153439]
+layout_mode = 2
+localize_numeral_system = false
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_bottom = 7
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=79433456]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="BarsAndNumbers" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=751715847]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="HP" type="HBoxContainer" parent="MarginContainer/VBoxContainer/BarsAndNumbers" unique_id=1297339251]
+layout_mode = 2
+
+[node name="Bar" type="TextureProgressBar" parent="MarginContainer/VBoxContainer/BarsAndNumbers/HP" unique_id=11549027]
+z_as_relative = false
+texture_filter = 3
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("3_jirk7")
+texture_under = ExtResource("3_xkq6q")
+texture_progress = ExtResource("4_jirk7")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/BarsAndNumbers/HP" unique_id=238449330]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_fdm5v")
+theme_override_font_sizes/font_size = 32
+text = "000"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="MP" type="HBoxContainer" parent="MarginContainer/VBoxContainer/BarsAndNumbers" unique_id=240900514]
+layout_mode = 2
+
+[node name="Bar" type="TextureProgressBar" parent="MarginContainer/VBoxContainer/BarsAndNumbers/MP" unique_id=161673658]
+z_as_relative = false
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+value = 50.0
+texture_under = ExtResource("3_xkq6q")
+texture_progress = ExtResource("4_jirk7")
+texture_progress_offset = Vector2(6, 3)
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/BarsAndNumbers/MP" unique_id=401833711]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_fdm5v")
+theme_override_font_sizes/font_size = 32
+text = "000"
+horizontal_alignment = 2
+
+[node name="Statuses" type="TextureRect" parent="MarginContainer/VBoxContainer" unique_id=250952718]
+layout_mode = 2
+texture = ExtResource("8_q2bah")
+
+[node name="AilScroll" type="ScrollContainer" parent="MarginContainer/VBoxContainer/Statuses" unique_id=1329462158]
+layout_mode = 0
+offset_right = 384.0
+offset_bottom = 34.0
+
+[node name="StatusAilment" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Statuses/AilScroll" unique_id=477780919]
+layout_mode = 2
+
+[node name="Icon" type="Sprite2D" parent="MarginContainer" unique_id=1298502790]
+position = Vector2(222, -44.999992)
+scale = Vector2(0.6875, 0.6875)
+texture = ExtResource("3_icxwo")

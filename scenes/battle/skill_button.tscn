@@ -1,13 +1,10 @@
-[gd_scene format=3 uid="uid://cdy44spkjdo8r"]
+[gd_scene format=3 uid="uid://mwmboxh1fjfl"]
 
-[ext_resource type="Theme" uid="uid://w8hlv3jki0y" path="res://assets/textures/battle_button.tres" id="1_txvch"]
-[ext_resource type="Script" uid="uid://d3efacdg4qoid" path="res://scripts/battle/GUI/Command Window/layer_1_skillButton.gd" id="2_fy8yg"]
+[ext_resource type="Script" uid="uid://dc74ujx3xc7m8" path="res://scripts/battle/GUI/Command Window/gui_skill_button.gd" id="1_vcxea"]
 
-[node name="skillButton" type="Button" unique_id=882735814]
-offset_right = 318.0
-offset_bottom = 34.0
-theme = ExtResource("1_txvch")
-text = "Solemn Lament 20SP"
-script = ExtResource("2_fy8yg")
+[node name="SkillButton" type="Button" unique_id=1199371449]
+text = "We all cheer for WellCheers!"
+script = ExtResource("1_vcxea")
 
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]

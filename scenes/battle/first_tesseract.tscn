@@ -1,11 +1,9 @@
 [gd_scene format=3 uid="uid://dbqsqfo6tbxt"]
 
-[ext_resource type="Script" uid="uid://cs87dls076ev6" path="res://scripts/character/battle_enemy_class.gd" id="1_1pyuk"]
-[ext_resource type="Texture2D" uid="uid://7c01xitb7474" path="res://assets/battleSprites/enemySheets/ScorchedGirlSpriteSheet.png" id="2_3jkju"]
+[ext_resource type="Script" uid="uid://cs87dls076ev6" path="res://scripts/character/class_fiend.gd" id="1_1pyuk"]
+[ext_resource type="Texture2D" uid="uid://dla3hfeygcy38" path="res://assets/battleSprites/playerSheets/placeHolder.png" id="2_3jkju"]
 [ext_resource type="Resource" uid="uid://bcxpbhov27yq7" path="res://resources/enemyStats/FirstTessStats.tres" id="2_f47tt"]
-[ext_resource type="PackedScene" uid="uid://dqdhuln8v4k38" path="res://scenes/battle/GUIScenes/clash_spinner.tscn" id="4_783cm"]
 [ext_resource type="AnimationLibrary" uid="uid://dm0lteluynqdo" path="res://animations/battle_animations.res" id="5_gkhox"]
-[ext_resource type="PackedScene" uid="uid://dxbuwl0rygjjf" path="res://scenes/battle/GUIScenes/damage_container.tscn" id="6_g5j8q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f47tt"]
 atlas = ExtResource("2_3jkju")
@@ -46,13 +44,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="FirstTesseract" type="Node2D" unique_id=1486386500 node_paths=PackedStringArray("entity_sprite_sheet", "animation_effects", "roll_zone")]
+[node name="FirstTesseract" type="Node2D" unique_id=1486386500 node_paths=PackedStringArray("animation_effects")]
 script = ExtResource("1_1pyuk")
 battle_data = ExtResource("2_f47tt")
-entity_sprite_sheet = NodePath("AnimatedSprite2D")
 animation_effects = NodePath("AnimationPlayer")
-roll_zone = NodePath("rollZone")
-rolling_visual = ExtResource("4_783cm")
 metadata/_custom_type_script = "uid://cs87dls076ev6"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=93581301]
@@ -63,13 +58,3 @@ flip_h = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1665777931]
 libraries/battle_animations = ExtResource("5_gkhox")
-
-[node name="rollZone" type="Control" parent="." unique_id=1326172220]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -256.0
-offset_top = -1.0
-offset_bottom = 108.0
-
-[node name="DamageContainer" parent="." unique_id=1039421674 instance=ExtResource("6_g5j8q")]
-position = Vector2(65, -22)

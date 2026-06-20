@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://dtoob1wc4vg8j"]
+
+[ext_resource type="Script" uid="uid://cy2fc52rdfrve" path="res://scripts/character_selector.gd" id="1_so2ut"]
+[ext_resource type="Texture2D" uid="uid://dh3lrc8jva6cj" path="res://assets/placeHolders/Yesod_StandingSprite.png" id="2_og5k4"]
+[ext_resource type="PackedScene" uid="uid://bkexf68c6ma1b" path="res://scenes/character_button.tscn" id="2_wamhw"]
+
+[node name="CharacterSelector" type="MarginContainer" unique_id=2097386988]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+script = ExtResource("1_so2ut")
+character_button = ExtResource("2_wamhw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=612671190]
+layout_mode = 2
+
+[node name="CharacterSelectionList" type="Panel" parent="VBoxContainer" unique_id=1132434291]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CharacterIconHolder" type="ScrollContainer" parent="VBoxContainer/CharacterSelectionList" unique_id=856308706]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/CharacterSelectionList/CharacterIconHolder" unique_id=1316905521]
+layout_mode = 2
+
+[node name="CharacterButton" parent="VBoxContainer/CharacterSelectionList/CharacterIconHolder/HBoxContainer" unique_id=1124251137 instance=ExtResource("2_wamhw")]
+layout_mode = 2
+
+[node name="CharacterInfo" type="HBoxContainer" parent="VBoxContainer" unique_id=984992852]
+layout_mode = 2
+size_flags_vertical = 0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/CharacterInfo" unique_id=1190520870]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_og5k4")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="Panel" type="Panel" parent="VBoxContainer/CharacterInfo" unique_id=1238986700]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/CharacterInfo/Panel" unique_id=573015334]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/CharacterInfo/Panel/MarginContainer" unique_id=693494130]
+layout_mode = 2
+
+[node name="Skills" type="VBoxContainer" parent="VBoxContainer/CharacterInfo/Panel/MarginContainer/ScrollContainer" unique_id=456005931]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Skill" type="Label" parent="VBoxContainer/CharacterInfo/Panel/MarginContainer/ScrollContainer/Skills" unique_id=1191789910]
+layout_mode = 2
+
+[node name="Character Number" type="Panel" parent="VBoxContainer" unique_id=909069430]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Character Number" unique_id=734674523]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="Button" type="Button" parent="VBoxContainer/Character Number/MarginContainer" unique_id=522048518]
+layout_mode = 2
+disabled = true
+text = "SELECTED: 0 / 10"
+
+[node name="CharactersForBattle" type="Panel" parent="VBoxContainer" unique_id=620390303]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/CharactersForBattle" unique_id=1503581771]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

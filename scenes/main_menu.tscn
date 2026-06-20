@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://j7pewt1b33de"]
+
+[ext_resource type="Script" uid="uid://cuu8s8whahw70" path="res://scripts/main_menu.gd" id="1_l6cm7"]
+
+[node name="MainMenu" type="Control" unique_id=131951698]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l6cm7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=618128196]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -97.5
+offset_right = 48.0
+offset_bottom = 97.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Start Game" type="Button" parent="VBoxContainer" unique_id=1523755448]
+layout_mode = 2
+text = "Start Game"
+
+[node name="Load Save" type="Button" parent="VBoxContainer" unique_id=1349557591]
+layout_mode = 2
+disabled = true
+text = "Load Save"
+
+[node name="Options" type="Button" parent="VBoxContainer" unique_id=989957087]
+layout_mode = 2
+text = "Options"
+
+[node name="Forfeit" type="Button" parent="VBoxContainer" unique_id=1572762859]
+layout_mode = 2
+text = "Forfeit"
+
+[connection signal="pressed" from="VBoxContainer/Start Game" to="." method="_on_start_game_pressed"]

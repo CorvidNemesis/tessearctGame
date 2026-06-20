@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="ProjectOCDunegon"
-run/main_scene="uid://0vr2v1i1asqw"
+run/main_scene="uid://j7pewt1b33de"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -19,20 +19,17 @@ config/icon="res://icon.svg"
 
 globalVars="*uid://c55acyfd8mcnt"
 gl_battle="*uid://d1ty4idewaf06"
-signal_manager="*uid://b5ecridul5nvb"
+global_functions="*uid://tjepgfcwawrr"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=3
+window/size/resizable=false
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/stretch/scale_mode="integer"
-
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/gdscript_formatter/plugin.cfg")
 
 [file_customization]
 

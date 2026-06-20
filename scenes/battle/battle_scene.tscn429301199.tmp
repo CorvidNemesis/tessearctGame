@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://0vr2v1i1asqw"]
+
+[ext_resource type="Script" uid="uid://ibugcttqn5he" path="res://scripts/battle/managers/manager_battle.gd" id="1_o3k7m"]
+[ext_resource type="PackedScene" uid="uid://cgronlllfpb6v" path="res://scenes/battle/battleGUI.tscn" id="1_pu738"]
+[ext_resource type="Script" uid="uid://diamjntuxs11s" path="res://state.gd" id="1_ugm31"]
+[ext_resource type="Script" uid="uid://in4utj5j8bko" path="res://scenes/battle/battle_state_machine.gd" id="2_lbt8a"]
+[ext_resource type="Script" uid="uid://drb7gftg2pmka" path="res://scenes/battle/start_phase.gd" id="2_o3k7m"]
+[ext_resource type="Script" uid="uid://elm554rr7s1d" path="res://scripts/battle/managers/manager_damage.gd" id="3_2wmvw"]
+
+[node name="BattleScene" type="Node2D" unique_id=74146534]
+script = ExtResource("1_o3k7m")
+
+[node name="BattleStateMachine" type="Node" parent="." unique_id=2070732291 node_paths=PackedStringArray("inital_state")]
+script = ExtResource("2_lbt8a")
+inital_state = NodePath("Inital Setup")
+
+[node name="Inital Setup" type="Node" parent="BattleStateMachine" unique_id=618305175 node_paths=PackedStringArray("move_state")]
+script = ExtResource("2_o3k7m")
+move_state = NodePath("../Selection")
+metadata/_custom_type_script = "uid://diamjntuxs11s"
+
+[node name="Selection" type="Node" parent="BattleStateMachine" unique_id=276295677]
+script = ExtResource("1_ugm31")
+metadata/_custom_type_script = "uid://diamjntuxs11s"
+
+[node name="Turn Start" type="Node" parent="BattleStateMachine" unique_id=95653321]
+script = ExtResource("1_ugm31")
+metadata/_custom_type_script = "uid://diamjntuxs11s"
+
+[node name="Enemy Actions" type="Node" parent="BattleStateMachine" unique_id=543085575]
+script = ExtResource("1_ugm31")
+metadata/_custom_type_script = "uid://diamjntuxs11s"
+
+[node name="Player Turn" type="Node" parent="BattleStateMachine" unique_id=976029566]
+script = ExtResource("1_ugm31")
+metadata/_custom_type_script = "uid://diamjntuxs11s"
+
+[node name="Brawl" type="Node" parent="BattleStateMachine" unique_id=1979956525]
+script = ExtResource("1_ugm31")
+metadata/_custom_type_script = "uid://diamjntuxs11s"
+
+[node name="Turn End" type="Node" parent="BattleStateMachine" unique_id=1488234013]
+script = ExtResource("1_ugm31")
+metadata/_custom_type_script = "uid://diamjntuxs11s"
+
+[node name="DamageManager" type="Node" parent="." unique_id=553766873]
+script = ExtResource("3_2wmvw")
+
+[node name="battleGUI" parent="." unique_id=1234651255 instance=ExtResource("1_pu738")]
+
+[node name="Enemy" type="Node2D" parent="." unique_id=1621906946]
+
+[node name="Singular" type="Node2D" parent="Enemy" unique_id=1756880630]
+
+[node name="BattlePosition" type="Polygon2D" parent="Enemy/Singular" unique_id=448804301]
+visible = false
+position = Vector2(627, 805)
+polygon = PackedVector2Array(-250, -250.00003, 0, -250.00003, 0, 0, -250, 0)
+uv = PackedVector2Array(-250, -250.00003, 0, -250.00003, 0, 0, -250, 0)
+
+[node name="Triad" type="Node2D" parent="Enemy" unique_id=1319741049]
+
+[node name="BattlePosition" type="Polygon2D" parent="Enemy/Triad" unique_id=551048516]
+visible = false
+position = Vector2(515, 661)
+scale = Vector2(1, 0.2)
+polygon = PackedVector2Array(-250, -250.00003, 0, -250.00003, 0, 0, -250, 0)
+
+[node name="BattlePosition2" type="Polygon2D" parent="Enemy/Triad" unique_id=921699515]
+visible = false
+position = Vector2(823, 831)
+scale = Vector2(1, 0.2)
+polygon = PackedVector2Array(-250, -250.00003, -122.06372, -250.00024, 0, -250.00003, 0, 0, -250, 0)
+uv = PackedVector2Array(-250, -250.00003, 0, -250.00003, 0, 0, -250, 0)
+
+[node name="BattlePosition3" type="Polygon2D" parent="Enemy/Triad" unique_id=1788289981]
+visible = false
+position = Vector2(461, 1000)
+scale = Vector2(1, 0.2)
+polygon = PackedVector2Array(-250, -250.00003, -73.80286, -250, 0, -250.00003, 0, 0, -250, 0)
+
+[node name="Quintet" type="Node2D" parent="Enemy" unique_id=1417378516]
+
+[node name="BattlePosition" type="Polygon2D" parent="Enemy/Quintet" unique_id=766015087]
+visible = false
+position = Vector2(659, 666)
+scale = Vector2(1, 0.2)
+polygon = PackedVector2Array(-250, -250.00003, 0, -250.00003, 0, 0, -173.52765, 0, -250, 0)
+
+[node name="BattlePosition2" type="Polygon2D" parent="Enemy/Quintet" unique_id=2041730765]
+visible = false
+position = Vector2(948, 796)
+scale = Vector2(1, 0.2)
+polygon = PackedVector2Array(-250, -250.00003, -122.06372, -250.00024, 0, -250.00003, 0, 0, -250, 0)
+uv = PackedVector2Array(-250, -250.00003, 0, -250.00003, 0, 0, -250, 0)
+
+[node name="BattlePosition3" type="Polygon2D" parent="Enemy/Quintet" unique_id=2088829501]
+visible = false
+position = Vector2(650, 1045)
+scale = Vector2(1, 0.2)
+polygon = PackedVector2Array(-250, -250.00003, -73.80286, -250, 0, -250.00003, 0, 0, -250, 0)
+
+[node name="BattlePosition4" type="Polygon2D" parent="Enemy/Quintet" unique_id=1147479039]
+visible = false
+position = Vector2(280, 1044)
+scale = Vector2(1, 0.2)
+polygon = PackedVector2Array(-250, -250.00003, -73.80286, -250, 0, -250.00003, 0, 0, -250, 0)
+
+[node name="BattlePosition5" type="Polygon2D" parent="Enemy/Quintet" unique_id=2138457085]
+visible = false
+position = Vector2(298, 669)
+scale = Vector2(1, 0.2)
+polygon = PackedVector2Array(-250, -250.00003, -73.80286, -250, 0, -250.00003, 0, 0, -250, 0)

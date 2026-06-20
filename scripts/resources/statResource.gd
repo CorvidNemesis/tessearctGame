@@ -20,10 +20,10 @@ enum PropertyType {
 	}
 
 var source_stat_array = [
-	"str",
-	"cmp",
-	"def",
-	"agi"
+	"Strength",
+	"Competence",
+	"Defense",
+	"Agility"
 ]
 
 @export var associations_dict = {
@@ -32,47 +32,30 @@ var source_stat_array = [
 }
 
 @export var stat_dict = {
-	"maxHP" : 100,
-	"maxMP" : 10,
-	"battle_MHP" : 100,
-	"battle_MMP" : 10,
-	"str" : 10,
-	"cmp": 10,
-	"def": 10,
-	"agi": 10,
-	"brawl":0
+	"maxHP" : [100,100],
+	"maxMP" : [10,10],
+	"Strength" : [10,10],
+	"Competence": [10,10],
+	"Defense": [10,10],
+	"Agility": [10,10],
 }
 
 var buff_dict = {
-	"str" : 1.0,
-	"cmp": 1.0,
-	"def": 1.0,
-	"agi": 1.0,
+	"Strength" : 1.0,
+	"Competence": 1.0,
+	"Defense": 1.0,
+	"Agility": 1.0,
 }
 
 @export var skillSet: Array[BattleSkill] = []
 
-var property_array = [
-	"Slash",
-	"Bludgeon",
-	"Pierce"
-]
-
-var element_array = [
-	"Adeneil",
-	"Cytoz",
-	"Guan",
-	"Thyminos",
-	"Tesseract"
-]
-
 @export var stat_rate_dict = {
-	"AttackProperties": {
+	"Property": {
 		"Slash": 1.0,
 		"Bludgeon": 1.0,
 		"Pierce": 1.0
 	} ,
-	"Elements" : {
+	"Element": {
 		"Adeneil" : 1.0,
 		"Cytoz" : 1.0,
 		"Guan" : 1.0,
@@ -81,22 +64,21 @@ var element_array = [
 	}
 }
 
-var _current_hp: int;
-var _current_mp: int;
-var _current_brawl;
+var current_hp: int;
+var current_mp: int;
 
+func _init() -> void:
+	current_hp = stat_dict["maxHP"][1]
+	current_mp = stat_dict["maxMP"][1]
 
-
-func _get_stat_value(statKey:String)->int:
-	return roundi(stat_dict[statKey] * buff_dict[statKey])
+func _skill_stat_key_value(statKey:String)->int:
+	return roundi(stat_dict[statKey][1] * buff_dict[statKey])
 	
-func _get_property_rate(property_index:int)->float:
-	var key = property_array[property_index];
+func _get_property_rate(key:String)->float:
 	return stat_rate_dict["Property"][key]
 
-func _get_element_rate(property_index:int)->float:
-	var key = property_array[property_index];
+func _get_element_rate(key:String)->float:
 	return stat_rate_dict["Element"][key]
 	
 func _get_speed()->int:
-	return randi_range(0,roundi(stat_dict["agi"] * buff_dict["agi"]));
+	return randi_range(0,roundi(stat_dict["Agility"] * buff_dict["Agility"]));

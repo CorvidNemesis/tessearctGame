@@ -1,9 +1,8 @@
 [gd_scene format=3 uid="uid://collocs7cveyg"]
 
-[ext_resource type="Script" uid="uid://2b8p4teg3c4r" path="res://scripts/character/characterData/battle_hero_class.gd" id="1_3b32d"]
+[ext_resource type="Script" uid="uid://2b8p4teg3c4r" path="res://scripts/character/class_ace.gd" id="1_3b32d"]
 [ext_resource type="Resource" uid="uid://b2fvr20r1l7sa" path="res://resources/characterStats/FenikStats.tres" id="2_smv6d"]
-[ext_resource type="PackedScene" uid="uid://dxbuwl0rygjjf" path="res://scenes/battle/GUIScenes/damage_container.tscn" id="3_5wkd8"]
-[ext_resource type="Texture2D" uid="uid://csrhmt4v83p20" path="res://assets/battleSprites/playerSheets/asset_spriteSheet_hero_Fenik.png" id="3_smv6d"]
+[ext_resource type="Texture2D" uid="uid://dla3hfeygcy38" path="res://assets/battleSprites/playerSheets/placeHolder.png" id="3_smv6d"]
 [ext_resource type="FontFile" uid="uid://blraut16i4716" path="res://assets/fonts/BebasKai.ttf" id="4_smv6d"]
 [ext_resource type="AnimationLibrary" uid="uid://dm0lteluynqdo" path="res://animations/battle_animations.res" id="6_xhnv5"]
 
@@ -22,10 +21,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Fenik" type="Node2D" unique_id=279236092 node_paths=PackedStringArray("entity_sprite_sheet", "animation_effects")]
+[node name="Fenik" type="Node2D" unique_id=279236092 node_paths=PackedStringArray("face", "animation_effects")]
 script = ExtResource("1_3b32d")
 battle_data = ExtResource("2_smv6d")
-entity_sprite_sheet = NodePath("SpriteSheet")
+face = NodePath("SpriteSheet")
 animation_effects = NodePath("AnimatedEffects")
 metadata/_custom_type_script = "uid://2b8p4teg3c4r"
 
@@ -55,16 +54,5 @@ metadata/_edit_use_anchors_ = true
 
 [node name="AnimatedEffects" type="AnimationPlayer" parent="." unique_id=572175246]
 libraries/ = ExtResource("6_xhnv5")
-
-[node name="rollZone" type="Control" parent="." unique_id=2010376392]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -130.0
-offset_top = -234.0
-offset_right = 126.0
-offset_bottom = -125.0
-
-[node name="DamageContainer" parent="." unique_id=1039421674 instance=ExtResource("3_5wkd8")]
-position = Vector2(-259, -110)
 
 [connection signal="pressed" from="SpriteSheet/Selection" to="." method="_on_selection_pressed"]
