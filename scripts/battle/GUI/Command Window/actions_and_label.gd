@@ -9,9 +9,14 @@ extends MarginContainer
 @onready var skill_holder = $"ButtonsAndFunction/Skill Holder";
 @onready var back = $ButtonsAndFunction/Back;
 var origin_place: Vector2;
-## The page of the menu the user is at
-# 0 -> action commands, 1-> Skills and Items 2-> Enemy Targets(TEMP)
-var level = 0;
+@export var current_menu: MENU_LEVEL = MENU_LEVEL.ACTION_SELECT;
+
+enum MENU_LEVEL { 
+ACTION_SELECT, 
+TECHNIQUES,
+ITEMS, 
+ENEMY_SELECTION,
+}
 
 func _ready() -> void:
 	origin_place = self.global_position
@@ -19,22 +24,20 @@ func _ready() -> void:
 	gl_battle.targeting.connect(move_back)
 
 func _setup_ui(hero:BattleHero)->void:
-	_create_skills(hero._get_battle_data().skillSet)
-	description.hide()
+	create_skills(hero._get_battle_data().skillSet)
 	self.show()
 	await get_tree().create_timer(1.0).timeout
 	var tween = create_tween()
 	tween.tween_property(self,"global_position",Vector2(origin_place.x+self.size.x,self.global_position.y),1.0).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-	print("Activate UI")
 	pass
 
 func _hide_ui()->void:
 	var tween = create_tween()
 	tween.tween_property(self,"global_position",Vector2(origin_place.x-self.size.x,self.global_position.y),1.0).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 	await tween.finished
+	self.hide()
 
-
-func _create_skills(skill_list:Array)->void:
+func create_skills(skill_list:Array)->void:
 	clean_up_skills();
 	for skill in skill_list:
 		print(" CREATING SKILL " + skill.name)
@@ -43,43 +46,19 @@ func _create_skills(skill_list:Array)->void:
 		skill_instance._create_skill(skill);
 		skill_instance.set_description.connect(update_description)
 
-func level_check()->void:
-	level -= 1;
-	if level <= 0:
-		skill_holder.hide();
-		command_holder.show();
-		enemy_holder.hide();
-		level = 0;
-	elif level == 1:
-		skill_holder.show();
-		command_holder.hide();
-		enemy_holder.hide();
-	elif level == 2:
-		skill_holder.hide();
-		command_holder.hide();
-		enemy_holder.show();
-		
 func clean_up_skills():
 	for button in skill_holder.get_children():
 		if button is Button:
 			button.queue_free()
 
 func _on_technique_pressed() -> void:
-	skill_holder.show()
-	description.text = "";
-	description.show()
-	command_holder.hide()
-	level = 1;
-	back.show()
-	 # Replace with function body.
+	current_menu = MENU_LEVEL.TECHNIQUES;
+	level_check()
 
 func update_description(text:String)->void:
 	description.text = text;
 
-func setup_enemies(skill_used:BattleSkill)->void:
-	var target_type = skill_used.target;
-	print(target_type)
-	print("setting_up")
+func setup_enemies(_skill:BattleSkill)->void:
 	clean_enemy_holder()
 	var index =0;
 	for enemy in gl_battle.partaking_enemies:
@@ -99,10 +78,31 @@ func clean_enemy_holder()->void:
 		else:
 			button.hide();
 
+func level_check()->void:
+	match current_menu:
+		MENU_LEVEL.ACTION_SELECT:
+			back.hide();
+			description.hide()
+			command_holder.show();
+			skill_holder.hide()
+			enemy_holder.hide()
+		MENU_LEVEL.TECHNIQUES:
+			back.show();
+			description.show()
+			command_holder.hide();
+			skill_holder.show()
+			enemy_holder.hide()
+		MENU_LEVEL.ENEMY_SELECTION:
+			back.show();
+			command_holder.hide();
+			skill_holder.hide()
+			enemy_holder.show()
+
 func _on_back_pressed() -> void:
 	level_check();
 	
-func move_back(index:int)->void:
-	print("Now onto the next battler")
-	level_check();
+func move_back(_targeted_index:int)->void:
+	print("Moving to next battler")
+	current_menu = MENU_LEVEL.ACTION_SELECT;
+	level_check()
 	gl_battle.emit_signal("next_turn");

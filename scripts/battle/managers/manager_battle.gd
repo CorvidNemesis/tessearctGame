@@ -19,7 +19,7 @@ func _ready() -> void:
 	current_enemies = gl_battle.partaking_enemies;
 	all_participants.append_array(heroes)
 	all_participants.append_array(current_enemies)
-	gl_battle.assign_skill.connect(_set_active_skill)
+	gl_battle.assign_skill.connect(set_active_skill)
 	gl_battle.targeting.connect(_give_skill_target_index)
 	state_machine._activate();
 
@@ -40,14 +40,17 @@ func sort_ascending(a, b):
 
 func _set_active_hero(hero:BattleHero)->void:
 	focused_hero = hero;
+	print("Focusing on: " + focused_hero.name)
 
-func _set_active_skill(skill:BattleSkill)->void:
+func set_active_skill(skill:BattleSkill)->void:
 	focused_skill = skill;
-	focused_hero.selected_skill = true;
+	print("Planning to use skill: " + focused_skill.name)
 
 func _give_skill_target_index(index:int)->void:
 	focused_skill.main_target = index;
-	focused_hero.skill_chosen=focused_skill;
+	focused_hero.skill_chosen = focused_skill;
+	print("Set Target ")
+
 
 func _return_heroes()->Array:
 	return heroes

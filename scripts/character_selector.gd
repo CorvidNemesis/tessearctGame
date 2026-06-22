@@ -65,11 +65,11 @@ func update_descripton(skills:Array)->void:
 			label.text = skill.name + "\n" + skill.description;
 			character_info.add_child(label)
 
-func party_selection(character_button)->void:
-	if character_button.get_parent() == character_button_holder:
-		character_button.reparent(characters_for_battle)
+func party_selection(button)->void:
+	if button.get_parent() == character_button_holder:
+		button.reparent(characters_for_battle)
 	else:
-		character_button.reparent(character_button_holder)
+		button.reparent(character_button_holder)
 	dungeon_permission()
 
 func dungeon_permission()->void:
@@ -81,8 +81,8 @@ func dungeon_permission()->void:
 		character_check.disabled = true;
 
 func _on_button_pressed() -> void:
-	for character_button in characters_for_battle.get_children():
-		gl_battle.partaking_heroes.append(character_button.held_battler)
+	for button in characters_for_battle.get_children():
+		gl_battle.partaking_heroes.append(button.held_battler)
 	for key in boss_compendium:
 		gl_battle.partaking_enemies.append(boss_compendium[key])
 	global_functions.go_to_scene("res://scenes/battle/battle_scene.tscn") # Replace with function body.

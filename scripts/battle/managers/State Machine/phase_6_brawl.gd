@@ -11,15 +11,17 @@ func enter_state()->void:
 	print("DEBUG: PHASE 6 //////////////////////////////")
 	battle_manager = _set_battle_manager();
 	await battle_manager.gui.battle_commands._hide_ui();
-	await brawling();
+	brawling();
+	update_state()
 		
 func brawling()->void:
-	for entity in battle_manager.all_participants:
+	for entity in battle_manager.heroes:
+		print(entity.name + " is attacking with " + entity.skill_chosen.name)
 		if entity is BattleHero:
+			print(entity.name + " is attacking with " + entity.skill_chosen.name)
 			var targetting = calculate_targets(entity.skill_chosen);
 			var source_stat = entity.battle_data.stat_dict[entity.skill_chosen._skill_stat_key()];
-			calculate_damage(entity.skill_chosen,source_stat,targetting);	
-			print()
+			calculate_damage(entity.skill_chosen,source_stat[1],targetting);	
 
 func calculate_targets(skill:BattleSkill)->Array:
 	var final_array = []
@@ -31,7 +33,7 @@ func calculate_targets(skill:BattleSkill)->Array:
 	var neighbors = []
 	full_blast.append(gl_battle.partaking_enemies[start])
 	print(skill.target)
-	if skill.target != 0 or skill.target != 4:
+	if (skill.target != 0 and skill.target != 4):
 		while start >= 0:
 			neighbors.append(gl_battle.partaking_enemies[start])
 			start -=1;
@@ -66,7 +68,6 @@ func calculate_damage(skill:BattleSkill,stat:int,targets:Array)->void:
 				print(target.battle_data.display_name + " took " + str(damage))
 				target._change_hp(damage)
 		splash_multiplier -= SPLASH
-	update_state()
 
 func create_damage(skill:BattleSkill,stat:int,target:BattleEntity)->int:	
 	var skill_base = skill._getDamageAmount(stat);

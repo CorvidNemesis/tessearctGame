@@ -11,27 +11,32 @@ var current_index = -1;
 func enter_state()->void:
 	print("DEBUG: PHASE 4 //////////////////////////////")
 	battle_manager = _set_battle_manager();
-	select_actions();
+	if current_index == battle_manager.heroes.size()-1:
+		print("Checking if can move to next phase")
+		if every_one_ready():
+			ready_to_fight = true;
+			update_state()
+		else:
+			select_actions();
+	else:
+		select_actions();
 
 func every_one_ready()->bool:
-	for hero in gl_battle.partaking_heroes:
-		if hero.selected_skill == false:
+	for hero:BattleHero in battle_manager.heroes:
+		print(hero.name + " " + str(hero._chosen_an_action()))
+		print(hero._chosen_an_action())
+		if !hero._chosen_an_action():
 			ready_to_fight = false;
+			print("Not ready to fight!")
 			return false
-	ready_to_fight = true;
+	print("Ready to fight!")
 	return true
 
 ## Moves down the action queue
 func select_actions()->void:
 	current_index = (current_index + 1) % battle_manager.heroes.size();
 	print("Current Index: " + str(current_index))
-	if current_index == battle_manager.heroes.size()-1:
-		if every_one_ready():
-			update_state()
 	active_hero = battle_manager._return_hero(current_index);
-	print(active_hero)
-	print(active_hero.name + "'s turn!")
-	print("Is this guy ready?" + str(active_hero.skill_chosen))
 	battle_manager._set_active_hero(active_hero);
 	update_state()
 

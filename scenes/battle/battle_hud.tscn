@@ -2,27 +2,78 @@
 
 [ext_resource type="Script" uid="uid://hikuyy23fkwg" path="res://scripts/battle/GUI/gui_battle_hud.gd" id="1_oqqms"]
 [ext_resource type="Texture2D" uid="uid://c8jirbl4wd7lp" path="res://assets/uiElements/BattleBox/box_shading.png" id="1_yuwif"]
-[ext_resource type="Texture2D" uid="uid://b4gsvlwvn02f3" path="res://icon.svg" id="3_icxwo"]
 [ext_resource type="Theme" uid="uid://dtvkoxfrn8m5p" path="res://assets/textures/bar.tres" id="3_jirk7"]
 [ext_resource type="Texture2D" uid="uid://8b4qa0ydow5i" path="res://assets/uiElements/BattleBox/box_rim.png" id="3_lahtt"]
 [ext_resource type="Texture2D" uid="uid://dn5dqsm02abrs" path="res://assets/uiElements/empty_bar.png" id="3_xkq6q"]
 [ext_resource type="FontFile" uid="uid://ds0qndwlw1ubs" path="res://assets/fonts/EideticModern Regular.otf" id="4_fdm5v"]
 [ext_resource type="Texture2D" uid="uid://tmxs11ddmhhw" path="res://assets/uiElements/hp_bar.png" id="4_jirk7"]
 [ext_resource type="Texture2D" uid="uid://d0lxl6jckjamm" path="res://assets/uiElements/BattleBox/box_status.png" id="8_q2bah"]
+[ext_resource type="Texture2D" uid="uid://dla3hfeygcy38" path="res://assets/battleSprites/playerSheets/placeHolder.png" id="9_58qu1"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i0sr3"]
 texture = ExtResource("1_yuwif")
 
-[node name="BattleHud" type="PanelContainer" unique_id=188094959 node_paths=PackedStringArray("health_text", "magnet_text", "health_bar", "magnet_bar")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5lhc0"]
+atlas = ExtResource("9_58qu1")
+region = Rect2(0, 0, 205, 205)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pqgc5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5lhc0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_58qu1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_5lhc0"]
+resource_name = "selected"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335, 0.26666668, 0.53333336, 0.76666665, 0.96666664),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u2uje"]
+_data = {
+&"RESET": SubResource("Animation_58qu1"),
+&"selected": SubResource("Animation_5lhc0")
+}
+
+[node name="BattleHud" type="PanelContainer" unique_id=188094959 node_paths=PackedStringArray("health_text", "mp_text", "health_bar", "mp_bar")]
 texture_filter = 3
 offset_right = 381.0
 offset_bottom = 66.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_i0sr3")
 script = ExtResource("1_oqqms")
 health_text = NodePath("MarginContainer/VBoxContainer/BarsAndNumbers/HP/Label")
-magnet_text = NodePath("MarginContainer/VBoxContainer/BarsAndNumbers/MP/Label")
+mp_text = NodePath("MarginContainer/VBoxContainer/BarsAndNumbers/HP/Label")
 health_bar = NodePath("MarginContainer/VBoxContainer/BarsAndNumbers/HP/Bar")
-magnet_bar = NodePath("MarginContainer/VBoxContainer/BarsAndNumbers/MP/Bar")
+mp_bar = NodePath("MarginContainer/VBoxContainer/BarsAndNumbers/MP/Bar")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=431481143]
 layout_mode = 2
@@ -30,11 +81,9 @@ texture = ExtResource("3_lahtt")
 patch_margin_top = 7
 patch_margin_bottom = 7
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1982153439]
+[node name="MarginContainer" type="PanelContainer" parent="." unique_id=778289222]
+self_modulate = Color(0, 0, 0, 1)
 layout_mode = 2
-localize_numeral_system = false
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_bottom = 7
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=79433456]
 layout_mode = 2
@@ -54,8 +103,10 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 theme = ExtResource("3_jirk7")
+value = 22.0
 texture_under = ExtResource("3_xkq6q")
 texture_progress = ExtResource("4_jirk7")
+texture_progress_offset = Vector2(6, 3)
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/BarsAndNumbers/HP" unique_id=238449330]
 layout_mode = 2
@@ -98,7 +149,10 @@ offset_bottom = 34.0
 [node name="StatusAilment" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Statuses/AilScroll" unique_id=477780919]
 layout_mode = 2
 
-[node name="Icon" type="Sprite2D" parent="MarginContainer" unique_id=1298502790]
-position = Vector2(222, -44.999992)
+[node name="Icon" type="AnimatedSprite2D" parent="." unique_id=816325529]
+position = Vector2(203.00002, -71)
 scale = Vector2(0.6875, 0.6875)
-texture = ExtResource("3_icxwo")
+sprite_frames = SubResource("SpriteFrames_pqgc5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=759117574]
+libraries/ = SubResource("AnimationLibrary_u2uje")

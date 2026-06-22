@@ -2,7 +2,6 @@ class_name statsResource
 extends Resource
 
 @export var display_name: String;
-@export var faceSprite: Texture2D;
 
 enum ElementType {
 	ADENEIL = 0,
@@ -81,4 +80,4 @@ func _get_element_rate(key:String)->float:
 	return stat_rate_dict["Element"][key]
 	
 func _get_speed()->int:
-	return randi_range(0,roundi(stat_dict["Agility"] * buff_dict["Agility"]));
+	return randi_range(0,roundi(stat_dict["Agility"][1] * buff_dict["Agility"][1]));

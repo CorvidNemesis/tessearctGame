@@ -2,21 +2,18 @@ class_name BattleEntity
 extends Node2D
 
 @export var battle_data: statsResource;
-@export var face: AnimatedSprite2D;
 @export var animation_effects: AnimationPlayer;
 
 signal hp_update
 
-
 var key_name:String;
 var id_number:int;
 
-var skill_chosen:BattleSkill;
+var skill_chosen:BattleSkill = null;
 var targets = [];
 var is_defending: bool = false;
 var living_status = true;
 var mobility_status = true;
-var selected_skill = false;
 
 #region Battle Data
 
@@ -48,3 +45,10 @@ func _change_hp(amount:int)->void:
 
 func _get_speed()->int:
 	return battle_data._get_speed();
+
+func _chosen_an_action()->bool:
+	if self.skill_chosen or is_defending:
+		return true;
+	else:
+		return false;
+		

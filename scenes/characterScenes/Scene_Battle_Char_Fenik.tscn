@@ -8,7 +8,7 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7di1i"]
 atlas = ExtResource("3_smv6d")
-region = Rect2(0, 0, 250, 250)
+region = Rect2(0, 0, 205, 205)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rar0l"]
 animations = [{
@@ -21,10 +21,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Fenik" type="Node2D" unique_id=279236092 node_paths=PackedStringArray("face", "animation_effects")]
+[node name="Fenik" type="Node2D" unique_id=1161573408 node_paths=PackedStringArray("face", "animation_effects")]
 script = ExtResource("1_3b32d")
-battle_data = ExtResource("2_smv6d")
 face = NodePath("SpriteSheet")
+battle_data = ExtResource("2_smv6d")
 animation_effects = NodePath("AnimatedEffects")
 metadata/_custom_type_script = "uid://2b8p4teg3c4r"
 
@@ -42,17 +42,16 @@ theme_override_font_sizes/font_size = 24
 sprite_frames = SubResource("SpriteFrames_rar0l")
 
 [node name="Selection" type="Button" parent="SpriteSheet" unique_id=207679172]
-anchors_preset = -1
-anchor_top = 0.16
-anchor_bottom = 0.16
-offset_left = -136.0
-offset_top = -166.0
-offset_right = 114.0
-offset_bottom = 124.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -102.5
+offset_top = -102.5
+offset_right = -102.5
+offset_bottom = -102.5
+grow_horizontal = 2
+grow_vertical = 2
 flat = true
-metadata/_edit_use_anchors_ = true
 
 [node name="AnimatedEffects" type="AnimationPlayer" parent="." unique_id=572175246]
 libraries/ = ExtResource("6_xhnv5")
-
-[connection signal="pressed" from="SpriteSheet/Selection" to="." method="_on_selection_pressed"]

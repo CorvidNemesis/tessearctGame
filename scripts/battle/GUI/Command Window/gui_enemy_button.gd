@@ -1,10 +1,9 @@
 extends Button
 var held_enemy:BattleFiend;
 var index:int;
-signal target(enemy:BattleFiend)
 
-func _create_enemy(enemy:BattleFiend,index:int)->void:
-	self.index = index;
+func _create_enemy(enemy:BattleFiend,enemy_index:int)->void:
+	self.index = enemy_index;
 	self.text = enemy.name
 	self.show()
 	

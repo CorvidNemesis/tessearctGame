@@ -18,8 +18,8 @@ animations = [{
 
 [node name="Virus" type="Node2D" unique_id=1966463349 node_paths=PackedStringArray("face", "animation_effects")]
 script = ExtResource("1_meyuy")
-battle_data = ExtResource("2_v0xgw")
 face = NodePath("SpriteSheet")
+battle_data = ExtResource("2_v0xgw")
 animation_effects = NodePath("AnimatedEffects")
 metadata/_custom_type_script = "uid://2b8p4teg3c4r"
 
@@ -27,17 +27,16 @@ metadata/_custom_type_script = "uid://2b8p4teg3c4r"
 sprite_frames = SubResource("SpriteFrames_o1v06")
 
 [node name="Selection" type="Button" parent="SpriteSheet" unique_id=821114332]
-anchors_preset = -1
-anchor_left = 0.087804876
-anchor_top = 0.07804878
-anchor_right = 1.0536585
-anchor_bottom = 1.069
-offset_left = -120.0
-offset_top = -117.0
-offset_right = -114.0
-offset_bottom = -116.93317
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -102.5
+offset_top = -102.5
+offset_right = -102.5
+offset_bottom = -102.5
+grow_horizontal = 2
+grow_vertical = 2
 flat = true
-metadata/_edit_use_anchors_ = true
 
 [node name="AnimatedEffects" type="AnimationPlayer" parent="." unique_id=622637547]
 

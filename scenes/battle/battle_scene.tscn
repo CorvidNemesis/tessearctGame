@@ -11,6 +11,8 @@
 [ext_resource type="Script" uid="uid://bqs3uetwv7w3a" path="res://scripts/battle/managers/State Machine/phase_5_menu.gd" id="7_2wmvw"]
 [ext_resource type="Script" uid="uid://bpurvtnax8mp6" path="res://scripts/battle/managers/State Machine/phase_6_brawl.gd" id="8_ww1p6"]
 [ext_resource type="Script" uid="uid://bav80nmopekmw" path="res://scripts/battle/managers/State Machine/phase_7_turn_end.gd" id="9_7hnyd"]
+[ext_resource type="Script" uid="uid://diamjntuxs11s" path="res://state.gd" id="9_3511k"]
+[ext_resource type="PackedScene" uid="uid://dbqsqfo6tbxt" path="res://scenes/battle/first_tesseract.tscn" id="13_puhd7"]
 
 [node name="battleZone" type="Node2D" unique_id=74146534]
 script = ExtResource("1_o3k7m")
@@ -50,6 +52,10 @@ script = ExtResource("7_2wmvw")
 move_state = NodePath("../Player Turn")
 metadata/_custom_type_script = "uid://diamjntuxs11s"
 
+[node name="Selecting Target" type="Node" parent="BattleStateMachine" unique_id=572997240]
+script = ExtResource("9_3511k")
+metadata/_custom_type_script = "uid://diamjntuxs11s"
+
 [node name="Brawl" type="Node" parent="BattleStateMachine" unique_id=1979956525 node_paths=PackedStringArray("move_state")]
 script = ExtResource("8_ww1p6")
 move_state = NodePath("../Turn End")
@@ -66,3 +72,10 @@ metadata/_custom_type_script = "uid://diamjntuxs11s"
 offset_top = 171.0
 offset_right = 1922.0
 offset_bottom = 792.0
+
+[node name="Control" type="Control" parent="EnemyCase" unique_id=1615127851]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="FirstTesseract" parent="EnemyCase/Control" unique_id=1486386500 instance=ExtResource("13_puhd7")]

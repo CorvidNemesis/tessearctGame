@@ -21,10 +21,9 @@ func setup_battlers()->void:
 	for battler in gl_battle.partaking_heroes:
 		var box_instance = hud.instantiate();
 		hud_holder.add_child(box_instance)
-		box_instance.held_hero = battler;
+		box_instance._assign_battler(battler);
 		box_instance._update_ui();
 		
-
 func _personalize_ui(hero:BattleHero)->void:
 	battle_commands._setup_ui(hero)
 
