@@ -17,7 +17,8 @@ enum TARGETING {
 @export var description: String;
 @export var elemental_icon: Texture2D;
 
-var main_target:int
+
+var main_target:int;
 
 func _getHealingAmount(def:int)->float:
 	return (def + base_power);

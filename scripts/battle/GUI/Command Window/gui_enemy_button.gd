@@ -9,4 +9,5 @@ func _create_enemy(enemy:BattleFiend,enemy_index:int)->void:
 	
 func _on_pressed() -> void:
 	print("SELECTED ENEMY!")
-	gl_battle.emit_signal("targeting",index)
+	gl_battle.focused_hero._set_skill_target(index)
+	gl_battle.emit_signal("targeting")

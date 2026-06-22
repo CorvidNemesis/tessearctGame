@@ -5,8 +5,6 @@ extends Node2D
 
 var combat_level = 0;
 var combat_gauge_value = 0;
-var focused_hero: BattleHero;
-var focused_skill: BattleSkill;
 
 var heroes: Array = [];
 var current_enemies: Array = [];
@@ -19,8 +17,6 @@ func _ready() -> void:
 	current_enemies = gl_battle.partaking_enemies;
 	all_participants.append_array(heroes)
 	all_participants.append_array(current_enemies)
-	gl_battle.assign_skill.connect(set_active_skill)
-	gl_battle.targeting.connect(_give_skill_target_index)
 	state_machine._activate();
 
 func _assign_speed()->void:
@@ -38,19 +34,6 @@ func sort_ascending(a, b):
 		return true
 	return false
 
-func _set_active_hero(hero:BattleHero)->void:
-	focused_hero = hero;
-	print("Focusing on: " + focused_hero.name)
-
-func set_active_skill(skill:BattleSkill)->void:
-	focused_skill = skill;
-	print("Planning to use skill: " + focused_skill.name)
-
-func _give_skill_target_index(index:int)->void:
-	focused_skill.main_target = index;
-	focused_hero.skill_chosen = focused_skill;
-	print("Set Target ")
-
 
 func _return_heroes()->Array:
 	return heroes
@@ -63,6 +46,3 @@ func _return_combat_gauge_value()->int:
 
 func _return_hero(index:int)->BattleHero:
 	return heroes[index]
-
-func _return_active_hero()->BattleHero:
-	return focused_hero;

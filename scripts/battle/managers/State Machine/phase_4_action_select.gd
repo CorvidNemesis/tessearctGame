@@ -36,8 +36,7 @@ func every_one_ready()->bool:
 func select_actions()->void:
 	current_index = (current_index + 1) % battle_manager.heroes.size();
 	print("Current Index: " + str(current_index))
-	active_hero = battle_manager._return_hero(current_index);
-	battle_manager._set_active_hero(active_hero);
+	gl_battle.focused_hero = battle_manager._return_hero(current_index);
 	update_state()
 
 func update_state()->void:

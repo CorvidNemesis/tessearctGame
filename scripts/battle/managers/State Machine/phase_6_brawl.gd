@@ -16,9 +16,7 @@ func enter_state()->void:
 		
 func brawling()->void:
 	for entity in battle_manager.heroes:
-		print(entity.name + " is attacking with " + entity.skill_chosen.name)
 		if entity is BattleHero:
-			print(entity.name + " is attacking with " + entity.skill_chosen.name)
 			var targetting = calculate_targets(entity.skill_chosen);
 			var source_stat = entity.battle_data.stat_dict[entity.skill_chosen._skill_stat_key()];
 			calculate_damage(entity.skill_chosen,source_stat[1],targetting);	

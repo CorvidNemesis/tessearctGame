@@ -58,7 +58,7 @@ func _on_technique_pressed() -> void:
 func update_description(text:String)->void:
 	description.text = text;
 
-func setup_enemies(_skill:BattleSkill)->void:
+func setup_enemies()->void:
 	clean_enemy_holder()
 	var index =0;
 	for enemy in gl_battle.partaking_enemies:
@@ -101,7 +101,7 @@ func level_check()->void:
 func _on_back_pressed() -> void:
 	level_check();
 	
-func move_back(_targeted_index:int)->void:
+func move_back()->void:
 	print("Moving to next battler")
 	current_menu = MENU_LEVEL.ACTION_SELECT;
 	level_check()
