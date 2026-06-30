@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://dbqsqfo6tbxt"]
+
+[ext_resource type="Script" uid="uid://cs87dls076ev6" path="res://scripts/character/class_fiend.gd" id="1_4iam1"]
+[ext_resource type="Resource" uid="uid://bcxpbhov27yq7" path="res://resources/enemyStats/FirstTessStats.tres" id="2_40j2u"]
+[ext_resource type="Texture2D" uid="uid://cqlccxkhvdvw3" path="res://assets/battleSprites/enemySheets/Tess_ONE.png" id="3_t61fn"]
+[ext_resource type="Texture2D" uid="uid://ddjni2t2n8237" path="res://assets/placeHolders/quarter_target.png" id="4_40j2u"]
+[ext_resource type="Texture2D" uid="uid://brww3llx4lp5g" path="res://assets/placeHolders/button_disabled.png" id="5_6pcb1"]
+[ext_resource type="AnimationLibrary" uid="uid://dm0lteluynqdo" path="res://animations/battle_animations.res" id="5_uqnj2"]
+[ext_resource type="Texture2D" uid="uid://de1br6u3u8ee0" path="res://assets/placeHolders/main_target.png" id="5_yp0g1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t61fn"]
+atlas = ExtResource("3_t61fn")
+region = Rect2(0, 0, 866, 848)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4iam1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t61fn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_yp0g1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BattleSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BattleSprite:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6pcb1"]
+_data = {
+&"RESET": SubResource("Animation_yp0g1")
+}
+
+[node name="FirstTesseract" type="Node2D" unique_id=1486386500 node_paths=PackedStringArray("selection", "damage_zone", "animation_effects")]
+script = ExtResource("1_4iam1")
+selection = NodePath("BattleSprite/Selection")
+damage_zone = NodePath("BattleSprite/Damage")
+enemy_behavior = "SUPPORT"
+target_type = "CONSERVE MP"
+battle_data = ExtResource("2_40j2u")
+animation_effects = NodePath("AnimationPlayer")
+metadata/_custom_type_script = "uid://cs87dls076ev6"
+
+[node name="BattleSprite" type="AnimatedSprite2D" parent="." unique_id=93581301]
+sprite_frames = SubResource("SpriteFrames_4iam1")
+
+[node name="Selection" type="TextureButton" parent="BattleSprite" unique_id=1116925628]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -433.0
+offset_top = -424.0
+offset_right = -433.0
+offset_bottom = -424.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+texture_normal = ExtResource("4_40j2u")
+texture_disabled = ExtResource("5_6pcb1")
+texture_focused = ExtResource("5_yp0g1")
+stretch_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Damage" type="Control" parent="BattleSprite" unique_id=1973333502]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -433.0
+offset_top = -424.0
+offset_right = -433.0
+offset_bottom = -424.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1665777931]
+libraries/ = SubResource("AnimationLibrary_6pcb1")
+libraries/battle_animations = ExtResource("5_uqnj2")
+
+[connection signal="pressed" from="BattleSprite/Selection" to="." method="_on_selection_pressed"]

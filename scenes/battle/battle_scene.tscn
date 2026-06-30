@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://0vr2v1i1asqw"]
 
 [ext_resource type="Script" uid="uid://ibugcttqn5he" path="res://scripts/battle/managers/manager_battle.gd" id="1_o3k7m"]
-[ext_resource type="PackedScene" uid="uid://cgronlllfpb6v" path="res://scenes/battle/battleGUI.tscn" id="1_pu738"]
+[ext_resource type="PackedScene" uid="uid://cgronlllfpb6v" path="res://scenes/battle/GUIScenes/battleGUI.tscn" id="1_pu738"]
 [ext_resource type="Script" uid="uid://in4utj5j8bko" path="res://scripts/battle/managers/State Machine/battle_state_machine.gd" id="2_lbt8a"]
 [ext_resource type="Script" uid="uid://drb7gftg2pmka" path="res://scripts/battle/managers/State Machine/phase_0_init.gd" id="2_o3k7m"]
 [ext_resource type="Script" uid="uid://c13husxo2ysmp" path="res://scripts/battle/managers/State Machine/phase_1_rouge.gd" id="4_cywj5"]
@@ -9,10 +9,13 @@
 [ext_resource type="Script" uid="uid://c1yqeyelca5kd" path="res://scripts/battle/managers/State Machine/phase_4_action_select.gd" id="6_2wmvw"]
 [ext_resource type="Script" uid="uid://blk8lmvjhp3ig" path="res://scripts/battle/managers/State Machine/phase_3_enemy_targets.gd" id="6_dddu7"]
 [ext_resource type="Script" uid="uid://bqs3uetwv7w3a" path="res://scripts/battle/managers/State Machine/phase_5_menu.gd" id="7_2wmvw"]
-[ext_resource type="Script" uid="uid://bpurvtnax8mp6" path="res://scripts/battle/managers/State Machine/phase_6_brawl.gd" id="8_ww1p6"]
-[ext_resource type="Script" uid="uid://bav80nmopekmw" path="res://scripts/battle/managers/State Machine/phase_7_turn_end.gd" id="9_7hnyd"]
-[ext_resource type="Script" uid="uid://diamjntuxs11s" path="res://state.gd" id="9_3511k"]
-[ext_resource type="PackedScene" uid="uid://dbqsqfo6tbxt" path="res://scenes/battle/first_tesseract.tscn" id="13_puhd7"]
+[ext_resource type="Script" uid="uid://bpurvtnax8mp6" path="res://scripts/battle/managers/State Machine/phase_7_brawl.gd" id="8_ww1p6"]
+[ext_resource type="Script" uid="uid://bav80nmopekmw" path="res://scripts/battle/managers/State Machine/phase_8_turn_end.gd" id="9_7hnyd"]
+[ext_resource type="Script" uid="uid://7y1lwy82hs1w" path="res://scripts/battle/managers/State Machine/phase_6_targetting.gd" id="10_mpswg"]
+[ext_resource type="Script" uid="uid://dr6aipiumni5r" path="res://scripts/battle/managers/manager_damage.gd" id="12_mpswg"]
+[ext_resource type="PackedScene" uid="uid://dbqsqfo6tbxt" path="res://scenes/battle/Enemy Scenes/first_tesseract.tscn" id="13_puhd7"]
+[ext_resource type="PackedScene" uid="uid://dsn00t84fsdcl" path="res://scenes/battle/Enemy Scenes/NothingsThere.tscn" id="16_7s01p"]
+[ext_resource type="PackedScene" uid="uid://bee2j4j2ukdsi" path="res://scenes/battle/Enemy Scenes/tesseract_blade.tscn" id="17_tc5fe"]
 
 [node name="battleZone" type="Node2D" unique_id=74146534]
 script = ExtResource("1_o3k7m")
@@ -23,55 +26,68 @@ inital_state = NodePath("Inital Setup")
 
 [node name="Inital Setup" type="Node" parent="BattleStateMachine" unique_id=618305175 node_paths=PackedStringArray("move_state")]
 script = ExtResource("2_o3k7m")
-move_state = NodePath("../Selection")
+move_state = NodePath("../Rougelike")
 metadata/_custom_type_script = "uid://diamjntuxs11s"
 
-[node name="Selection" type="Node" parent="BattleStateMachine" unique_id=276295677 node_paths=PackedStringArray("move_state")]
+[node name="Rougelike" type="Node" parent="BattleStateMachine" unique_id=276295677 node_paths=PackedStringArray("move_state")]
 script = ExtResource("4_cywj5")
 move_state = NodePath("../Turn Start")
 metadata/_custom_type_script = "uid://diamjntuxs11s"
 
 [node name="Turn Start" type="Node" parent="BattleStateMachine" unique_id=95653321 node_paths=PackedStringArray("move_state")]
 script = ExtResource("5_dddu7")
-move_state = NodePath("../Enemy Actions")
+move_state = NodePath("../Enemy Skills")
 metadata/_custom_type_script = "uid://diamjntuxs11s"
 
-[node name="Enemy Actions" type="Node" parent="BattleStateMachine" unique_id=543085575 node_paths=PackedStringArray("move_state")]
+[node name="Enemy Skills" type="Node" parent="BattleStateMachine" unique_id=543085575 node_paths=PackedStringArray("move_state")]
 script = ExtResource("6_dddu7")
 move_state = NodePath("../Player Turn")
 metadata/_custom_type_script = "uid://diamjntuxs11s"
 
 [node name="Player Turn" type="Node" parent="BattleStateMachine" unique_id=976029566 node_paths=PackedStringArray("loop_state", "move_state")]
 script = ExtResource("6_2wmvw")
-loop_state = NodePath("../Selecting Skill")
-move_state = NodePath("../Brawl")
+loop_state = NodePath("../Skill Select")
+move_state = NodePath("../Battle")
 metadata/_custom_type_script = "uid://diamjntuxs11s"
 
-[node name="Selecting Skill" type="Node" parent="BattleStateMachine" unique_id=154335782 node_paths=PackedStringArray("move_state")]
+[node name="Skill Select" type="Node" parent="BattleStateMachine" unique_id=154335782 node_paths=PackedStringArray("move_state")]
 script = ExtResource("7_2wmvw")
+move_state = NodePath("../Target Select")
+metadata/_custom_type_script = "uid://diamjntuxs11s"
+
+[node name="Target Select" type="Node" parent="BattleStateMachine" unique_id=478939144 node_paths=PackedStringArray("move_state")]
+script = ExtResource("10_mpswg")
 move_state = NodePath("../Player Turn")
 metadata/_custom_type_script = "uid://diamjntuxs11s"
 
-[node name="Selecting Target" type="Node" parent="BattleStateMachine" unique_id=572997240]
-script = ExtResource("9_3511k")
-metadata/_custom_type_script = "uid://diamjntuxs11s"
-
-[node name="Brawl" type="Node" parent="BattleStateMachine" unique_id=1979956525 node_paths=PackedStringArray("move_state")]
+[node name="Battle" type="Node" parent="BattleStateMachine" unique_id=1979956525 node_paths=PackedStringArray("move_state")]
 script = ExtResource("8_ww1p6")
-move_state = NodePath("../Turn End")
+move_state = NodePath("../Target Select")
 metadata/_custom_type_script = "uid://diamjntuxs11s"
 
 [node name="Turn End" type="Node" parent="BattleStateMachine" unique_id=1488234013 node_paths=PackedStringArray("move_state")]
 script = ExtResource("9_7hnyd")
-move_state = NodePath("../Selection")
+move_state = NodePath("../Rougelike")
 metadata/_custom_type_script = "uid://diamjntuxs11s"
+
+[node name="Damage Manager" type="Node" parent="." unique_id=1155146056]
+script = ExtResource("12_mpswg")
 
 [node name="battleGUI" parent="." unique_id=1234651255 instance=ExtResource("1_pu738")]
 
 [node name="EnemyCase" type="HBoxContainer" parent="." unique_id=473480025]
-offset_top = 171.0
-offset_right = 1922.0
-offset_bottom = 792.0
+custom_minimum_size = Vector2(5.97, 8.645)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -4.3225
+offset_right = 1931.0
+offset_bottom = 797.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Control" type="Control" parent="EnemyCase" unique_id=1615127851]
 layout_mode = 2
@@ -79,3 +95,18 @@ size_flags_horizontal = 6
 size_flags_vertical = 4
 
 [node name="FirstTesseract" parent="EnemyCase/Control" unique_id=1486386500 instance=ExtResource("13_puhd7")]
+position = Vector2(1027, 23.32251)
+
+[node name="Control3" type="Control" parent="EnemyCase" unique_id=715140832]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="TessBlade" parent="EnemyCase/Control3" unique_id=893710386 instance=ExtResource("17_tc5fe")]
+
+[node name="Control2" type="Control" parent="EnemyCase" unique_id=2077759492]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="NothingsThere" parent="EnemyCase/Control2" unique_id=379492810 instance=ExtResource("16_7s01p")]

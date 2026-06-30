@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://dxv6no84gppfp"]
+
+[ext_resource type="Script" uid="uid://2b8p4teg3c4r" path="res://scripts/character/class_hero.gd" id="1_e1n0u"]
+[ext_resource type="Resource" uid="uid://g85ajs5o3h24" path="res://resources/characterStats/stats_Virus.tres" id="2_joe47"]
+[ext_resource type="Texture2D" uid="uid://dla3hfeygcy38" path="res://assets/battleSprites/playerSheets/placeHolder.png" id="3_8phpx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o1v06"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_8phpx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Virus" type="Node2D" unique_id=1966463349 node_paths=PackedStringArray("face", "animation_effects")]
+script = ExtResource("1_e1n0u")
+ID_NUMBER = 1
+face = NodePath("BattleSprite")
+battle_data = ExtResource("2_joe47")
+animation_effects = NodePath("AnimationPlayer")
+metadata/_custom_type_script = "uid://2b8p4teg3c4r"
+
+[node name="BattleSprite" type="AnimatedSprite2D" parent="." unique_id=1885692129]
+sprite_frames = SubResource("SpriteFrames_o1v06")
+
+[node name="Selection" type="Button" parent="BattleSprite" unique_id=821114332]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -102.5
+offset_top = -102.5
+offset_right = -102.5
+offset_bottom = -102.5
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=622637547]
+
+[connection signal="pressed" from="BattleSprite/Selection" to="." method="_on_selection_pressed"]

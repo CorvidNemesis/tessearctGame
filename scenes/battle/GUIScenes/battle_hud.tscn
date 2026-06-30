@@ -1,0 +1,193 @@
+[gd_scene format=3 uid="uid://cl84bqfi7cyv"]
+
+[ext_resource type="Script" uid="uid://hikuyy23fkwg" path="res://scripts/battle/GUI/gui_battle_hud.gd" id="1_oqqms"]
+[ext_resource type="Texture2D" uid="uid://c8jirbl4wd7lp" path="res://assets/uiElements/BattleBox/box_shading.png" id="1_yuwif"]
+[ext_resource type="Texture2D" uid="uid://8b4qa0ydow5i" path="res://assets/uiElements/BattleBox/box_rim.png" id="3_lahtt"]
+[ext_resource type="Texture2D" uid="uid://cfk3wjk5gr1es" path="res://assets/uiElements/elementalIcons/newIcon2.png" id="5_wdx21"]
+[ext_resource type="Texture2D" uid="uid://d0lxl6jckjamm" path="res://assets/uiElements/BattleBox/box_status.png" id="8_q2bah"]
+[ext_resource type="Texture2D" uid="uid://dla3hfeygcy38" path="res://assets/battleSprites/playerSheets/placeHolder.png" id="9_58qu1"]
+[ext_resource type="Texture2D" uid="uid://cnf252o685f7l" path="res://assets/placeHolders/party selection.png" id="10_u2uje"]
+[ext_resource type="Texture2D" uid="uid://d101s7du1yab2" path="res://assets/placeHolders/party focused.png" id="11_mdrio"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i0sr3"]
+texture = ExtResource("1_yuwif")
+
+[sub_resource type="Theme" id="Theme_gof5k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1sk4s"]
+atlas = ExtResource("9_58qu1")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1v6gf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1sk4s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_or576"]
+texture = ExtResource("8_q2bah")
+
+[sub_resource type="Animation" id="Animation_58qu1"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_5lhc0"]
+resource_name = "selected"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u2uje"]
+_data = {
+&"RESET": SubResource("Animation_58qu1"),
+&"selected": SubResource("Animation_5lhc0")
+}
+
+[node name="BattleHud" type="PanelContainer" unique_id=188094959 node_paths=PackedStringArray("health_text", "mp_text", "health_bar", "mp_bar", "selection")]
+texture_filter = 3
+anchors_preset = -1
+anchor_right = 0.1984375
+anchor_bottom = 0.06111111
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_i0sr3")
+script = ExtResource("1_oqqms")
+health_text = NodePath("VBoxContainer/MarginContainer/HBoxContainer/NumberBars/Twine Text/Label")
+mp_text = NodePath("VBoxContainer/MarginContainer/HBoxContainer/NumberBars/Magnet Text/Label")
+health_bar = NodePath("VBoxContainer/MarginContainer/HBoxContainer/NumberBars/Twine Bar")
+mp_bar = NodePath("VBoxContainer/MarginContainer/HBoxContainer/NumberBars/Magnet Bar")
+selection = NodePath("TextureButton")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2051166764]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=1147328696]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer" unique_id=1444140219]
+layout_mode = 2
+theme = SubResource("Theme_gof5k")
+
+[node name="Control" type="Control" parent="VBoxContainer/MarginContainer/HBoxContainer" unique_id=26332664]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer/MarginContainer/HBoxContainer/Control" unique_id=860512462]
+sprite_frames = SubResource("SpriteFrames_1v6gf")
+
+[node name="NumberBars" type="VBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer" unique_id=280398143]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Twine Text" type="HBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/NumberBars" unique_id=1514966570]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer/NumberBars/Twine Text" unique_id=604196832]
+layout_mode = 2
+text = "Twine: 455/999"
+
+[node name="HPIcon" type="TextureRect" parent="VBoxContainer/MarginContainer/HBoxContainer/NumberBars/Twine Text" unique_id=1620571048]
+layout_mode = 2
+texture = ExtResource("5_wdx21")
+expand_mode = 2
+
+[node name="Twine Bar" type="ProgressBar" parent="VBoxContainer/MarginContainer/HBoxContainer/NumberBars" unique_id=368451977]
+layout_mode = 2
+max_value = 999.0
+value = 455.0
+fill_mode = 1
+show_percentage = false
+
+[node name="Twine Tween" type="ProgressBar" parent="VBoxContainer/MarginContainer/HBoxContainer/NumberBars/Twine Bar" unique_id=997051179]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 999.0
+value = 455.0
+fill_mode = 1
+show_percentage = false
+
+[node name="Magnet Text" type="HBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/NumberBars" unique_id=669866185]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer/NumberBars/Magnet Text" unique_id=1705897372]
+layout_mode = 2
+text = "Twine: 455/999"
+
+[node name="HPIcon" type="TextureRect" parent="VBoxContainer/MarginContainer/HBoxContainer/NumberBars/Magnet Text" unique_id=1170201892]
+layout_mode = 2
+texture = ExtResource("5_wdx21")
+expand_mode = 2
+
+[node name="Magnet Bar" type="ProgressBar" parent="VBoxContainer/MarginContainer/HBoxContainer/NumberBars" unique_id=343094036]
+layout_mode = 2
+max_value = 999.0
+value = 455.0
+fill_mode = 1
+show_percentage = false
+
+[node name="Magnet Tween" type="ProgressBar" parent="VBoxContainer/MarginContainer/HBoxContainer/NumberBars/Magnet Bar" unique_id=994303409]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 999.0
+value = 455.0
+fill_mode = 1
+show_percentage = false
+
+[node name="Grit Meter" type="ProgressBar" parent="VBoxContainer/MarginContainer" unique_id=1141253543]
+layout_mode = 2
+show_percentage = false
+
+[node name="AilmentHolder" type="Panel" parent="VBoxContainer" unique_id=114742134]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_or576")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/AilmentHolder" unique_id=79452179]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AilmentHolder" type="HBoxContainer" parent="VBoxContainer/AilmentHolder/ScrollContainer" unique_id=703395982]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=431481143]
+layout_mode = 2
+texture = ExtResource("3_lahtt")
+patch_margin_top = 7
+patch_margin_bottom = 7
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=759117574]
+libraries/ = SubResource("AnimationLibrary_u2uje")
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=1281056941]
+visible = false
+layout_mode = 2
+disabled = true
+texture_normal = ExtResource("10_u2uje")
+texture_focused = ExtResource("11_mdrio")
+ignore_texture_size = true
+stretch_mode = 0

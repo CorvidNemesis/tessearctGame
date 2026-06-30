@@ -6,8 +6,14 @@
 script = ExtResource("1_wij6v")
 stat_power = "Strength"
 element = "Adeneil"
-property = "Pierce"
+property = "Slash"
 can_deal_critical = true
 name = "Attack"
 description = "Basic Attack"
+hit_debuff = {
+"Agility": 0.0,
+"Competence": 0.0,
+"Defense": 0.0,
+"Strength": 0.25
+}
 metadata/_custom_type_script = "uid://di06tuhcu0b1s"

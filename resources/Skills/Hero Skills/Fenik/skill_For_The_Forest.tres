@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="OffensiveSkill" format=3 uid="uid://b4dgv3i3c1ru7"]
+
+[ext_resource type="Resource" uid="uid://clqjupqwmoytq" path="res://resources/Skills/Skill Formulas/default_skill_usage.tres" id="1_a8gtg"]
+[ext_resource type="Script" uid="uid://ctg7tbfx62b7s" path="res://scripts/resources/skill_offense.gd" id="1_cl1n4"]
+
+[resource]
+script = ExtResource("1_cl1n4")
+stat_power = "Strength"
+element = "Adeneil"
+property = "Slash"
+can_deal_critical = true
+name = "Flame Leaf Forest"
+description = "Slashes an enemy dealing medium Adeniel damage."
+target = 1
+execution_script = ExtResource("1_a8gtg")
+metadata/_custom_type_script = "uid://di06tuhcu0b1s"

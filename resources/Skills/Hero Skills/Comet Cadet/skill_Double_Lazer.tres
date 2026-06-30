@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="OffensiveSkill" format=3 uid="uid://b1shd7xcb5tfe"]
+
+[ext_resource type="Script" uid="uid://ctg7tbfx62b7s" path="res://scripts/resources/skill_offense.gd" id="1_f5duy"]
+[ext_resource type="Resource" uid="uid://clqjupqwmoytq" path="res://resources/Skills/Skill Formulas/default_skill_usage.tres" id="1_vs5hs"]
+
+[resource]
+script = ExtResource("1_f5duy")
+stat_power = "Strength"
+element = "Cytoz"
+property = "Pierce"
+can_deal_critical = true
+name = "Double Lazer"
+description = "Strikes an enemy x2"
+target = 1
+mp_cost = 12
+execution_script = ExtResource("1_vs5hs")
+metadata/_custom_type_script = "uid://di06tuhcu0b1s"

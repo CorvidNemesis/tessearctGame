@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://dsn00t84fsdcl"]
+
+[ext_resource type="Script" uid="uid://cs87dls076ev6" path="res://scripts/character/class_fiend.gd" id="1_mamal"]
+[ext_resource type="Resource" uid="uid://3g0um20rjkgo" path="res://resources/enemyStats/SecondTessStats.tres" id="2_4va7n"]
+[ext_resource type="Texture2D" uid="uid://ny5hmnv7dtwa" path="res://assets/placeHolders/place_holder_Nothing_There.webp" id="3_bw3su"]
+[ext_resource type="Texture2D" uid="uid://ddjni2t2n8237" path="res://assets/placeHolders/quarter_target.png" id="4_hgkkp"]
+[ext_resource type="Texture2D" uid="uid://brww3llx4lp5g" path="res://assets/placeHolders/button_disabled.png" id="5_aacdm"]
+[ext_resource type="Texture2D" uid="uid://de1br6u3u8ee0" path="res://assets/placeHolders/main_target.png" id="6_e3caw"]
+[ext_resource type="AnimationLibrary" uid="uid://dm0lteluynqdo" path="res://animations/battle_animations.res" id="7_3yrxi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mof8q"]
+atlas = ExtResource("3_bw3su")
+region = Rect2(0, 0, 627, 1199)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uaa1l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mof8q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_yp0g1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BattleSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BattleSprite:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yc57r"]
+_data = {
+&"RESET": SubResource("Animation_yp0g1")
+}
+
+[node name="NothingsThere" type="Node2D" unique_id=379492810 node_paths=PackedStringArray("selection", "damage_zone", "animation_effects")]
+script = ExtResource("1_mamal")
+selection = NodePath("BattleSprite/Selection")
+damage_zone = NodePath("BattleSprite/Control")
+enemy_behavior = "OFFENSIVE"
+target_type = "MASS SUMMATION"
+battle_data = ExtResource("2_4va7n")
+animation_effects = NodePath("AnimationPlayer")
+metadata/_custom_type_script = "uid://cs87dls076ev6"
+
+[node name="BattleSprite" type="AnimatedSprite2D" parent="." unique_id=1275204329]
+sprite_frames = SubResource("SpriteFrames_uaa1l")
+
+[node name="Selection" type="TextureButton" parent="BattleSprite" unique_id=180285127]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -315.0
+offset_top = -608.0
+offset_right = -315.0
+offset_bottom = -608.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+texture_normal = ExtResource("4_hgkkp")
+texture_disabled = ExtResource("5_aacdm")
+texture_focused = ExtResource("6_e3caw")
+stretch_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Control" type="Control" parent="BattleSprite" unique_id=1489862495]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -433.0
+offset_top = -162.0
+offset_right = -433.0
+offset_bottom = -4.0
+grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=91080615]
+libraries/ = SubResource("AnimationLibrary_yc57r")
+libraries/battle_animations = ExtResource("7_3yrxi")

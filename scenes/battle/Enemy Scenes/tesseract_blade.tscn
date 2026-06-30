@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://bee2j4j2ukdsi"]
+
+[ext_resource type="Script" uid="uid://cs87dls076ev6" path="res://scripts/character/class_fiend.gd" id="1_m1t1f"]
+[ext_resource type="Resource" uid="uid://cbwnnupvh7nvd" path="res://resources/enemyStats/ThirdTessStats.tres" id="2_5yfdf"]
+[ext_resource type="Texture2D" uid="uid://kcmlmdn88dwu" path="res://assets/battleSprites/enemySheets/Tess_Sword.png" id="3_m1t1f"]
+[ext_resource type="Texture2D" uid="uid://ddjni2t2n8237" path="res://assets/placeHolders/quarter_target.png" id="4_wk1gf"]
+[ext_resource type="AnimationLibrary" uid="uid://dm0lteluynqdo" path="res://animations/battle_animations.res" id="4_wt3nd"]
+[ext_resource type="Texture2D" uid="uid://brww3llx4lp5g" path="res://assets/placeHolders/button_disabled.png" id="5_v75sn"]
+[ext_resource type="Texture2D" uid="uid://de1br6u3u8ee0" path="res://assets/placeHolders/main_target.png" id="5_wt3nd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5yfdf"]
+atlas = ExtResource("3_m1t1f")
+region = Rect2(0, 0, 149, 717)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wk1gf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5yfdf")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="TessBlade" type="Node2D" unique_id=1486386500 node_paths=PackedStringArray("selection", "damage_zone", "animation_effects")]
+script = ExtResource("1_m1t1f")
+selection = NodePath("BattleSprite/Button")
+damage_zone = NodePath("BattleSprite/Control")
+enemy_behavior = "OFFENSIVE"
+target_type = "EXPLOIT THE WEAK"
+battle_data = ExtResource("2_5yfdf")
+animation_effects = NodePath("AnimationPlayer")
+metadata/_custom_type_script = "uid://cs87dls076ev6"
+
+[node name="BattleSprite" type="AnimatedSprite2D" parent="." unique_id=93581301]
+scale = Vector2(0.54194635, 0.5419463)
+sprite_frames = SubResource("SpriteFrames_wk1gf")
+animation = &"idle"
+flip_h = true
+
+[node name="Button" type="TextureButton" parent="BattleSprite" unique_id=1049521785]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -74.5
+offset_top = -358.5
+offset_right = -74.5
+offset_bottom = -358.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+texture_normal = ExtResource("4_wk1gf")
+texture_disabled = ExtResource("5_v75sn")
+texture_focused = ExtResource("5_wt3nd")
+stretch_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Control" type="Control" parent="BattleSprite" unique_id=2091846873]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -74.5
+offset_top = -358.5
+offset_right = -74.5
+offset_bottom = -358.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1665777931]
+libraries/battle_animations = ExtResource("4_wt3nd")

@@ -8,25 +8,28 @@ var PATH = "res://scenes/characterScenes/"
 @onready var character_check = $"VBoxContainer/Character Number/MarginContainer/Button"
 @export var character_button:PackedScene
 
-var scene_Fenik: PackedScene = preload("res://scenes/characterScenes/Scene_Battle_Char_Fenik.tscn")
-var scene_Virus: PackedScene = preload("res://scenes/characterScenes/Scene_Battle_Char_Virus.tscn")
-var scene_Comet: PackedScene = preload("res://scenes/characterScenes/Scene_Battle_Char_Comet.tscn")
-var scene_Flora: PackedScene = preload("res://scenes/characterScenes/Scene_Battle_Char_Flora.tscn")
-var scene_Tess_1: PackedScene = preload("res://scenes/battle/first_tesseract.tscn")
-var scene_Tess_2: PackedScene = preload("res://scenes/battle/second_tesseract.tscn")
-var scene_Tess_3: PackedScene = preload("res://scenes/battle/third_tesseract.tscn")
+var scene_Fenik: PackedScene = preload("res://scenes/characterScenes/Scene_Hero_Fenik.tscn")
+var scene_Virus: PackedScene = preload("res://scenes/characterScenes/Scene_Hero_Virus.tscn")
+var scene_Comet: PackedScene = preload("res://scenes/characterScenes/Scene_Hero_Comet.tscn")
+var scene_Flora: PackedScene = preload("res://scenes/characterScenes/Scene_Hero_Flora.tscn")
+var scene_Magia: PackedScene = preload("res://scenes/characterScenes/Scene_Hero_Magia.tscn")
+var scene_Tess: PackedScene = preload("res://scenes/battle/Enemy Scenes/first_tesseract.tscn")
+var scene_Tess_Blade: PackedScene = preload("res://scenes/battle/Enemy Scenes/tesseract_blade.tscn")
+var scene_Nothing_There: PackedScene = preload("res://scenes/battle/Enemy Scenes/NothingsThere.tscn")
+
 
 var battler_compendium = {
 	"Fenik":scene_Fenik,
 	"Virus":scene_Virus,
 	"Comet":scene_Comet,
-	"Flora":scene_Flora
+	"Flora":scene_Flora,
+	"Magia":scene_Magia,
 }
 
 var boss_compendium = {
-	"FirstTesseract":scene_Tess_1,
-	"SecondTesseract":scene_Tess_2,
-	"ThirdTesseract":scene_Tess_3,
+	"Magic Blase":scene_Tess_Blade,
+	"FirstTesseract":scene_Tess,
+	"Tesseract Blade":scene_Tess_Blade,
 }
 
 func _ready() -> void:
@@ -85,4 +88,5 @@ func _on_button_pressed() -> void:
 		gl_battle.partaking_heroes.append(button.held_battler)
 	for key in boss_compendium:
 		gl_battle.partaking_enemies.append(boss_compendium[key])
+
 	global_functions.go_to_scene("res://scenes/battle/battle_scene.tscn") # Replace with function body.

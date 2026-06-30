@@ -37,3 +37,11 @@ func _display_skill(text:String)->void:
 	skill_label.hide()
 	tween.tween_property(skill_label,"global_position",Vector2(skill_label.global_position.x+(skill_label.size.x)*2,skill_label.global_position.y),1.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	skill_label.show()
+
+func _targeting_on()->void:
+	for box in hud_holder.get_children():
+		box._enable_selection();
+
+func _targeting_off()->void:
+	for box in hud_holder.get_children():
+		box._disable_selection();

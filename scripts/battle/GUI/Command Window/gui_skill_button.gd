@@ -13,5 +13,5 @@ func _on_mouse_entered() -> void:
 	set_description.emit(held_skill.description)
 
 func _on_pressed() -> void:
-	gl_battle.focused_hero._set_skill(held_skill)
+	gl_battle.focused_hero.skill_chosen = held_skill;
 	gl_battle.emit_signal("assign_skill")

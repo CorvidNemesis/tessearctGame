@@ -1,9 +1,21 @@
 [gd_resource type="Resource" script_class="statsResource" format=3 uid="uid://bcxpbhov27yq7"]
 
-[ext_resource type="Script" uid="uid://dsj6m8wmc0qun" path="res://scripts/resources/statResource.gd" id="1_wer50"]
+[ext_resource type="Script" uid="uid://dsj6m8wmc0qun" path="res://scripts/resources/entity_stats.gd" id="1_wer50"]
 [ext_resource type="Script" uid="uid://di06tuhcu0b1s" path="res://scripts/resources/skill_general.gd" id="2_iighr"]
+[ext_resource type="Resource" uid="uid://bhjixd3wgpl3r" path="res://resources/Skills/Enemy Skills/Tesseract General/skillPetrol.tres" id="3_ysnpm"]
+[ext_resource type="Resource" uid="uid://cc6nua3aueoou" path="res://resources/Skills/Enemy Skills/First Tesseract/skill_glare.tres" id="4_b8ocp"]
+[ext_resource type="Resource" uid="uid://bjvnyajsfv7tv" path="res://resources/Skills/Enemy Skills/First Tesseract/skill_orchestrate_discord.tres" id="5_el2gm"]
 
 [resource]
 script = ExtResource("1_wer50")
 display_name = "The First Tesseract"
+stat_dict = {
+"Agility": 88,
+"Competence": 27,
+"Defense": 0,
+"Strength": 2,
+"maxHP": 100,
+"maxMP": 99
+}
+skillSet = Array[ExtResource("2_iighr")]([ExtResource("3_ysnpm"), ExtResource("4_b8ocp"), ExtResource("5_el2gm")])
 metadata/_custom_type_script = "uid://dsj6m8wmc0qun"

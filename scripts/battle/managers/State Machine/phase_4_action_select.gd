@@ -23,7 +23,7 @@ func enter_state()->void:
 
 func every_one_ready()->bool:
 	for hero:BattleHero in battle_manager.heroes:
-		print(hero.name + " " + str(hero._chosen_an_action()))
+		print(hero.battle_data.display_name + " " + str(hero._chosen_an_action()))
 		print(hero._chosen_an_action())
 		if !hero._chosen_an_action():
 			ready_to_fight = false;

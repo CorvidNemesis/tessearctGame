@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://decyxl6qmafdr"]
+
+[ext_resource type="Script" uid="uid://2b8p4teg3c4r" path="res://scripts/character/class_hero.gd" id="1_agf31"]
+[ext_resource type="Resource" uid="uid://dmoyrn1haucqs" path="res://resources/characterStats/stats_Magia.tres" id="2_6refi"]
+[ext_resource type="Texture2D" uid="uid://dla3hfeygcy38" path="res://assets/battleSprites/playerSheets/placeHolder.png" id="2_4703q"]
+[ext_resource type="AnimationLibrary" uid="uid://dm0lteluynqdo" path="res://animations/battle_animations.res" id="3_6refi"]
+[ext_resource type="AnimationLibrary" uid="uid://ct0oed5ivaycu" path="res://resources/animations/hero_animations.res" id="4_qx10k"]
+[ext_resource type="AnimationLibrary" uid="uid://4u8hw0p7vm2b" path="res://resources/animations/ui_animations.res" id="5_vm2sc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7di1i"]
+atlas = ExtResource("2_4703q")
+region = Rect2(0, 0, 205, 205)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5t15j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7di1i")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Magia" type="Node2D" unique_id=482020720 node_paths=PackedStringArray("face", "animation_effects")]
+script = ExtResource("1_agf31")
+face = NodePath("BattleSprite")
+battle_data = ExtResource("2_6refi")
+animation_effects = NodePath("AnimationPlayer")
+metadata/_custom_type_script = "uid://2b8p4teg3c4r"
+
+[node name="BattleSprite" type="AnimatedSprite2D" parent="." unique_id=42877248]
+sprite_frames = SubResource("SpriteFrames_5t15j")
+
+[node name="Selection" type="Button" parent="BattleSprite" unique_id=234451799]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -102.5
+offset_top = -102.5
+offset_right = -102.5
+offset_bottom = -102.5
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=758143385]
+libraries/ = ExtResource("3_6refi")
+libraries/hero_animations = ExtResource("4_qx10k")
+libraries/ui_animations = ExtResource("5_vm2sc")

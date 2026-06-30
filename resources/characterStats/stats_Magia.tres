@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="statsResource" format=3 uid="uid://dmoyrn1haucqs"]
+
+[ext_resource type="Script" uid="uid://dsj6m8wmc0qun" path="res://scripts/resources/entity_stats.gd" id="1_3ysay"]
+[ext_resource type="Script" uid="uid://di06tuhcu0b1s" path="res://scripts/resources/skill_general.gd" id="2_u0yhd"]
+[ext_resource type="Resource" uid="uid://cbrlcf6ngc23q" path="res://resources/Skills/Hero Skills/Magia/skill_Magic_Beam.tres" id="3_u0yhd"]
+
+[resource]
+script = ExtResource("1_3ysay")
+display_name = "Magia"
+skillSet = Array[ExtResource("2_u0yhd")]([ExtResource("3_u0yhd")])
+metadata/_custom_type_script = "uid://dsj6m8wmc0qun"

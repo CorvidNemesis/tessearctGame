@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://siw8j3ckeqt8"]
+
+[ext_resource type="Script" uid="uid://2b8p4teg3c4r" path="res://scripts/character/class_hero.gd" id="1_n8pjl"]
+[ext_resource type="Resource" uid="uid://dh6ln5847we0h" path="res://resources/characterStats/stats_Flora.tres" id="2_1xg8v"]
+[ext_resource type="Texture2D" uid="uid://dla3hfeygcy38" path="res://assets/battleSprites/playerSheets/placeHolder.png" id="3_8la5o"]
+[ext_resource type="FontFile" uid="uid://blraut16i4716" path="res://assets/fonts/BebasKai.ttf" id="4_swpfg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4achh"]
+atlas = ExtResource("3_8la5o")
+region = Rect2(0, 0, 205, 205)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rar0l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4achh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Flora" type="Node2D" unique_id=562713558 node_paths=PackedStringArray("face", "animation_effects")]
+script = ExtResource("1_n8pjl")
+ID_NUMBER = 3
+face = NodePath("BattleSprite")
+battle_data = ExtResource("2_1xg8v")
+animation_effects = NodePath("AnimationPlayer")
+metadata/_custom_type_script = "uid://2b8p4teg3c4r"
+
+[node name="BattleSprite" type="AnimatedSprite2D" parent="." unique_id=2074526630]
+sprite_frames = SubResource("SpriteFrames_rar0l")
+
+[node name="Selection" type="Button" parent="BattleSprite" unique_id=207679172]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -102.5
+offset_top = -102.5
+offset_right = -102.5
+offset_bottom = -102.5
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=572175246]
+
+[node name="Label" type="Label" parent="." unique_id=29817890]
+offset_left = -124.0
+offset_top = -184.0
+offset_right = 126.0
+offset_bottom = -124.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_swpfg")
+theme_override_font_sizes/font_size = 24
+
+[connection signal="pressed" from="BattleSprite/Selection" to="." method="_on_selection_pressed"]
